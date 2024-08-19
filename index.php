@@ -17,6 +17,7 @@
         <form method="post" action="login.php" onSubmit="return valida();">
             <input type="text" name="cpf" id="cpf">
             <input type="text" name="senha" id="senha">
+            <input type="submit" value="Enviar">
         </form>
     </body>
 </html>
