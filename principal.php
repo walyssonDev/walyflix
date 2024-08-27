@@ -39,7 +39,13 @@ session_start();
         }
 
         header button{
+            border: none;
+            background-color: transparent;
+        }
+
+        header button a{
             padding: .5em 2em;
+            text-decoration: none;
             font-size: 20px;
             background-color: #bf0603;
             border-radius: 1em;
@@ -48,7 +54,7 @@ session_start();
             cursor: pointer;
         }
 
-        header button:hover{
+        header button a:hover{
             opacity: .8;
         }
 
@@ -107,7 +113,7 @@ session_start();
             <i class="bi bi-person-circle"></i>
             <p>Ola <?php echo $_SESSION["nome"]; ?></p>
         </div>
-        <button>Sair</button>
+        <button><a href="index.php">Sair</a></button>
     </header>
     <div class="container">
         <nav>
