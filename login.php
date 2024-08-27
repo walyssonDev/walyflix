@@ -14,7 +14,7 @@ if(isset($row) && $row["nome"] != '') {
     $_SESSION["senha"] = $senha;
     $_SESSION["nome"] = $row["nome"];
 
-    header("Location: gravar.php");
+    header("Location: principal.php");
 }else{
     die("Senha incorreta");
 }
