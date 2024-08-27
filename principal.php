@@ -1,23 +1,24 @@
-<?php 
+<?php
 session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
-    <style> 
-        body{
+    <style>
+        body {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        header{
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -25,7 +26,7 @@ session_start();
             background-color: #0a100d;
         }
 
-        header .user{
+        header .user {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,16 +35,16 @@ session_start();
             color: white;
         }
 
-        header .user i{
+        header .user i {
             font-size: 30px;
         }
 
-        header button{
+        header button {
             border: none;
             background-color: transparent;
         }
 
-        header button a{
+        header button a {
             padding: .5em 2em;
             text-decoration: none;
             font-size: 20px;
@@ -54,33 +55,33 @@ session_start();
             cursor: pointer;
         }
 
-        header button a:hover{
+        header button a:hover {
             opacity: .8;
         }
 
-        .container{
+        .container {
             display: flex;
             height: 100vh;
         }
 
-        nav{
+        nav {
             height: 100%;
             width: 15%;
             background-color: #ccc5b9;
         }
 
-        nav ul{
+        nav ul {
             width: 100%;
             list-style-type: none;
             margin: 0;
             padding: 0;
         }
 
-        nav ul li{
+        nav ul li {
             width: 100%;
-        }   
+        }
 
-        nav ul a{
+        nav ul a {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -92,21 +93,21 @@ session_start();
             width: 100%;
         }
 
-        nav ul li:last-child a{
+        nav ul li:last-child a {
             border-bottom: 2px solid black;
         }
 
-        nav ul a:hover{
+        nav ul a:hover {
             opacity: .5;
         }
 
-        .conteudo{
+        .conteudo {
             border: 2px solid black;
             padding: 1em;
         }
-
     </style>
 </head>
+
 <body>
     <header>
         <div class="user">
@@ -130,6 +131,7 @@ session_start();
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio animi quis in culpa labore cupiditate, debitis incidunt expedita, at ipsum praesentium velit. Esse odio molestiae aperiam, error quas aut quis.
             </p>
         </div>
-        </div>
+    </div>
 </body>
+
 </html>
