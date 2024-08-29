@@ -124,6 +124,7 @@ session_start();
                 <li><a href="#">Item 3</a></li>
                 <li><a href="#">Item 4</a></li>
                 <li><a href="#">Item 5</a></li>
+                <li><a href="#">Item 6</a></li>
             </ul>
         </nav>
         <div class="conteudo">
