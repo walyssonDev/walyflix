@@ -1,5 +1,5 @@
 <?php
-session_start();
+include("valida.php");
 ?>
 
 <!DOCTYPE html>
@@ -114,7 +114,7 @@ session_start();
             <i class="bi bi-person-circle"></i>
             <p>Ola <?php echo $_SESSION["nome"]; ?></p>
         </div>
-        <button><a href="index.php">Sair</a></button>
+        <button><a href="sair.php">Sair</a></button>
     </header>
     <div class="container">
         <nav>
