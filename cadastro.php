@@ -9,12 +9,13 @@ include("valida.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>Document</title>
+    <title>Cadastro usuarios</title>
     <style>
         body {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -61,49 +62,46 @@ include("valida.php");
 
         .container {
             display: flex;
-            height: 100vh;
-        }
-
-        nav {
-            height: 100%;
-            width: 15%;
-            background-color: #ccc5b9;
-        }
-
-        nav ul {
-            width: 100%;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            width: 100%;
-        }
-
-        nav ul a {
-            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 1em 0;
-            border-top: 2px solid black;
-            background-color: #edede9;
-            text-decoration: none;
-            color: black;
-            width: 100%;
-        }
-
-        nav ul li:last-child a {
-            border-bottom: 2px solid black;
-        }
-
-        nav ul a:hover {
-            opacity: .5;
-        }
-
-        .conteudo {
-            border: 2px solid black;
             padding: 1em;
+            color: white;
+            height: 90vh;
+            width: 100%;
+            border-radius: 1em;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #0a100d;
+            padding: 4em 10em;
+            border-radius: 1em;
+        }
+
+        form input {
+            margin-bottom: 1em;
+            border-radius: 1em;
+            border: none;
+            padding: .5em;
+        }
+
+        form input[type="submit"] {
+            background-color: #bf0603;
+            color: white;
+            width: 100%;
+            margin-bottom: 0;
+            font-weight: 600;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            opacity: .7;
         }
     </style>
 </head>
@@ -114,21 +112,19 @@ include("valida.php");
             <i class="bi bi-person-circle"></i>
             <p>Ola <?php echo $_SESSION["nome"]; ?></p>
         </div>
-        <button><a href="sair.php">Sair</a></button>
+        <button><a href="principal.php">Voltar</a></button>
     </header>
     <div class="container">
-        <nav>
-            <ul>
-                <li><a href="cadastro.php">Cadastro</a></li>
-                <li><a href="#">Busca</a></li>
-                <li><a href="#">Edição</a></li>
-            </ul>
-        </nav>
-        <div class="conteudo">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio animi quis in culpa labore cupiditate, debitis incidunt expedita, at ipsum praesentium velit. Esse odio molestiae aperiam, error quas aut quis.
-            </p>
-        </div>
+        <form method="post" action="cadastrar.php">
+            <h1>Cadastrar</h1>
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" id="nome" placeholder="Seu nome: " required>
+            <label for="cpf">CPF: </label>
+            <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" required>
+            <label for="senha">Senha: </label>
+            <input type="text" name="senha" id="senha" placeholder="Sua senha" required>
+            <input type="submit" value="Enviar">
+        </form>
     </div>
 </body>
 
