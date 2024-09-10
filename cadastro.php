@@ -65,9 +65,11 @@ include("valida.php");
 
         .container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            gap: 1em;
         }
 
         form {
@@ -102,6 +104,21 @@ include("valida.php");
         form input[type="submit"]:hover {
             opacity: .7;
         }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            background-color: #f2f2f2;
+        }
+
+        table th,
+        td {
+            border: 2px solid black;
+        }
+
+        table tr:nth-child(even){
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
 
@@ -124,7 +141,28 @@ include("valida.php");
             <input type="text" name="senha" id="senha" placeholder="Sua senha" required>
             <input type="submit" value="Enviar">
         </form>
-        
+        <table>
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Senha</th>
+            </tr>
+            <tr>
+                <td>123</td>
+                <td>Cleitin</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>123</td>
+                <td>Cleitin</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>123</td>
+                <td>Cleitin</td>
+                <td>123</td>
+            </tr>
+        </table>
     </div>
 </body>
 
