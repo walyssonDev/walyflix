@@ -8,5 +8,5 @@ $senha = $_POST["senha"];
 $sql = ("INSERT INTO `usuarios` (`cpf`, `nome`, `senha`) VALUES ('$cpf', '$nome', '$senha')");
 $resultado = $conn->query($sql);
 
-header("Location: cadastrar.php");
+header("Location: cadastro.php");
 ?>

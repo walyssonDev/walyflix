@@ -86,15 +86,11 @@ include("valida.php");
             justify-content: center;
             align-items: center;
             padding: 1em 0;
-            border-top: 2px solid black;
+            border-bottom: 2px solid black;
             background-color: #edede9;
             text-decoration: none;
             color: black;
             width: 100%;
-        }
-
-        nav ul li:last-child a {
-            border-bottom: 2px solid black;
         }
 
         nav ul a:hover {
@@ -102,7 +98,7 @@ include("valida.php");
         }
 
         .conteudo {
-            border: 2px solid black;
+            border-left: 2px solid black;
             padding: 1em;
         }
     </style>
@@ -122,6 +118,7 @@ include("valida.php");
                 <li><a href="cadastro.php">Cadastro</a></li>
                 <li><a href="#">Busca</a></li>
                 <li><a href="#">Edição</a></li>
+                <li><a href="#">Deletar</a></li>
             </ul>
         </nav>
         <div class="conteudo">

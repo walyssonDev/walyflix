@@ -21,9 +21,11 @@ include("valida.php");
 
         header {
             display: flex;
+            width: 100%;
             justify-content: space-between;
             align-items: center;
-            padding: 1em;
+            padding: 1rem;
+            position: fixed;
             background-color: #0a100d;
         }
 
@@ -43,6 +45,7 @@ include("valida.php");
         header button {
             border: none;
             background-color: transparent;
+            margin-right: 1.5em;
         }
 
         header button a {
@@ -62,25 +65,21 @@ include("valida.php");
 
         .container {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 1em;
-            color: white;
-            height: 90vh;
-            width: 100%;
-            border-radius: 1em;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            height: 100vh;
         }
 
         form {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            color: white;
             align-items: center;
             background-color: #0a100d;
             padding: 4em 10em;
             border-radius: 1em;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
 
         form input {
@@ -96,7 +95,7 @@ include("valida.php");
             width: 100%;
             margin-bottom: 0;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 15px;
             cursor: pointer;
         }
 
@@ -125,6 +124,7 @@ include("valida.php");
             <input type="text" name="senha" id="senha" placeholder="Sua senha" required>
             <input type="submit" value="Enviar">
         </form>
+        
     </div>
 </body>
 

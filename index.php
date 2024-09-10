@@ -49,7 +49,7 @@
             color: white;
             width: 100%;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 15px;
             cursor: pointer;
         }
 
@@ -64,7 +64,7 @@
         <div class="txt-form">
             <h1>Login</h1>
         </div>
-        <form method="post" action="login.php" onSubmit="return valida();">
+        <form method="post" action="login.php">
             <label for="cpf">CPF: </label>
             <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" required>
             <label for="senha">Senha: </label>
