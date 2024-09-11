@@ -71,6 +71,7 @@ include("conexao.php");
             align-items: center;
             height: 100vh;
             gap: 1em;
+            padding-top: 3em;
         }
 
         form {
@@ -118,7 +119,7 @@ include("conexao.php");
 
         table th,
         td {
-            border: 2px solid black;
+            border: 1px solid black;
             text-align: center;
         }
 
