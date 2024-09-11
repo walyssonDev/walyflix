@@ -1,5 +1,6 @@
 <?php
 include("valida.php");
+include("conexao.php");
 ?>
 
 <!DOCTYPE html>
@@ -79,9 +80,13 @@ include("valida.php");
             color: white;
             align-items: center;
             background-color: #0a100d;
-            padding: 4em 10em;
+            padding: 2em 10em;
             border-radius: 1em;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        form h1{
+            margin: 0 0 .5em 0;
         }
 
         form input {
@@ -108,16 +113,17 @@ include("valida.php");
         table {
             width: 50%;
             border-collapse: collapse;
-            background-color: #f2f2f2;
+            background-color: #adb5bd;
         }
 
         table th,
         td {
             border: 2px solid black;
+            text-align: center;
         }
 
-        table tr:nth-child(even){
-            background-color: #f9f9f9;
+        table tr:nth-child(even) {
+            background-color: #ced4da;
         }
     </style>
 </head>
@@ -147,21 +153,18 @@ include("valida.php");
                 <th>Nome</th>
                 <th>Senha</th>
             </tr>
-            <tr>
-                <td>123</td>
-                <td>Cleitin</td>
-                <td>123</td>
-            </tr>
-            <tr>
-                <td>123</td>
-                <td>Cleitin</td>
-                <td>123</td>
-            </tr>
-            <tr>
-                <td>123</td>
-                <td>Cleitin</td>
-                <td>123</td>
-            </tr>
+            <?php
+            $sql = "SELECT * FROM usuarios";
+            $resultado = $conn->query($sql);
+
+            while ($row = $resultado->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row["cpf"] . "</td>";
+                echo "<td>" . $row["nome"] . "</td>";
+                echo "<td>" . $row["senha"] . "</td>";
+                echo "</tr>";
+            }
+            ?>
         </table>
     </div>
 </body>
