@@ -68,7 +68,7 @@
             <label for="cpf">CPF: </label>
             <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" required>
             <label for="senha">Senha: </label>
-            <input type="text" name="senha" id="senha" placeholder="Sua senha" required>
+            <input type="password" name="senha" id="senha" placeholder="Sua senha" required>
             <input type="submit" value="Enviar">
         </form>
     </div>
