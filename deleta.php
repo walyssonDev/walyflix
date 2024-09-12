@@ -101,6 +101,10 @@ include("valida.php");
             color: white;
             cursor: pointer;
         }
+
+        table input[type="submit"]:hover{
+            background-color: #780000;
+        }
     </style>
 </head>
 
