@@ -68,8 +68,10 @@ include("valida.php");
 
         table th,
         td {
+            position: relative;
             border: 2px solid black;
             text-align: center;
+            overflow: hidden;
         }
 
         table tr:nth-child(even) {
@@ -82,6 +84,22 @@ include("valida.php");
             align-items: center;
             width: 100%;
             height: 80vh;
+        }
+
+        table form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        table input[type="submit"] {
+            position: absolute;
+            border: none;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            background-color: #bf0603;
+            color: white;
         }
     </style>
 </head>
