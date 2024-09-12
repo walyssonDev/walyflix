@@ -60,46 +60,46 @@ include("valida.php");
             opacity: .8;
         }
 
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            background-color: #adb5bd;
-        }
-
-        table th,
-        td {
-            position: relative;
-            border: 2px solid black;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        table tr:nth-child(even) {
-            background-color: #ced4da;
-        }
-
-        .container{
+        .container {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; 
             width: 100%;
             height: 80vh;
         }
 
-        table form{
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            background-color: #f2f2f2;
+        }
+
+        table th,
+        td {
+            border: 1px solid black;
+            text-align: center;
+            overflow: hidden;
+            padding: 1em;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table form {
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         table input[type="submit"] {
-            position: absolute;
+            padding: .7em 1em;
+            border-radius: .5em;
             border: none;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
             background-color: #bf0603;
             color: white;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -113,12 +113,13 @@ include("valida.php");
         <button><a href="principal.php">Voltar</a></button>
     </header>
     <div class="container">
+        <h1>Usuarios</h1>
         <table>
             <tr>
                 <th>CPF</th>
                 <th>Nome</th>
                 <th>Senha</th>
-                <th>Deletar</th>
+                <th>Ação</th>
             </tr>
             <?php
             $sql = "SELECT * FROM usuarios";
@@ -131,7 +132,7 @@ include("valida.php");
                 echo "<td>" . $row["senha"] . "</td>";
                 echo "<td> 
                         <form action = 'deletar.php' method = 'POST'>
-                        <input type = 'hidden' name = 'cpf' value = '". $row["cpf"] ."'>
+                        <input type = 'hidden' name = 'cpf' value = '" . $row["cpf"] . "'>
                         <input type = 'submit' value = 'Deletar'>
                         </form>";
                 echo "</tr>";

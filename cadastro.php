@@ -66,10 +66,9 @@ include("conexao.php");
 
         .container {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 90vh;
             gap: 1em;
             padding-top: 3em;
         }
@@ -86,7 +85,7 @@ include("conexao.php");
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
 
-        form h1{
+        form h1 {
             margin: 0 0 .5em 0;
         }
 
@@ -114,17 +113,19 @@ include("conexao.php");
         table {
             width: 50%;
             border-collapse: collapse;
-            background-color: #adb5bd;
+            background-color: #f2f2f2;
         }
 
         table th,
         td {
             border: 1px solid black;
             text-align: center;
+            overflow: hidden;
+            padding: 1em;
         }
 
         table tr:nth-child(even) {
-            background-color: #ced4da;
+            background-color: #f9f9f9;
         }
     </style>
 </head>
