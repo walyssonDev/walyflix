@@ -67,7 +67,7 @@ include("valida.php");
         nav {
             height: 100%;
             width: 15%;
-            background-color: #ccc5b9;
+            background-color: #ced4da;
         }
 
         nav ul {
