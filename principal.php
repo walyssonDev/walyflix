@@ -61,7 +61,7 @@ include("valida.php");
 
         .container {
             display: flex;
-            height: 90vh;
+            height: 87vh;
         }
 
         nav {
@@ -127,6 +127,7 @@ include("valida.php");
     <div class="container">
         <nav>
             <ul>
+                <li><a onclick="location.reload();">Inicio</a></li>
                 <li><a onclick="iframe('cadastro.php')">Cadastro</a></li>
                 <li><a onclick="iframe('busca.php')">Busca</a></li>
                 <li><a onclick="iframe('edita.php')">Edição</a></li>
@@ -134,7 +135,7 @@ include("valida.php");
             </ul>
         </nav>
         <div class="conteudo">
-            <iframe id="iframe" src="" frameborder="0"></iframe>
+            <iframe id="iframe" src="usuarios.php" frameborder="0"></iframe>
         </div>
     </div>
 </body>
