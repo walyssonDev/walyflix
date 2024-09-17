@@ -25,7 +25,7 @@ include("conexao.php");
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 90vh;
+            height: 70vh;
             gap: 1em;
             padding-top: 3em;
         }
