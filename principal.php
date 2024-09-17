@@ -91,6 +91,7 @@ include("valida.php");
         text-decoration: none;
         color: black;
         width: 100%;
+        cursor: pointer;
     }
 
     nav ul a:hover {
@@ -100,8 +101,19 @@ include("valida.php");
     .conteudo {
         border-left: 2px solid black;
         padding: 1em;
+        width: 100%;
+    }
+
+    .conteudo iframe {
+        width: 100%;
+        height: 100%;
     }
     </style>
+    <script>
+    function iframe(page) {
+        document.getElementById('iframe').src = page;
+    }
+    </script>
 </head>
 
 <body>
@@ -115,14 +127,14 @@ include("valida.php");
     <div class="container">
         <nav>
             <ul>
-                <li><a href="cadastro.php">Cadastro</a></li>
-                <li><a href="#">Busca</a></li>
-                <li><a href="edita.php">Edição</a></li>
-                <li><a href="deleta.php">Deletar</a></li>
+                <li><a onclick="iframe('cadastro.php')">Cadastro</a></li>
+                <li><a onclick="iframe('busca.php')">Busca</a></li>
+                <li><a onclick="iframe('edita.php')">Edição</a></li>
+                <li><a onclick="iframe('deleta.php')">Deletar</a></li>
             </ul>
         </nav>
         <div class="conteudo">
-            <iframe src="deleta.php" frameborder="0"></iframe>
+            <iframe id="iframe" src="" frameborder="0"></iframe>
         </div>
     </div>
 </body>

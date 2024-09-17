@@ -19,47 +19,6 @@ include("valida.php");
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1em;
-        background-color: #0a100d;
-    }
-
-    header .user {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1em;
-        font-size: 20px;
-        color: white;
-    }
-
-    header .user i {
-        font-size: 30px;
-    }
-
-    header button {
-        border: none;
-        background-color: transparent;
-    }
-
-    header button a {
-        padding: .5em 2em;
-        text-decoration: none;
-        font-size: 20px;
-        background-color: #bf0603;
-        border-radius: 1em;
-        border: none;
-        color: white;
-        cursor: pointer;
-    }
-
-    header button a:hover {
-        opacity: .8;
-    }
-
     .container {
         display: flex;
         justify-content: center;
@@ -109,13 +68,6 @@ include("valida.php");
 </head>
 
 <body>
-    <header>
-        <div class="user">
-            <i class="bi bi-person-circle"></i>
-            <p>Ola <?php echo $_SESSION["nome"]; ?></p>
-        </div>
-        <button><a href="principal.php">Voltar</a></button>
-    </header>
     <div class="container">
         <h1>Usuarios</h1>
         <table>
