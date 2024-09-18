@@ -61,7 +61,7 @@ include("valida.php");
 
         .container {
             display: flex;
-            height: 87vh;
+            height: 86.58vh;
         }
 
         nav {
