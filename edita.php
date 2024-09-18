@@ -84,9 +84,9 @@ include("valida.php");
             while ($row = $resultado->fetch_assoc()) {
                 echo "<form action = 'editar.php' method = 'POST'>";
                 echo "<tr>";
-                echo "<td> <input type = 'text' name = 'cpf' value = '" . $row["cpf"] . "'> </td>";
-                echo "<td> <input type = 'text' name = 'nome' value = '" . $row["nome"] . "'> </td>";
-                echo "<td> <input type = 'text' name = 'senha' value = '" . $row["senha"] . "'> </td>";
+                echo "<td> <input type = 'text' name = 'cpf' required value = '" . $row["cpf"] . "'> </td>";
+                echo "<td> <input type = 'text' name = 'nome' required value = '" . $row["nome"] . "'> </td>";
+                echo "<td> <input type = 'text' name = 'senha' required value = '" . $row["senha"] . "'> </td>";
 
                 echo "<td> 
                         <input type = 'hidden' name = 'cpfAnterior' value = '" . $row["cpf"] . "'>

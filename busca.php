@@ -105,9 +105,9 @@ include("conexao.php");
             $sqlNome = "SELECT * FROM usuarios WHERE nome LIKE '%$nome%'";
 
             if (!empty($_POST['cpf'])) {
-                $sql = $sqlNome;
-            } elseif (!empty($_POST['nome'])) {
                 $sql = $sqlCPF;
+            } elseif (!empty($_POST['nome'])) {
+                $sql = $sqlNome;
             }
 
             $resultado = $conn->query($sql);
