@@ -56,13 +56,13 @@ include("valida.php");
         padding: .7em 1em;
         border-radius: .5em;
         border: none;
-        background-color: #118ab2;
+        background-color: #8ac926;
         color: white;
         cursor: pointer;
     }
 
     table input[type="submit"]:hover {
-        background-color: #073b4c;
+        background-color: #6a994e;
     }
     </style>
 </head>

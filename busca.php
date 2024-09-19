@@ -51,7 +51,7 @@ include("conexao.php");
     }
 
     form input[type="submit"] {
-        background-color: #bf0603;
+        background-color: #219ebc;
         color: white;
         width: 100%;
         margin-bottom: 0;
