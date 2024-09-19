@@ -1,5 +1,4 @@
 <?php
-
 $servidor = "sql305.infinityfree.com";
 $usuario = "if0_37334546";
 $senha = "8zVebj7zkBN";
