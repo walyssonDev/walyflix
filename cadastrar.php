@@ -5,13 +5,20 @@ $cpf = $_POST["cpf"];
 $nome = $_POST["nome"];
 $senha = $_POST["senha"];
 
-$sql = ("INSERT INTO `usuarios` (`cpf`, `nome`, `senha`) VALUES ('$cpf', '$nome', '$senha')");
-$resultado = $conn->query($sql);
+$sqlVerificar = "SELECT * FROM usuarios WHERE cpf = '$cpf'";
+$resultadoVerificar = $conn->query($sqlVerificar);
 
-if($_POST['cadastro'] == 'cadastro') {
-    header("Location: index.php");
+if($resultadoVerificar->num_rows > 0) {
+    echo "CPF ja cadastrado";
 } else {
-    header("Location: cadastro.php");
+    $sql = ("INSERT INTO `usuarios` (`cpf`, `nome`, `senha`) VALUES ('$cpf', '$nome', '$senha')");
+    $resultado = $conn->query($sql);
+
+    if($_POST['cadastro'] == 'cadastro') {
+        header("Location: index.php");
+    } else {
+        header("Location: cadastro.php");
+}
 }
 
 ?>

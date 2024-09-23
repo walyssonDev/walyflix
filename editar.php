@@ -11,6 +11,7 @@ $sql = "UPDATE usuarios SET cpf = '$cpf', nome = '$nome', senha = '$senha' WHERE
 
 if (!$resultado = $conn->query($sql)) {
     die("erro");
+} else {
+    $_SESSION['mensagem'] = "Editado com sucesso";
+    header("Location: edita.php");
 }
-
-header("Location: edita.php");

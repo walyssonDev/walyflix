@@ -104,10 +104,12 @@ include("conexao.php");
             $sqlCPF = "SELECT * FROM usuarios WHERE cpf = '$cpf'";
             $sqlNome = "SELECT * FROM usuarios WHERE nome LIKE '%$nome%'";
 
-            if (!empty($_POST['cpf'])) {
+            if (!empty($_POST['cpf']) && empty($_POST['nome'])) {
                 $sql = $sqlCPF;
-            } elseif (!empty($_POST['nome'])) {
+            } elseif (!empty($_POST['nome']) && empty($_POST['cpf'])) {
                 $sql = $sqlNome;
+            } else {
+                echo "Pesquise apenas pelo nome ou pelo CPF";
             }
 
             $resultado = $conn->query($sql);

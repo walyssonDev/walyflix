@@ -25,7 +25,7 @@ include("valida.php");
         align-items: center;
         flex-direction: column;
         width: 100%;
-        height: 80vh;
+        height: 100%;
     }
 
     table {
@@ -52,7 +52,7 @@ include("valida.php");
         justify-content: center;
     }
 
-    table input[type="submit"] {
+    table button[type="submit"] {
         padding: .7em 1em;
         border-radius: .5em;
         border: none;
@@ -61,7 +61,7 @@ include("valida.php");
         cursor: pointer;
     }
 
-    table input[type="submit"]:hover {
+    table button[type="submit"]:hover {
         background-color: #6a994e;
     }
     </style>
@@ -87,16 +87,24 @@ include("valida.php");
                 echo "<td> <input type = 'text' name = 'cpf' required value = '" . $row["cpf"] . "'> </td>";
                 echo "<td> <input type = 'text' name = 'nome' required value = '" . $row["nome"] . "'> </td>";
                 echo "<td> <input type = 'text' name = 'senha' required value = '" . $row["senha"] . "'> </td>";
-
                 echo "<td> 
                         <input type = 'hidden' name = 'cpfAnterior' value = '" . $row["cpf"] . "'>
-                        <input type = 'submit' value = 'Editar'>";
+                        <button type = 'submit'>Editar</button>";
                 echo "</tr>";
                 echo "</form>";
             }
+
             ?>
         </table>
     </div>
+    <script>
+    <?php
+        if (isset($_SESSION['mensagem'])) {
+            echo "alert('" . $_SESSION['mensagem'] . "')";
+            unset($_SESSION['mensagem']);
+        }
+        ?>
+    </script>
 </body>
 
 </html>
