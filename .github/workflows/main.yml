@@ -7,10 +7,12 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-    
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ftpupload.net
         username: if0_37334546
-        password: ${{ secrets.ftp_password }}
+        password: ${{ secrets.ftp_password }}  # Certifique-se de que está exatamente assim
+        local-dir: .  # Enviar todos os arquivos do repositório
+        server-dir: /htdocs  # Altere isso para o diretório onde deseja enviar os arquivos
