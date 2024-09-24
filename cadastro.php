@@ -24,9 +24,25 @@ include("conexao.php");
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 90vh;
+            height: 100%;
             gap: 1em;
             padding-top: 3em;
+        }
+
+        .nome,
+        .cpf,
+        .senha {
+            background-color: #219ebc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 1em 1em 0;
+        }
+
+        .nome i,
+        .cpf i,
+        .senha i {
+            margin: 0 1em;
         }
 
         form {
@@ -36,9 +52,18 @@ include("conexao.php");
             color: white;
             align-items: center;
             background-color: #0a100d;
-            padding: 2em 10em;
+            padding: 4em;
             border-radius: 1em;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        form a{
+            color: white;
+            margin: 0;
+        }
+
+        form label {
+            margin-top: 1em;
         }
 
         form h1 {
@@ -46,8 +71,7 @@ include("conexao.php");
         }
 
         form input {
-            margin-bottom: 1em;
-            border-radius: 1em;
+            border-radius: 0 1em 1em 0;
             border: none;
             padding: .5em;
         }
@@ -56,7 +80,8 @@ include("conexao.php");
             background-color: #219ebc;
             color: white;
             width: 100%;
-            margin-bottom: 0;
+            margin: 1em 0;
+            border-radius: 1em;
             font-weight: 600;
             font-size: 15px;
             cursor: pointer;
@@ -88,15 +113,26 @@ include("conexao.php");
 
 <body>
     <div class="container">
-        <form method="post" action="cadastrar.php">
+    <form method="post" action="cadastrar.php">
             <h1>Cadastrar</h1>
             <label for="nome">Nome: </label>
-            <input type="text" name="nome" id="nome" placeholder="Seu nome: " required>
+            <div class="nome">
+                <i class="bi bi-person-fill"></i>
+                <input type="text" name="nome" id="nome" placeholder="Seu nome: " required>
+            </div>
             <label for="cpf">CPF: </label>
-            <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" required>
+            <div class="cpf">
+                <i class="bi bi-person-vcard-fill"></i>
+                <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" required>
+            </div>
             <label for="senha">Senha: </label>
-            <input type="password" name="senha" id="senha" placeholder="Sua senha" required>
+            <div class="senha">
+                <i class="bi bi-lock-fill"></i>
+                <input type="password" name="senha" id="senha" placeholder="Sua senha" required>
+            </div>
             <input type="submit" value="Enviar">
+            <input type="hidden" name="cadastro" value="cadastro">
+            <a href="index.php">Login</a>
         </form>
         <table>
             <tr>

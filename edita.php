@@ -25,7 +25,7 @@ include("valida.php");
         align-items: center;
         flex-direction: column;
         width: 100%;
-        height: 100%;
+        height: 100vh;
     }
 
     table {
@@ -69,7 +69,6 @@ include("valida.php");
 
 <body>
     <div class="container">
-        <h1>Usuarios</h1>
         <table>
             <tr>
                 <th>CPF</th>

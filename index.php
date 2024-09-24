@@ -5,72 +5,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
-    body {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 30%;
-        background-color: #0a100d;
-        padding: 1em;
-        color: white;
-        border-radius: 1em;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+            background-color: #0a100d;
+            padding: 3em;
+            color: white;
+            border-radius: 1em;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
 
-    .container a {
-        color: white;
-    }
+        .container a {
+            color: white;
+        }
 
-    form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+        .img i{
+            font-size: 100px;
+        }
 
-    form input {
-        margin-bottom: 1em;
-        border-radius: 1em;
-        border: none;
-        padding: .5em;
-    }
+        .cpf,
+        .senha {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #219ebc;
+            border-radius: 0 1em 1em 0;
+            font-size: 20px;
+        }
 
-    form input[type="submit"] {
-        background-color: #219ebc;
-        color: white;
-        width: 100%;
-        font-weight: 600;
-        font-size: 15px;
-        cursor: pointer;
-    }
+        .cpf i,
+        .senha i {
+            margin: 0 1em;
+        }
 
-    form input[type="submit"]:hover {
-        opacity: .7;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form label {
+            margin-top: 1em;
+        }
+
+        form input {
+            border-radius: 0 1em 1em 0;
+            border: none;
+            padding: .5em;
+            height: 100%;
+            width: 100%;
+        }
+
+        form input[type="submit"] {
+            background-color: #219ebc;
+            color: white;
+            border-radius: 1em;
+            width: 100%;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            margin: 1em 0;
+        }
+
+        form input[type="submit"]:hover {
+            opacity: .7;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <form method="post" action="login.php">
-            <h1>Teste</h1>
+            <h1>Login</h1>
+            <div class="img">
+                <i class="bi bi-person-circle"></i>
+            </div>
             <label for="cpf">CPF: </label>
-            <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" required>
+            <div class="cpf">
+                <i class="bi bi-person-fill"></i>
+                <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" required>
+            </div>
             <label for="senha">Senha: </label>
-            <input type="password" name="senha" id="senha" placeholder="Sua senha" required>
+            <div class="senha">
+                <i class="bi bi-lock-fill"></i>
+                <input type="password" name="senha" id="senha" placeholder="Sua senha" required>
+            </div>
             <input type="submit" value="Enviar">
         </form>
         <a href="cadastrese.php">Cadastre-se</a>
