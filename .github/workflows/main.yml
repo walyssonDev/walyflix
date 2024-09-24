@@ -15,4 +15,4 @@ jobs:
         username: if0_37334546
         password: ${{ secrets.ftp_password }}  # Certifique-se de que está exatamente assim
         local-dir: .  # Enviar todos os arquivos do repositório
-        server-dir: /htdocs/  # Altere isso para o diretório onde deseja enviar os arquivos
+        server-dir: ./htdocs/  # Altere isso para o diretório onde deseja enviar os arquivos
