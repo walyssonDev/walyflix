@@ -131,7 +131,6 @@ include("conexao.php");
                 <input type="password" name="senha" id="senha" placeholder="Sua senha" required>
             </div>
             <input type="submit" value="Enviar">
-            <input type="hidden" name="cadastro" value="cadastro">
             <a href="index.php">Login</a>
         </form>
         <table>
