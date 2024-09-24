@@ -24,7 +24,7 @@ include("conexao.php");
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
+            height: 80vh;
             gap: 1em;
             padding-top: 3em;
         }
