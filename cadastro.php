@@ -133,25 +133,6 @@ include("conexao.php");
             <input type="submit" value="Enviar">
             <a href="index.php">Login</a>
         </form>
-        <table>
-            <tr>
-                <th>CPF</th>
-                <th>Nome</th>
-                <th>Senha</th>
-            </tr>
-            <?php
-            $sql = "SELECT * FROM usuarios";
-            $resultado = $conn->query($sql);
-
-            while ($row = $resultado->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["cpf"] . "</td>";
-                echo "<td>" . $row["nome"] . "</td>";
-                echo "<td>" . $row["senha"] . "</td>";
-                echo "</tr>";
-            }
-            ?>
-        </table>
     </div>
 </body>
 
