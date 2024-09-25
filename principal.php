@@ -127,23 +127,26 @@ include("valida.php");
     <div class="container">
         <nav>
             <ul>
-                <li><a onclick="location.reload();">Inicio</a></li>
-                <?php 
-                if($_SESSION["tipo"] == "comum") {
-                    echo "<li><a onclick="."iframe('filmes.php')".">Filmes</a></li>";
+                <?php
+                if ($_SESSION["tipo"] == "comum") {
+                    echo "
+                        <li><a onclick=" . "iframe('inicio_comum.php')" . ">Inicio</a></li>
+                        <li><a onclick=" . "iframe('filmes.php')" . ">Filmes</a></li>
+                    ";
                 } elseif ($_SESSION["tipo"] == "adm") {
                     echo "
-                        <li><a onclick="."iframe('cadastro.php')".">Cadastro</a></li>
-                        <li><a onclick="."iframe('busca.php')".">Busca</a></li>
-                        <li><a onclick="."iframe('edita.php')".">Edição</a></li>
-                        <li><a onclick="."iframe('deleta.php')".">Deletar</a></li>
+                        <li><a onclick=" . "location.reload();" . ">Inicio</a></li>
+                        <li><a onclick=" . "iframe('cadastro.php')" . ">Cadastro</a></li>
+                        <li><a onclick=" . "iframe('busca.php')" . ">Busca</a></li>
+                        <li><a onclick=" . "iframe('edita.php')" . ">Edição</a></li>
+                        <li><a onclick=" . "iframe('deleta.php')" . ">Deletar</a></li>
                 ";
                 }
                 ?>
             </ul>
         </nav>
         <div class="conteudo">
-            <iframe id="iframe" src="usuarios.php" frameborder="0"></iframe>
+            <iframe id="iframe" src="inicio_comum.php" frameborder="0"></iframe>
         </div>
     </div>
 </body>
