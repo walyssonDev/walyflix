@@ -1,5 +1,7 @@
 <?php
 include("conexao.php");
+include("valida.php");
+verificarPermissao(['adm']);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +24,7 @@ include("conexao.php");
             justify-content: center;
         }
 
-        .img i{
+        .img i {
             font-size: 100px;
         }
 

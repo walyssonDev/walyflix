@@ -1,6 +1,8 @@
 <?php
 include("valida.php");
 include("conexao.php");
+
+verificarPermissao(['adm']);
 ?>
 
 <!DOCTYPE html>
@@ -12,41 +14,41 @@ include("conexao.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Cadastro usuarios</title>
     <style>
-        body {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 70vh;
-            gap: 1em;
-            padding-top: 3em;
-        }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+        gap: 1em;
+        padding-top: 3em;
+    }
 
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            background-color: #f2f2f2;
-        }
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        background-color: #f2f2f2;
+    }
 
-        table th,
-        td {
-            border: 1px solid black;
-            text-align: center;
-            overflow: hidden;
-            padding: 1em;
-        }
+    table th,
+    td {
+        border: 1px solid black;
+        text-align: center;
+        overflow: hidden;
+        padding: 1em;
+    }
 
-        table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
     </style>
 </head>
 

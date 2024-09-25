@@ -1,6 +1,8 @@
 <?php
 include("conexao.php");
 include("valida.php");
+
+verificarPermissao(['adm']);
 ?>
 
 <!DOCTYPE html>
@@ -12,58 +14,58 @@ include("valida.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Editar</title>
     <style>
-    body {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-        height: 100vh;
-    }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+        }
 
-    table {
-        width: 50%;
-        border-collapse: collapse;
-        background-color: #f2f2f2;
-    }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            background-color: #f2f2f2;
+        }
 
-    table th,
-    td {
-        border: 1px solid black;
-        text-align: center;
-        overflow: hidden;
-        padding: 1em;
-    }
+        table th,
+        td {
+            border: 1px solid black;
+            text-align: center;
+            overflow: hidden;
+            padding: 1em;
+        }
 
-    table tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-    table form {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        table form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    table button[type="submit"] {
-        padding: .7em 1em;
-        border-radius: .5em;
-        border: none;
-        background-color: #8ac926;
-        color: white;
-        cursor: pointer;
-    }
+        table button[type="submit"] {
+            padding: .7em 1em;
+            border-radius: .5em;
+            border: none;
+            background-color: #8ac926;
+            color: white;
+            cursor: pointer;
+        }
 
-    table button[type="submit"]:hover {
-        background-color: #6a994e;
-    }
+        table button[type="submit"]:hover {
+            background-color: #6a994e;
+        }
     </style>
 </head>
 
@@ -97,7 +99,7 @@ include("valida.php");
         </table>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['mensagem'])) {
             echo "alert('" . $_SESSION['mensagem'] . "')";
             unset($_SESSION['mensagem']);
