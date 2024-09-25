@@ -1,5 +1,4 @@
 <?php
-include("login.php");
 include("valida.php");
 ?>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@ include("valida.php");
 </head>
 
 <body>
-    <h1>BEM VINDO USUARIO <?php echo $_SESSION['tipo']; ?></h1>
+    <h1>BEM VINDO USUARIO <?php echo $_SESSION["tipo"]; ?></h1>
 </body>
 
 </html>
