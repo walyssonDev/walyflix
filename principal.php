@@ -132,6 +132,7 @@ include("valida.php");
                     echo "
                         <li><a onclick=" . "iframe('inicio.php')" . ">Inicio</a></li>
                         <li><a onclick=" . "iframe('filmes.php')" . ">Filmes</a></li>
+                        <li><a onclick=" . "iframe('favoritos.php')" . ">Favoritos</a></li>
                     ";
                 } elseif ($_SESSION["tipo"] == "adm") {
                     echo "
