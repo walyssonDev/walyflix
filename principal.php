@@ -130,7 +130,7 @@ include("valida.php");
                 <?php
                 if ($_SESSION["tipo"] == "comum") {
                     echo "
-                        <li><a onclick=" . "iframe('inicio_comum.php')" . ">Inicio</a></li>
+                        <li><a onclick=" . "iframe('inicio.php')" . ">Inicio</a></li>
                         <li><a onclick=" . "iframe('filmes.php')" . ">Filmes</a></li>
                     ";
                 } elseif ($_SESSION["tipo"] == "adm") {
