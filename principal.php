@@ -135,7 +135,7 @@ include("valida.php");
                     ";
                 } elseif ($_SESSION["tipo"] == "adm") {
                     echo "
-                        <li><a onclick=" . "location.reload();" . ">Inicio</a></li>
+                        <li><a onclick=" . "iframe('usuarios.php')" . ">Inicio</a></li>
                         <li><a onclick=" . "iframe('cadastro.php')" . ">Cadastro</a></li>
                         <li><a onclick=" . "iframe('busca.php')" . ">Busca</a></li>
                         <li><a onclick=" . "iframe('edita.php')" . ">Edição</a></li>
@@ -146,7 +146,7 @@ include("valida.php");
             </ul>
         </nav>
         <div class="conteudo">
-            <iframe id="iframe" src="inicio_comum.php" frameborder="0"></iframe>
+            <iframe id="iframe" src="inicio.php" frameborder="0"></iframe>
         </div>
     </div>
 </body>

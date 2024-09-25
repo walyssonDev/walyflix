@@ -1,3 +1,7 @@
+<?php
+include("login.php");
+include("valida.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
