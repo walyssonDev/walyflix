@@ -37,7 +37,7 @@ include("conexao.php");
     }
 
     .filme img {
-        width: 20em;
+        width: 100%;
         height: 10em;
         border-radius: .4em .4em 0 0;
     }
