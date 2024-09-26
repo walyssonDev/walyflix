@@ -33,7 +33,7 @@ include("conexao.php");
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 0 1em 1em 0;
+        border-radius: 1em;
     }
 
     .nome i,

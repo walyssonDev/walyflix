@@ -45,7 +45,7 @@
             align-items: center;
             justify-content: center;
             background-color: #219ebc;
-            border-radius: 0 1em 1em 0;
+            border-radius: 1em;
             font-size: 20px;
         }
 
