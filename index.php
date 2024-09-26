@@ -35,7 +35,7 @@
             color: white;
         }
 
-        .img i{
+        .img i {
             font-size: 100px;
         }
 
