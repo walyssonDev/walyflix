@@ -142,7 +142,7 @@ include("valida.php");
                         <li><a onclick=" . "iframe('edita.php')" . ">Edição</a></li>
                         <li><a onclick=" . "iframe('deleta.php')" . ">Deletar</a></li>
                         <li><a onclick=" . "iframe('cadastro_filme.php')" . ">Cadastrar Filme</a></li>
-                        <li><a onclick=" . "iframe('filmes.php')" . ">Filmes</a></li>
+                        <li><a onclick=" . "iframe('filmes_adm.php')" . ">Filmes</a></li>
                 ";
                 }
                 ?>

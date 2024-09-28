@@ -32,7 +32,8 @@ verificarPermissao(['adm']);
         }
 
         .nome,
-        .path {
+        .path,
+        .file {
             background-color: #219ebc;
             display: flex;
             align-items: center;
@@ -41,7 +42,8 @@ verificarPermissao(['adm']);
         }
 
         .nome i,
-        .path i {
+        .path i,
+        .file i {
             margin: 0 1em;
         }
 
@@ -113,7 +115,7 @@ verificarPermissao(['adm']);
 
 <body>
     <div class="container">
-        <form method="post" action="cadastrar_filme.php">
+        <form method="post" action="cadastrar_filme.php" enctype="multipart/form-data">
             <h1>Cadastrar Filme</h1>
             <label for="nome">Nome: </label>
             <div class="nome">
@@ -124,6 +126,11 @@ verificarPermissao(['adm']);
             <div class="path">
                 <i class="bi bi-card-image"></i>
                 <input type="text" name="path" id="path" placeholder="Path da imagem: " required>
+            </div>
+            <label for="file">Arquivo: </label>
+            <div class="file">
+                <i class="bi bi-file-earmark-fill"></i>
+                <input type="file" name="filme" accept=".mp4">
             </div>
             <input type="submit" value="Enviar">
         </form>

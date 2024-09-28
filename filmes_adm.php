@@ -82,12 +82,16 @@ verificarPermissao(['adm']);
         $resultado = $conn->query($sql);
 
         while ($row = $resultado->fetch_assoc()) {
-            echo "<a href='assistir_filme.php'>";
+            echo "<a href='assistir_filme.php?id=" . $row['id'] . "'>";
             echo "
             <article class='filme'>
             <img src='" . $row['path'] . "'>
             <div class='txt-filme'>
                 <p>" . $row['nome'] . "</p>
+                <form action = 'deletar_filme.php' method = 'POST'>
+                        <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
+                        <input type = 'submit' value = 'Deletar'>
+                        </form>
             </div>
         </article>
             ";
