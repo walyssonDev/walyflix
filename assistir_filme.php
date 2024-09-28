@@ -9,4 +9,7 @@ $row = $resultado->fetch_assoc();
 
 $filme = $row['filme'];
 
+header('Content-Type: video/mp4');
+header('Content-Length: ' . strlen($filme));
+
 echo $filme;
