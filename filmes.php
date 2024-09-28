@@ -1,8 +1,6 @@
 <?php
 include("conexao.php");
-include("valida.php");
 
-verificarPermissao(['adm']);
 ?>
 
 <!DOCTYPE html>
