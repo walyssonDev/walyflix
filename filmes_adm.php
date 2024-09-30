@@ -82,7 +82,7 @@ verificarPermissao(['adm']);
         $resultado = $conn->query($sql);
 
         while ($row = $resultado->fetch_assoc()) {
-            echo "<a href='assistir_filme.php?id=" . $row['id'] . "'>";
+            echo "<a href='set_filme.php?id=" . $row['id'] . "'>";
             echo "
             <article class='filme'>
             <img src='" . $row['path'] . "'>
