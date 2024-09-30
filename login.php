@@ -4,18 +4,24 @@ include("conexao.php");
 $cpf = $_POST["cpf"];
 $senha = $_POST["senha"];
 
-$sql = "select nome, tipo from usuarios where cpf = '$cpf' and senha = '$senha'";
-$resultado = $conn->query($sql);
-$row = $resultado->fetch_assoc();
+$sql = "select nome, tipo from usuarios where cpf = ? and senha = ? ";
+$stmt = $conn->prepare($sql);
 
-if (isset($row) && $row["nome"] != '') {
-    session_start();
-    $_SESSION["cpf"] = $cpf;
-    $_SESSION["senha"] = $senha;
-    $_SESSION["nome"] = $row["nome"];
-    $_SESSION["tipo"] = $row["tipo"];
+if ($stmt) {
+    $stmt->bind_param("ss", $cpf, $senha);
+    $stmt->execute();
+    $stmt->bind_result($nome, $tipo);
+    $stmt->fetch();
 
-    header("Location: principal.php");
-} else {
-    die("CPF ou Senha incorretos");
+    if ($nome != '') {
+        session_start();
+        $_SESSION["cpf"] = $cpf;
+        $_SESSION["senha"] = $senha;
+        $_SESSION["nome"] = $nome;
+        $_SESSION["tipo"] = $tipo;
+
+        header("Location: principal.php");
+    } else {
+        die("CPF ou Senha incorretos");
+    }
 }

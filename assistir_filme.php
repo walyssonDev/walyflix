@@ -1,15 +1,14 @@
-<?php
-include("conexao.php");
+<!DOCTYPE html>
+<html lang="en">
 
-$id = $_GET['id'];
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-$sql = "SELECT filme FROM filmes WHERE id = '$id'";
-$resultado = $conn->query($sql);
-$row = $resultado->fetch_assoc();
+<body>
+    <video src="set_filme.php"></video>
+</body>
 
-$filme = $row['filme'];
-
-header('Content-Type: video/mp4');
-header('Content-Length: ' . strlen($filme));
-
-echo $filme;
+</html>
