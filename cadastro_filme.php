@@ -130,7 +130,7 @@ verificarPermissao(['adm']);
             <label for="file">Arquivo: </label>
             <div class="file">
                 <i class="bi bi-file-earmark-fill"></i>
-                <input type="file" name="filme" accept=".mp4">
+                <input type="file" name="filme" accept=".mp4" required>
             </div>
             <input type="submit" value="Enviar">
         </form>
