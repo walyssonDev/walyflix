@@ -11,6 +11,4 @@ $filme = $row['filme'];
 
 header('Content-Type: video/mp4');
 
-header("Location: assistir_filme.php");
-
 echo $filme;

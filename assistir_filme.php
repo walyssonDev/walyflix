@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <video controls>
-        <source src="set_filme.php?id=">
+    <video autoplay controls>
+        <source type="video/mp4" src="set_filme.php?id=<?php echo $_GET['id'] ?>">
     </video>
 </body>
 
