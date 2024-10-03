@@ -14,7 +14,9 @@
 </head>
 
 <body>
-    <video src="set_filme.php"></video>
+    <video controls>
+        <source src="set_filme.php?id=">
+    </video>
 </body>
 
 </html>
