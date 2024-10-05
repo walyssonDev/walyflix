@@ -10,6 +10,7 @@ include("conexao.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         body * {
             box-sizing: border-box;
@@ -39,6 +40,26 @@ include("conexao.php");
             border-radius: .5em;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 1%;
+            border-radius: 0 0 0 50%;
+            backdrop-filter: blur(100px);
+        }
+
+        .fav i {
+
+            color: #FFD100;
+            font-size: 30px;
         }
 
         .filme img {
@@ -82,7 +103,11 @@ include("conexao.php");
         while ($row = $resultado->fetch_assoc()) {
             echo "<a href='assistir_filme.php?id=" . $row['id'] . "'>";
             echo "
-            <article class='filme'>
+            <article class='filme'>";
+            echo "<div class='fav'>
+                    <i id='nfav' class='bi bi-star'></i>
+                    </div>";
+            echo "
             <img src='" . $row['path'] . "'>
             <div class='txt-filme'>
                 <p>" . $row['nome'] . "</p>
