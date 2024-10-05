@@ -14,6 +14,8 @@ if ($resultadoVerificar->num_rows > 0) {
     $sql = ("INSERT INTO `usuarios` (`cpf`, `nome`, `senha`) VALUES ('$cpf', '$nome', '$senha')");
     $resultado = $conn->query($sql);
 
+    $_SESSION['resposta'] = "Usuario cadastrado com sucesso";
+
     if ($_POST['cadastro'] == 'cadastro') {
         header("Location: index.php");
     } else {

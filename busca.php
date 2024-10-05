@@ -14,99 +14,99 @@ verificarPermissao(['adm']);
     <title>Busca</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
-        body {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 90vh;
-            gap: 1em;
-            padding-top: 3em;
-        }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        gap: 1em;
+        padding-top: 3em;
+    }
 
-        .img i {
-            font-size: 60px;
-        }
+    .img i {
+        font-size: 60px;
+    }
 
-        .nome,
-        .cpf {
-            background-color: #219ebc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 1em;
-        }
+    .nome,
+    .cpf {
+        background-color: #219ebc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1em;
+    }
 
-        .nome i,
-        .cpf i {
-            margin: 0 1em;
-        }
+    .nome i,
+    .cpf i {
+        margin: 0 1em;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            color: white;
-            align-items: center;
-            background-color: #0a100d;
-            padding: 4em 5em;
-            border-radius: 1em;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        }
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        align-items: center;
+        background-color: #0a100d;
+        padding: 4em 5em;
+        border-radius: 1em;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
 
-        form h1 {
-            margin: 0 0 .5em 0;
-        }
+    form h1 {
+        margin: 0 0 .5em 0;
+    }
 
-        form input {
-            border-radius: 0 1em 1em 0;
-            border: none;
-            padding: .5em;
-        }
+    form input {
+        border-radius: 0 1em 1em 0;
+        border: none;
+        padding: .5em;
+    }
 
-        form label {
-            margin-top: 1em;
-        }
+    form label {
+        margin-top: 1em;
+    }
 
-        form input[type="submit"] {
-            background-color: #219ebc;
-            color: white;
-            width: 100%;
-            margin-top: 1em;
-            border-radius: 1em;
-            font-weight: 600;
-            font-size: 15px;
-            cursor: pointer;
-        }
+    form input[type="submit"] {
+        background-color: #219ebc;
+        color: white;
+        width: 100%;
+        margin-top: 1em;
+        border-radius: 1em;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+    }
 
-        form input[type="submit"]:hover {
-            opacity: .7;
-        }
+    form input[type="submit"]:hover {
+        opacity: .7;
+    }
 
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            background-color: #f2f2f2;
-        }
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        background-color: #f2f2f2;
+    }
 
-        table th,
-        td {
-            border: 1px solid black;
-            text-align: center;
-            overflow: hidden;
-            padding: 1em;
-        }
+    table th,
+    td {
+        border: 1px solid black;
+        text-align: center;
+        overflow: hidden;
+        padding: 1em;
+    }
 
-        table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
     </style>
 </head>
 
@@ -147,7 +147,8 @@ verificarPermissao(['adm']);
                 echo "Pesquise apenas pelo nome ou pelo CPF";
             }
 
-            $resultado = $conn->query($sql);
+            if (isset($sql)){
+                $resultado = $conn->query($sql);
 
             echo "<table>";
             echo "<tr>";
@@ -175,6 +176,8 @@ verificarPermissao(['adm']);
             echo "</table>";
             echo "</table>";
         }
+            }
+
         ?>
     </div>
 </body>

@@ -94,7 +94,7 @@ include("conexao.php");
         <form method="post" action="cadastrar.php">
             <h1>Cadastrar</h1>
             <div class="img">
-                <i class="bi bi-person-circle"></i>
+                <i class="bi bi-person-plus"></i>
             </div>
             <label for="nome">Nome: </label>
             <div class="nome">
@@ -116,6 +116,14 @@ include("conexao.php");
             <a href="index.php">Login</a>
         </form>
     </div>
+    <script>
+    <?php
+        if (isset($_SESSION['resposta'])) {
+            echo "alert('" . $_SESSION['resposta'] . "')";
+            unset($_SESSION['resposta']);
+        }
+        ?>
+    </script>
 </body>
 
 </html>
