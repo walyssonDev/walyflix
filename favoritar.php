@@ -17,7 +17,7 @@ if ($resultado->num_rows == 0) {
     $conn->query($sql);
 }
 
-if ($pg = "favoritos") {
+if ($pg == "favoritos") {
     header("Location: favoritos.php");
 } else {
     header("Location: filmes.php");
