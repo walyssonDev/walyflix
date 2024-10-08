@@ -4,6 +4,7 @@ include("valida.php");
 
 $id = $_POST['id'];
 $cpf = $_SESSION['cpf'];
+$pg = $_POST['pgfav'];
 
 $sqlVerificar = "SELECT * FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
 $resultado = $conn->query($sqlVerificar);
@@ -16,4 +17,8 @@ if ($resultado->num_rows == 0) {
     $conn->query($sql);
 }
 
-header("Location: filmes.php");
+if ($pg = "favoritos") {
+    header("Location: favoritos.php");
+} else {
+    header("Location: filmes.php");
+}

@@ -128,6 +128,7 @@ include("valida.php");
             <div class='favt'>
             <form method='post' action='favoritar.php'>
                 <input type='hidden' name='id' value='" . $rowFilme['id'] . "'>
+                <input type='hidden' name='pgfav' value='favoritos'>
                 <button type='submit'>
                     <i id='nfav' class='bi bi-star'></i>
                 </button>
