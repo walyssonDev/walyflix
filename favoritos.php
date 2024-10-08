@@ -127,7 +127,7 @@ include("valida.php");
             echo "
             <div class='favt'>
             <form method='post' action='favoritar.php'>
-                <input type='hidden' name='id' value='" . $row['id'] . "'>
+                <input type='hidden' name='id' value='" . $rowFilme['id'] . "'>
                 <button type='submit'>
                     <i id='nfav' class='bi bi-star'></i>
                 </button>
