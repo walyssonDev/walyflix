@@ -165,8 +165,9 @@ verificarPermissao(['adm']);
             return true;
         }
 
-        function validarCPF(cpf) {
-            cpf = cpf.split('.').join('').split('-').join('');
+        function validarCPF() {
+            let cpf = document.getElementById("cpf").value;
+            cpf = cpf.replace(/\D/g, '');
 
             if (cpf.length !== 11 || cpf.split('').every(c => c === cpf[0])) {
                 return false;
@@ -266,14 +267,13 @@ verificarPermissao(['adm']);
 
         function validarForm() {
             const nome = document.getElementById("nome").value;
-            const cpf = document.getElementById("cpf").value;
 
             if (!validarNome(nome)) {
                 alert("Nome inválido");
                 return false;
             }
 
-            if (!validarCPF(cpf)) {
+            if (!validarCPF()) {
                 alert("CPF inválido");
                 return false;
             }
