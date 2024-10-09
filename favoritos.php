@@ -45,7 +45,7 @@ include("valida.php");
             overflow: hidden;
         }
 
-        .fav {
+        .fav button {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,8 +53,10 @@ include("valida.php");
             top: 0;
             right: 0;
             padding: 1%;
+            border: none;
             border-radius: 0 0 0 50%;
-            backdrop-filter: blur(100px);
+            background-color: black;
+            cursor: pointer;
         }
 
         .fav i {
@@ -103,6 +105,10 @@ include("valida.php");
         $sql = "SELECT * FROM favoritos WHERE cpf = '$cpf'";
         $resultado = $conn->query($sql);
 
+        if ($resultado->num_rows == 0) {
+            echo "Você não tem filmes favoritos!";
+        }
+
         while ($row = $resultado->fetch_assoc()) {
             $id = $row['filme_id'];
             $sqlFilme = "SELECT * FROM filmes WHERE id = '$id'";
@@ -112,29 +118,26 @@ include("valida.php");
 
             echo "<a href='assistir_filme.php?id=" . $rowFilme['id'] . "'>";
             echo "
-                <article class='filme'>";
-            echo "<div class='fav'>
-                        <i id='nfav' class='bi bi-star'></i>
-                        </div>";
+                    <article class='filme'>";
             echo "
-                <img src='" . $rowFilme['path'] . "'>
-                <div class='txt-filme'>
-                    <p>" . $rowFilme['nome'] . "</p>
-                </div>
-            </article>
-                ";
+                    <div class='fav'>
+                    <form method='post' action='favoritar.php'>
+                    <input type='hidden' name='pgfav' value='favoritos'>
+                    <input type='hidden' name='id' value='" . $rowFilme['id'] . "'>
+                    <button type='submit'>
+                        <i class='bi bi-star-fill'></i>
+                    </button>
+                    </form>
+                    </div>
+                    ";
+            echo "
+                    <img src='" . $rowFilme['path'] . "'>
+                    <div class='txt-filme'>
+                        <p>" . $rowFilme['nome'] . "</p>
+                    </div>
+                </article>
+                    ";
             echo "</a>";
-            echo "
-            <div class='favt'>
-            <form method='post' action='favoritar.php'>
-                <input type='hidden' name='id' value='" . $rowFilme['id'] . "'>
-                <input type='hidden' name='pgfav' value='favoritos'>
-                <button type='submit'>
-                    <i id='nfav' class='bi bi-star'></i>
-                </button>
-            </form>
-        </div>
-        ";
         }
         ?>
     </div>

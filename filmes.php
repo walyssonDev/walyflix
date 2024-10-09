@@ -44,7 +44,7 @@
                     overflow: hidden;
                 }
 
-                .fav {
+                .fav button {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -52,8 +52,10 @@
                     top: 0;
                     right: 0;
                     padding: 1%;
+                    border: none;
                     border-radius: 0 0 0 50%;
-                    backdrop-filter: blur(100px);
+                    background-color: black;
+                    cursor: pointer;
                 }
 
                 .fav i {
@@ -104,9 +106,16 @@
                     echo "<a href='assistir_filme.php?id=" . $row['id'] . "'>";
                     echo "
                     <article class='filme'>";
-                    echo "<div class='fav'>
-                            <i id='nfav' class='bi bi-star'></i>
-                            </div>";
+                    echo "
+                    <div class='fav'>
+                    <form method='post' action='favoritar.php'>
+                    <input type='hidden' name='id' value='" . $row['id'] . "'>
+                    <button type='submit'>
+                        <i id='nfav' class='bi bi-star'></i>
+                    </button>
+                    </form>
+                    </div>
+                    ";
                     echo "
                     <img src='" . $row['path'] . "'>
                     <div class='txt-filme'>
@@ -115,16 +124,6 @@
                 </article>
                     ";
                     echo "</a>";
-                    echo "
-                <div class='favt'>
-                <form method='post' action='favoritar.php'>
-                    <input type='hidden' name='id' value='" . $row['id'] . "'>
-                    <button type='submit'>
-                        <i id='nfav' class='bi bi-star'></i>
-                    </button>
-                </form>
-            </div>
-            ";
                 }
                 ?>
             </div>
