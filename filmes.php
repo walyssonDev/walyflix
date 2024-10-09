@@ -111,7 +111,7 @@
                     <form method='post' action='favoritar.php'>
                     <input type='hidden' name='id' value='" . $row['id'] . "'>
                     <button type='submit'>
-                        <i id='nfav' class='bi bi-star'></i>
+                        " . $row['star'] . "
                     </button>
                     </form>
                     </div>
