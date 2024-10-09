@@ -15,6 +15,10 @@ include("valida.php");
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
+        h1 {
+            margin: 1em;
+        }
     </style>
 </head>
 

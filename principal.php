@@ -100,7 +100,7 @@ include("valida.php");
 
         .conteudo {
             border-left: 2px solid black;
-            padding: 1em;
+            padding: 0;
             width: 100%;
         }
 
