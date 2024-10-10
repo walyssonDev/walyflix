@@ -34,6 +34,7 @@ include("valida.php");
         .filme {
             display: flex;
             align-items: center;
+            width: 18em;
             justify-content: center;
             flex-direction: column;
             background-color: #023047;
