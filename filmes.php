@@ -1,5 +1,6 @@
         <?php
         include("conexao.php");
+        include("valida.php");
 
         ?>
 
@@ -101,20 +102,32 @@
         <body>
             <div class="interface">
                 <?php
+                $cpf = $_SESSION['cpf'];
+
                 $sql = "SELECT * FROM filmes";
                 $resultado = $conn->query($sql);
 
                 while ($row = $resultado->fetch_assoc()) {
-                    echo "<a href='assistir_filme.php?id=" . $row['id'] . "'>";
+                    $id = $row['id'];
+
+                    $sqlFav = "SELECT * FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
+                    $resultadoFav = $conn->query($sqlFav);
+                    $isFav = $resultadoFav->fetch_assoc();
+
+                    echo "<a href='assistir_filme.php?id=" . $id . "'>";
                     echo "
                     <article class='filme'>";
                     echo "
                     <div class='fav'>
                     <form method='post' action='favoritar.php'>
-                    <input type='hidden' name='id' value='" . $row['id'] . "'>
-                    <button type='submit'>
-                        <i class='bi bi-star'></i>
-                    </button>
+                    <input type='hidden' name='id' value='" . $id . "'>
+                    <button type='submit'>";
+                    if ($isFav) {
+                        echo "<i class='bi bi-star-fill'></i>";
+                    } else {
+                        echo "<i class='bi bi-star'></i>";
+                    }
+                    echo "</button>
                     </form>
                     </div>
                     ";
