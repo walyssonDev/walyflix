@@ -1,5 +1,6 @@
         <?php
         include("conexao.php");
+        include("valida.php");
 
         ?>
 
@@ -107,9 +108,9 @@
                 while ($row = $resultado->fetch_assoc()) {
                     $id = $row['id'];
 
-                    $sqlFav = "SELECT 1 FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
+                    $sqlFav = "SELECT * FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
                     $resultadoFav = $conn->query($sqlFav);
-                    $isFav = $resultadoFav->num_rows > 0;
+                    $isFav = $resultadoFav->fetch_assoc();
 
                     echo "<a href='assistir_filme.php?id=" . $id . "'>";
                     echo "
@@ -133,7 +134,7 @@
                     <div class='txt-filme'>
                         <p>" . $row['nome'] . "</p>
                     </div>
-                </article>
+                    </article>
                     ";
                     echo "</a>";
                 }
