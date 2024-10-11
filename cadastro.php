@@ -274,7 +274,7 @@ verificarPermissao(['adm']);
             }
 
             if (!validarCPF()) {
-                alert("CPF inválido, tente novamente e coloque os pontos e traços.");
+                alert("CPF inválido, coloque os pontos e traços.");
                 return false;
             }
 
