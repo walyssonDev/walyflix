@@ -264,7 +264,7 @@ include("conexao.php");
             }
 
             if (!validarCPF()) {
-                alert("CPF inválido, coloque os pontos e traços.");
+                alert("CPF inválido.");
                 return false;
             }
 
