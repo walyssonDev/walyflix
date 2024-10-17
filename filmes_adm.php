@@ -36,6 +36,7 @@ verificarPermissao(['adm']);
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            width: 17em;
             background-color: #023047;
             color: white;
             border-radius: .5em;
