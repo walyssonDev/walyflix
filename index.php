@@ -111,6 +111,31 @@
         </form>
         <a href="cadastrese.php">Cadastre-se</a>
     </div>
+
+    <script>
+        <?php
+        if (isset($_GET['resposta'])) {
+            echo "alert('" . $_GET['resposta'] . "')";
+            unset($_GET['resposta']);
+        }
+        ?>
+
+        function mascararCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+            return cpf;
+        }
+
+        document.getElementById('cpf').addEventListener('input', function() {
+            let cpf = this.value.replace(/\D/g, '');
+            if (cpf.length > 11) {
+                cpf = cpf.slice(0, 11);
+            }
+            this.value = mascararCPF(cpf);
+        });
+    </script>
 </body>
 
 </html>
