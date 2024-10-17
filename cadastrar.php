@@ -6,6 +6,8 @@ $cpf = $_POST["cpf"];
 $nome = $_POST["nome"];
 $senha = $_POST["senha"];
 
+$nome = ucwords(strtolower($nome)); 
+
 $sqlVerificar = "SELECT * FROM usuarios WHERE cpf = '$cpf'";
 $resultadoVerificar = $conn->query($sqlVerificar);
 

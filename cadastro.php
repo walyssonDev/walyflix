@@ -165,6 +165,14 @@ verificarPermissao(['adm']);
             return true;
         }
 
+        function mascararCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+            return cpf;
+        }
+
         function validarCPF() {
             let cpf = document.getElementById("cpf").value;
             cpf = cpf.replace(/\D/g, '');
@@ -208,6 +216,15 @@ verificarPermissao(['adm']);
 
             return true;
         }
+
+        document.getElementById('cpf').addEventListener('input', function() {
+            let cpf = this.value.replace(/\D/g, '');
+            if (cpf.length > 11) {
+                cpf = cpf.slice(0, 11);
+            }
+            this.value = mascararCPF(cpf);
+        });
+
 
         function validarSenha() {
             const senha = document.getElementById('senha').value;
@@ -274,7 +291,7 @@ verificarPermissao(['adm']);
             }
 
             if (!validarCPF()) {
-                alert("CPF inválido, coloque os pontos e traços.");
+                alert("CPF inválido.");
                 return false;
             }
 
