@@ -101,11 +101,6 @@ include("valida.php");
                 justify-content: center;
                 align-items: center;
             }
-
-            .filme,
-            .interface a {
-                width: 13em;
-            }
         }
     </style>
 </head>
