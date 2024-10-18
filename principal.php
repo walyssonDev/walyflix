@@ -108,16 +108,58 @@ include("valida.php");
             width: 100%;
             height: 100%;
         }
+
+        .btn-menu {
+            display: none;
+        }
+
+        @media screen and (max-width: 1020px) {
+            nav {
+                position: fixed;
+                left: 0;
+                width: 0%;
+                z-index: 1000;
+                visibility: hidden;
+                height: 100%;
+                transition: .5s;
+                border-right: 2px solid black;
+                overflow-x: auto;
+            }
+
+            nav.active {
+                visibility: visible;
+                left: 0;
+                width: 50%;
+            }
+
+            .btn-menu {
+                display: block;
+                font-size: 30px;
+                cursor: pointer;
+                color: white;
+            }
+        }
     </style>
-    <script>
+    <script defer>
         function iframe(page) {
             document.getElementById('iframe').src = page;
+        }
+
+        function menu() {
+            var nav = document.getElementById('menu');
+            nav.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            var itens = document.getElementById('itens')
+            itens.classList.remove('active');
         }
     </script>
 </head>
 
 <body>
     <header>
+        <button onclick="menu()" class="btn-menu"><i class="bi bi-list"></i></button>
         <div class="user">
             <i class="bi bi-person-circle"></i>
             <p>Ola <?php echo $_SESSION["nome"]; ?></p>
@@ -125,8 +167,8 @@ include("valida.php");
         <button><a href="sair.php">Sair</a></button>
     </header>
     <div class="container">
-        <nav>
-            <ul>
+        <nav id="menu">
+            <ul id="itens">
                 <?php
                 if ($_SESSION["tipo"] == "comum") {
                     echo "

@@ -96,6 +96,18 @@
                 input[type="submit"]:hover {
                     background-color: #780000;
                 }
+
+                @media screen and (max-width: 1020px) {
+                    .interface {
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .filme,
+                    .interface a {
+                        width: 13em;
+                    }
+                }
             </style>
         </head>
 

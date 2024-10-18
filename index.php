@@ -87,6 +87,12 @@
         form input[type="submit"]:hover {
             opacity: .7;
         }
+
+        @media screen and (max-width: 1020px) {
+            .container {
+                width: 65%;
+            }
+        }
     </style>
 </head>
 

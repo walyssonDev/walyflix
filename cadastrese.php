@@ -86,6 +86,12 @@ include("conexao.php");
         form a {
             color: white;
         }
+
+        @media screen and (max-width: 1020px) {
+            form {
+                width: 65%;
+            }
+        }
     </style>
 </head>
 
