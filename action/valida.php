@@ -9,6 +9,6 @@ if (!isset($_SESSION['nome']) || $_SESSION['nome'] == '') {
 function verificarPermissao($tipos)
 {
     if ($_SESSION['tipo'] != "adm") {
-        header("Location: principal.php");
+        header("Location: ../pages/principal.php");
     }
 }

@@ -1,5 +1,5 @@
 <?php
-include("conexao.php");
+include("../admin/conexao.php");
 
 $id = $_GET['id'];
 

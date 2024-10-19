@@ -1,0 +1,61 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    gap: 1em;
+    padding-top: 3em;
+}
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    background-color: #f2f2f2;
+}
+
+table th,
+td {
+    border: 1px solid black;
+    text-align: center;
+    overflow: hidden;
+    padding: 1em;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table #edita {
+    padding: .7em 1em;
+    border-radius: .5em;
+    border: none;
+    background-color: #8ac926;
+    color: white;
+    cursor: pointer;
+}
+
+table #edita:hover {
+    background-color: #6a994e;
+}
+
+table #deleta {
+    padding: .7em 1em;
+    border-radius: .5em;
+    border: none;
+    background-color: #bf0603;
+    color: white;
+    cursor: pointer;
+}
+
+table #deleta:hover {
+    background-color: #780000;
+}

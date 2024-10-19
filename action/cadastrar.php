@@ -1,12 +1,12 @@
 <?php
-include("conexao.php");
+include("../admin/conexao.php");
 include("valida.php");
 
 $cpf = $_POST["cpf"];
 $nome = $_POST["nome"];
 $senha = $_POST["senha"];
 
-$nome = ucwords(strtolower($nome)); 
+$nome = ucwords(strtolower($nome));
 
 $sqlVerificar = "SELECT * FROM usuarios WHERE cpf = '$cpf'";
 $resultadoVerificar = $conn->query($sqlVerificar);
@@ -20,8 +20,8 @@ if ($resultadoVerificar->num_rows > 0) {
     $_SESSION['resposta'] = "Usuario cadastrado com sucesso";
 
     if ($_POST['cadastro'] == 'cadastro') {
-        header("Location: index.php");
+        header("Location: ../index.php");
     } else {
-        header("Location: cadastro.php");
+        header("Location: ../admin/cadastro.php");
     }
 }

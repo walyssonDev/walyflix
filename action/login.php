@@ -1,5 +1,5 @@
 <?php
-include("conexao.php");
+include("../admin/conexao.php");
 
 $cpf = $_POST["cpf"];
 $senha = $_POST["senha"];
@@ -20,7 +20,7 @@ if ($stmt) {
         $_SESSION["nome"] = $nome;
         $_SESSION["tipo"] = $tipo;
 
-        header("Location: principal.php");
+        header("Location: ../pages/principal.php");
     } else {
         header("Location: index.php?resposta=CPF ou Senha incorretos.");
     }

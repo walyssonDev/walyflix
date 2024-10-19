@@ -1,5 +1,5 @@
 <?php
-include("conexao.php");
+include("../admin/conexao.php");
 include("valida.php");
 
 $cpf = $_POST["cpf"];
@@ -13,5 +13,5 @@ if (!$resultado = $conn->query($sql)) {
     die("erro");
 } else {
     $_SESSION['mensagem'] = "Editado com sucesso";
-    header("Location: edita.php");
+    header("Location: ../admin/edita.php");
 }

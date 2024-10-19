@@ -1,5 +1,5 @@
 <?php
-include("conexao.php");
+include("../admin/conexao.php");
 include("valida.php");
 
 $nome = $_POST['nome'];
@@ -18,4 +18,4 @@ if ($resultado) {
     $_SESSION['resposta'] = "Erro ao cadastrar filme: " . $conn->error;
 }
 
-header("Location: cadastro_filme.php");
+header("Location: ../admin/cadastro_filme.php");

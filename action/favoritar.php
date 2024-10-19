@@ -1,5 +1,5 @@
 <?php
-include("conexao.php");
+include("../admin/conexao.php");
 include("valida.php");
 
 $id = $_POST['id'];
@@ -18,7 +18,7 @@ if ($resultado->num_rows == 0) {
 }
 
 if ($pg == "favoritos") {
-    header("Location: favoritos.php");
+    header("Location: ../pages/favoritos.php");
 } else {
-    header("Location: filmes.php");
+    header("Location: ../pages/filmes.php");
 }

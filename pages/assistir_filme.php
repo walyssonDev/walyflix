@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
 
 <body>
     <video autoplay controls>
-        <source type="video/mp4" src="set_filme.php?id=<?php echo $_GET['id'] ?>">
+        <source type="video/mp4" src="../action/set_filme.php?id=<?php echo $_GET['id'] ?>">
     </video>
 </body>
 
