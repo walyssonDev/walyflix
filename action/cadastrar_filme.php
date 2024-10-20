@@ -4,12 +4,13 @@ include("valida.php");
 
 $nome = $_POST['nome'];
 $path = $_POST['path'];
-$filme = $_FILES['filme'];
+$filme = $_POST['link'];
 
-$filmeData = file_get_contents($filme['tmp_name']);
-$filmeData = mysqli_real_escape_string($conn, $filmeData);
+if (strpos($filme, 'dropbox.com') !== false) {
+    $filme = str_replace('dl=0', 'raw=1', $filme);
+}
 
-$sql = "INSERT INTO `filmes` (`nome`, `path`, `filme`) VALUES ('$nome', '$path', '$filmeData');";
+$sql = "INSERT INTO `filmes` (`nome`, `path`, `filme`) VALUES ('$nome', '$path', '$filme');";
 $resultado = $conn->query($sql);
 
 if ($resultado) {

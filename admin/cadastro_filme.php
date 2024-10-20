@@ -33,11 +33,12 @@ verificarPermissao(['adm']);
                 <i class="bi bi-card-image"></i>
                 <input type="text" name="path" id="path" placeholder="Path da imagem: " required>
             </div>
-            <label for="file">Arquivo: </label>
-            <div class="file">
-                <i class="bi bi-file-earmark-fill"></i>
-                <input type="file" name="filme" accept=".mp4" required>
+            <label for="file">Link: </label>
+            <div class="link">
+                <i class="bi bi-link"></i>
+                <input type="text" name="link" placeholder="Link do filme: " required>
             </div>
+            <p>Apenas DROPBOX</p>
             <input type="submit" value="Enviar">
         </form>
     </div>

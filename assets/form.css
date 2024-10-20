@@ -23,7 +23,7 @@ body {
 .cpf,
 .senha,
 .path,
-.file {
+.link {
     background-color: #219ebc;
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@ body {
 .cpf i,
 .senha i,
 .path i,
-.file i {
+.link i {
     margin: 0 1em;
 }
 

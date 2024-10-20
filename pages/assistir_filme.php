@@ -1,3 +1,18 @@
+<?php
+include("../admin/conexao.php");
+include("../action/valida.php");
+
+$id = $_GET['id'];
+
+$sql = "SELECT * FROM filmes WHERE id = '$id'";
+$resultado = $conn->query($sql);
+
+while ($row = $resultado->fetch_assoc()) {
+    $link = $row['filme'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,7 +34,7 @@
 
 <body>
     <video autoplay controls>
-        <source type="video/mp4" src="../action/set_filme.php?id=<?php echo $_GET['id'] ?>">
+        <source type="video/mp4" src="<?php echo $link ?>">
     </video>
 </body>
 
