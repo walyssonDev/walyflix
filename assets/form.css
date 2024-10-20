@@ -8,6 +8,7 @@ body {
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 90vh;
@@ -23,7 +24,8 @@ body {
 .cpf,
 .senha,
 .path,
-.link {
+.link,
+.file {
     background-color: #219ebc;
     display: flex;
     align-items: center;
@@ -35,7 +37,8 @@ body {
 .cpf i,
 .senha i,
 .path i,
-.link i {
+.link i,
+.file i {
     margin: 0 1em;
 }
 

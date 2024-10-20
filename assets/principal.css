@@ -22,8 +22,21 @@ header .user {
     color: white;
 }
 
-header .user i {
-    font-size: 30px;
+header .user a {
+    color: white;
+    transition: .2s;
+}
+
+header .user a:hover {
+    transform: scale(1.3);
+}
+
+header .user img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }
 
 header button {

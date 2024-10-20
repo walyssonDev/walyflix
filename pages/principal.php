@@ -1,5 +1,6 @@
 <?php
 include("../action/valida.php");
+include("../admin/conexao.php");
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +34,9 @@ include("../action/valida.php");
     <header>
         <button onclick="menu()" class="btn-menu"><i class="bi bi-list"></i></button>
         <div class="user">
-            <i class="bi bi-person-circle"></i>
+            <a href="uparImg.php">
+                <img src="../action/userImg.php" alt="Foto de Perfil">
+            </a>
             <p>Ola <?php echo $_SESSION["nome"]; ?></p>
         </div>
         <button><a href="../action/sair.php">Sair</a></button>
@@ -66,6 +69,14 @@ include("../action/valida.php");
             <iframe id="iframe" src="inicio.php" frameborder="0"></iframe>
         </div>
     </div>
+    <script>
+    <?php
+        if (isset($_SESSION['resposta'])) {
+            echo "alert('" . $_SESSION['resposta'] . "')";
+            unset($_SESSION['resposta']);
+        }
+        ?>
+    </script>
 </body>
 
 </html>
