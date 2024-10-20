@@ -7,56 +7,26 @@
     <title>Video Player</title>
     <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
     <style>
-        /* Estilos gerais */
-        html,
+        .vjs-big-play-button {
+            font-size: 2.5em;
+        }
+
+        .video-js {
+            width: 100%;
+            height: 100%;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
             background-color: black;
-        }
-
-        /* Estilo do player */
-        .video-js {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100% !important;
-            height: 100% !important;
-            background-color: black;
-        }
-
-        /* Centralizando o botão de play grande */
-        .vjs-big-play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3em;
-        }
-
-        /* Barra de controle personalizada */
-        .video-js .vjs-control-bar {
-            background-color: rgba(0, 0, 0, 0.7);
-            /* Barra de controle transparente */
-        }
-
-        .video-js .vjs-progress-control {
-            height: 8px;
-            /* Barra de progresso mais fina */
-        }
-
-        .video-js .vjs-time-control,
-        .video-js .vjs-volume-panel {
-            color: white;
-            /* Texto branco nos controles */
         }
     </style>
 </head>
 
 <body>
-    <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" autoplay data-setup='{}'>
+    <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" crossorigin="anonymous"
+        data-setup='{}'>
         <source
             src="https://www.dropbox.com/scl/fi/9fx7d92yfvpphbd4bznvp/Amor-Sem-Limites-2011-Dublado.mp4?rlkey=9dxvk40d5gh9hnc6ez3uljsts&st=omsfguyd&raw=1"
             type="video/mp4">
@@ -66,7 +36,6 @@
         </p>
     </video>
 
-    <!-- Script para carregar o Video.js -->
     <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
 </body>
 
