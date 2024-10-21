@@ -14,6 +14,7 @@ verificarPermissao(['adm']);
     <title>Busca</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../assets/form.css">
+    <link rel="stylesheet" href="../assets/tabela.css">
 </head>
 
 <body>
