@@ -59,3 +59,25 @@ table #deleta {
 table #deleta:hover {
     background-color: #780000;
 }
+
+@media (max-width: 1020px) {
+    .container {
+        padding-top: 1em;
+    }
+
+    table {
+        width: 90%;
+    }
+
+    table th,
+    td {
+        padding: 0.5em;
+        font-size: 0.9em;
+    }
+
+    table #edita,
+    table #deleta {
+        padding: 0.5em 0.8em;
+        font-size: 0.9em;
+    }
+}
