@@ -15,6 +15,7 @@ if ($extension === "jpg" || $extension === "jpeg") {
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("bs", $imgData, $cpf);
+    $stmt->send_long_data(0, $imgData);
     $stmt->execute();
     $_SESSION['resposta'] = "Foto atualizada com sucesso.";
     header("Location: ../pages/principal.php");
