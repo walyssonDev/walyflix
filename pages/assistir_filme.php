@@ -21,14 +21,13 @@ while ($row = $resultado->fetch_assoc()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    body {
-        height: 100vh;
-    }
+        body {
+            height: 100vh;
+        }
 
-    video {
-        width: 100%;
-        height: 100%;
-    }
+        video {
+            width: 100%;
+        }
     </style>
 </head>
 
