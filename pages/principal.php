@@ -60,6 +60,7 @@ include("../admin/conexao.php");
                         <li><a onclick=" . "iframe('../admin/deleta.php')" . ">Deletar</a></li>
                         <li><a onclick=" . "iframe('../admin/cadastro_filme.php')" . ">Cadastrar Filme</a></li>
                         <li><a onclick=" . "iframe('../admin/filmes_adm.php')" . ">Filmes</a></li>
+                        <li><a onclick=" . "iframe('../admin/phpinfo.php')" . ">Info PHP</a></li>
                 ";
                 }
                 ?>
