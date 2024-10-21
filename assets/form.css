@@ -100,3 +100,37 @@ td {
 table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
+@media (max-width: 1020px) {
+    .container {
+        padding-top: 1em;
+    }
+
+    form {
+        padding: 2em;
+        width: 90%;
+    }
+
+    form input,
+    form input[type="submit"] {
+        width: 100%;
+    }
+
+    form input {
+        padding: .4em;
+    }
+
+    .img i {
+        font-size: 40px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table th,
+    td {
+        padding: 0.5em;
+        font-size: 0.9em;
+    }
+}
