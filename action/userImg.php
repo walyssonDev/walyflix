@@ -9,7 +9,11 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $cpf);
 $stmt->execute();
 $stmt->bind_result($imgData);
-$stmt->fetch();
 
 header("Content-Type: image/jpeg");
-echo $imgData;
+
+if ($stmt->fetch()) {
+    echo $imgData;
+} else {
+    echo file_get_contents('../uploads/user-icon-vector.jpg');
+}
