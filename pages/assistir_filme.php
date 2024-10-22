@@ -7,18 +7,12 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM filmes WHERE id = '$id'";
 $resultado = $conn->query($sql);
 
-$link = ""; // Initialize $link
 while ($row = $resultado->fetch_assoc()) {
     $link = $row['filme'];
 }
 
-$extensao = pathinfo($link, PATHINFO_EXTENSION);
-
-// Debug: Check the video link
-if (empty($link)) {
-    echo "No video link found.";
-    exit; // Stop further execution
-}
+$link_limpo = parse_url($link, PHP_URL_PATH);
+$extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
 ?>
 
 <!DOCTYPE html>
@@ -40,14 +34,12 @@ if (empty($link)) {
 </head>
 
 <body>
-    <video autoplay controls>
+    <video controls autoplay>
         <?php
         if ($extensao === "mp4") {
             echo "<source type='video/mp4' src='" . $link . "'>";
         } elseif ($extensao === "mkv") {
             echo "<source type='video/x-matroska' src='" . $link . "'>";
-        } else {
-            echo "<p>Formato de vídeo não suportado.</p>";
         }
         ?>
     </video>
