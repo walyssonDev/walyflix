@@ -11,6 +11,8 @@ while ($row = $resultado->fetch_assoc()) {
     $link = $row['filme'];
 }
 
+$extensao = pathinfo($link, PATHINFO_EXTENSION);
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +35,13 @@ while ($row = $resultado->fetch_assoc()) {
 
 <body>
     <video autoplay controls>
-        <source type="video/mp4" src="<?php echo $link ?>">
+        <?php
+        if ($extensao === "mp4") {
+            echo "<source type='video/mp4' src='" . $link . "'>";
+        } elseif ($extensao === "mkv") {
+            echo "<source type='video/x-matroska' src='" . $link . "'>";
+        }
+        ?>
     </video>
 </body>
 
