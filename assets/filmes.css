@@ -8,6 +8,8 @@ body * {
 .interface {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 1em;
 }
 
@@ -19,7 +21,7 @@ body * {
 .filme {
     display: flex;
     align-items: center;
-    width: 17em;
+    width: 15em;
     justify-content: center;
     flex-direction: column;
     background-color: #023047;
