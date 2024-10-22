@@ -32,10 +32,9 @@
     </div>
 
     <script>
-    <?php
+        <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
-            unset($_GET['resposta']);
         }
         ?>
     </script>
