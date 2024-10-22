@@ -22,6 +22,6 @@ if ($stmt) {
 
         header("Location: ../pages/principal.php");
     } else {
-        header("Location: index.php?resposta=CPF ou Senha incorretos.");
+        header("Location: ../index.php?resposta=CPF ou Senha incorretos.");
     }
 }
