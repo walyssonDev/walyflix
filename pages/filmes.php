@@ -58,6 +58,14 @@
                     echo "</a>";
                 }
                 ?>
+                <a href="https://drive.google.com/file/d/1Qzfccy5aOuuRAkzolwNXJIMoim4natko/view?usp=sharing">
+                    <article class="filme">
+                        <img src="https://midia.gruposinos.com.br/_midias/jpg/2023/06/27/com_amor_simon-21038469.jpg">
+                        <div class="txt-filme">
+                            <p>Com Amor, Saimon</p>
+                        </div>
+                    </article>
+                </a>
             </div>
 
         </body>
