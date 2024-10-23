@@ -10,10 +10,12 @@ $stmt->bind_param("s", $cpf);
 $stmt->execute();
 $stmt->bind_result($imgData);
 
-header("Content-Type: image/jpeg");
+
 
 if ($stmt->fetch()) {
+    header("Content-Type: image/jpeg");
     echo $imgData;
 } else {
+    header("Content-Type: image/jpeg");
     echo file_get_contents('../uploads/user-icon-vector.jpg');
 }
