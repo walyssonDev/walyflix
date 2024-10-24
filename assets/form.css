@@ -13,7 +13,6 @@ body {
     align-items: center;
     height: 90vh;
     gap: 1em;
-    padding-top: 3em;
 }
 
 .img i {
@@ -49,7 +48,7 @@ form {
     color: white;
     align-items: center;
     background-color: #0a100d;
-    padding: 4em 5em;
+    padding: 2em 3.5em;
     border-radius: 1em;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

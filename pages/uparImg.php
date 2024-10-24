@@ -13,6 +13,19 @@ include("../action/valida.php");
     <title>Imagem de Perfil</title>
     <link rel="stylesheet" href="../assets/form.css">
     <link rel="stylesheet" href="../assets/principal.css">
+    <style>
+    form {
+        padding: 1em 2em;
+    }
+
+    form img {
+        height: 12em;
+        width: 12em;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+    </style>
 </head>
 
 <body>
@@ -27,8 +40,9 @@ include("../action/valida.php");
         <button><a href="../action/sair.php">Sair</a></button>
     </header>
     <div class="container">
-        <h1>Escolha sua foto de perfil</h1>
         <form method="post" action="../action/uppImg.php" enctype="multipart/form-data">
+            <h1>Escolha sua foto de perfil</h1>
+            <img src="../action/userImg.php" alt="Imagem do Usuario">
             <label for="img">Arquivo: </label>
             <div class="file">
                 <i class="bi bi-file-earmark-fill"></i>
@@ -39,7 +53,7 @@ include("../action/valida.php");
         </form>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
