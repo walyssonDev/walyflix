@@ -23,26 +23,14 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    body {
-        height: 100vh;
-    }
+        body {
+            height: 100vh;
+        }
 
-    video {
-        width: 100%;
-    }
+        video {
+            width: 100%;
+        }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JP85XFHNL"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'G-0JP85XFHNL');
-    </script>
 </head>
 
 <body>

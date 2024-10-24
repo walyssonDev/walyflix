@@ -14,31 +14,19 @@ include("../admin/conexao.php");
     <link rel="stylesheet" href="../assets/principal.css">
 
     <script defer>
-    function iframe(page) {
-        document.getElementById('iframe').src = page;
-    }
+        function iframe(page) {
+            document.getElementById('iframe').src = page;
+        }
 
-    function menu() {
-        var nav = document.getElementById('menu');
-        nav.classList.toggle('active');
-    }
+        function menu() {
+            var nav = document.getElementById('menu');
+            nav.classList.toggle('active');
+        }
 
-    function closeMenu() {
-        var itens = document.getElementById('itens')
-        itens.classList.remove('active');
-    }
-    </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JP85XFHNL"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'G-0JP85XFHNL');
+        function closeMenu() {
+            var itens = document.getElementById('itens')
+            itens.classList.remove('active');
+        }
     </script>
 </head>
 
@@ -83,7 +71,7 @@ include("../admin/conexao.php");
         </div>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
