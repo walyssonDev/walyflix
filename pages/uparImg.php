@@ -14,18 +14,30 @@ include("../action/valida.php");
     <link rel="stylesheet" href="../assets/form.css">
     <link rel="stylesheet" href="../assets/principal.css">
     <style>
-        form {
-            padding: 1em 2em;
-        }
+    form {
+        padding: 1em 2em;
+    }
 
-        form img {
-            height: 12em;
-            width: 12em;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center;
-        }
+    form img {
+        height: 12em;
+        width: 12em;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-VX1YBC3426');
+    </script>
 </head>
 
 <body>
@@ -53,7 +65,7 @@ include("../action/valida.php");
         </form>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
