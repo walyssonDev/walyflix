@@ -9,16 +9,14 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $cpf);
 $stmt->execute();
 $stmt->bind_result($imgData);
+$stmt->fetch();
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-if ($stmt->fetch()) {
-    header("Content-Type: image/jpeg");
-    echo $imgData;
-} else {
+if (empty($imgData)) {
     $imgPath = '../uploads/icon.jpg';
     $imgDefault = file_get_contents($imgPath);
     header("Content-Type: image/jpeg");
     echo $imgDefault;
+} else {
+    header("Content-Type: image/jpeg");
+    echo $imgData;
 }
