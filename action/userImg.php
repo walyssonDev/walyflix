@@ -10,6 +10,9 @@ $stmt->bind_param("s", $cpf);
 $stmt->execute();
 $stmt->bind_result($imgData);
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if ($stmt->fetch()) {
     header("Content-Type: image/jpeg");
     echo $imgData;
