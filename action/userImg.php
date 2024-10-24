@@ -17,7 +17,7 @@ if ($stmt->fetch()) {
     header("Content-Type: image/jpeg");
     echo $imgData;
 } else {
-    $imgPath = '../uploads/user-icon-vetor.jpg';
+    $imgPath = '../uploads/icon.jpg';
     $imgDefault = file_get_contents($imgPath);
     header("Content-Type: image/jpeg");
     echo $imgDefault;
