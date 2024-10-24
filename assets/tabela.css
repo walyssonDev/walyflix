@@ -27,7 +27,7 @@ td {
     border: 1px solid black;
     text-align: center;
     overflow: hidden;
-    padding: 1em;
+    padding: .5em;
 }
 
 table tr:nth-child(even) {
