@@ -17,6 +17,7 @@
         </head>
 
         <body>
+            <input type="search" name="busca" id="busca" placeholder="Buscar filme" oninput="buscarFilme()">
             <div class="interface">
                 <?php
                 $cpf = $_SESSION['cpf'];
@@ -67,7 +68,22 @@
                     </article>
                 </a>
             </div>
+            <script>
+                function buscarFilme() {
+                    const input = document.getElementById('busca').value.toLowerCase();
+                    const filmes = document.getElementsByClassName('filme');
 
+                    for (let i = 0; i < filmes.length; i++) {
+                        const nomeFilme = filmes[i].querySelector('.txt-filme p').textContent.toLowerCase();
+
+                        if (nomeFilme.includes(input)) {
+                            filmes[i].style.display = "";
+                        } else {
+                            filmes[i].style.display = "none";
+                        }
+                    }
+                }
+            </script>
         </body>
 
         </html>
