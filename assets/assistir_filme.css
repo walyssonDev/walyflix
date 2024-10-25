@@ -29,12 +29,15 @@ video {
     border-radius: 1em;
     overflow: hidden;
     width: 50%;
+    height: 85vh;
 }
 
 .comentarios {
     background-color: #023047;
     color: white;
     padding: 1em;
+    overflow-y: auto;
+    max-height: 100%;
 }
 
 .comment {
