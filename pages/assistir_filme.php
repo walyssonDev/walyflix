@@ -66,12 +66,25 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         $nome = "Anonimo";
                     }
 
-                    echo "
+                    if ($cpfComentario == $_SESSION['cpf']) {
+                        echo "
+                    <div class='comment'>
+                    <p class='nome'>" . $nome . ": </p>
+                    <p>" . $comentario . "</p>
+                    <form id='deletar' action='../action/deletarComentario.php?id=$id' method='post'>
+                    <input type='hidden' name='comentario' id='comentario' value='$comentario'>
+                    <input type='submit' value='Deletar'>
+                    </form>
+                    </div>
+                    ";
+                    } else {
+                        echo "
                     <div class='comment'>
                     <p class='nome'>" . $nome . ": </p>
                     <p>" . $comentario . "</p>
                     </div>
                     ";
+                    }
                 }
                 ?>
             </div>
