@@ -17,14 +17,14 @@
             <!-- Google tag (gtag.js) -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
             <script>
-            window.dataLayer = window.dataLayer || [];
+                window.dataLayer = window.dataLayer || [];
 
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
 
-            gtag('config', 'G-VX1YBC3426');
+                gtag('config', 'G-VX1YBC3426');
             </script>
         </head>
 
@@ -71,30 +71,22 @@
                     echo "</a>";
                 }
                 ?>
-                <a href="https://drive.google.com/file/d/1Qzfccy5aOuuRAkzolwNXJIMoim4natko/view?usp=sharing">
-                    <article class="filme">
-                        <img src="https://midia.gruposinos.com.br/_midias/jpg/2023/06/27/com_amor_simon-21038469.jpg">
-                        <div class="txt-filme">
-                            <p>Com Amor, Saimon</p>
-                        </div>
-                    </article>
-                </a>
             </div>
             <script>
-            function buscarFilme() {
-                const input = document.getElementById('busca').value.toLowerCase();
-                const filmes = document.getElementsByClassName('filme');
+                function buscarFilme() {
+                    const input = document.getElementById('busca').value.toLowerCase();
+                    const filmes = document.getElementsByClassName('filme');
 
-                for (let i = 0; i < filmes.length; i++) {
-                    const nomeFilme = filmes[i].querySelector('.txt-filme p').textContent.toLowerCase();
+                    for (let i = 0; i < filmes.length; i++) {
+                        const nomeFilme = filmes[i].querySelector('.txt-filme p').textContent.toLowerCase();
 
-                    if (nomeFilme.includes(input)) {
-                        filmes[i].style.display = "";
-                    } else {
-                        filmes[i].style.display = "none";
+                        if (nomeFilme.includes(input)) {
+                            filmes[i].style.display = "";
+                        } else {
+                            filmes[i].style.display = "none";
+                        }
                     }
                 }
-            }
             </script>
         </body>
 
