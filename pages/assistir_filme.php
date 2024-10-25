@@ -92,6 +92,20 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         background-color: black;
         color: white;
     }
+
+    @media screen and (max-width: 1020px) {
+        .interface {
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        .filme {
+            width: 100%;
+        }
+    }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
