@@ -82,8 +82,10 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                     } else {
                         echo "
                     <div class='comment'>
+                    <div class='txt'>
                     <p class='nome'>" . $nome . ": </p>
                     <p>" . $comentario . "</p>
+                    </div>
                     </div>
                     ";
                     }
@@ -91,7 +93,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                 ?>
             </div>
             <form action="../action/comentar.php?id=<?php echo $id ?>" method="post">
-                <input type="text" name="comentario" id="comentario" placeholder="Seu comentario: (Max: 50)" required>
+                <input type="text" name="comentario" id="comentario" placeholder="Seu comentario: (Max: 100)" required>
                 <button type="submit">
                     <i class="bi bi-arrow-right"></i>
                 </button>
