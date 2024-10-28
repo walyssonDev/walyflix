@@ -52,10 +52,9 @@ video {
 
 .comment .txt {
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 90%;
-    gap: 1em;
+    gap: 1%;
 }
 
 .comment .txt p {
