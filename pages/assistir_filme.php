@@ -56,26 +56,50 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                     $cpfComentario = $row['cpf'];
                     $comentario = $row['comentario'];
 
-                    $sqlNome = "SELECT nome FROM usuarios WHERE cpf = '$cpfComentario'";
-                    $resultadoNome = $conn->query($sqlNome);
+                    $sqlComentario = "SELECT nome, img FROM usuarios WHERE cpf = ? ";
+                    $stmt = $conn->prepare($sqlComentario);
+                    $stmt->bind_param("s", $cpfComentario);
+                    $stmt->execute();
+                    $stmt->bind_result($nome, $imgData);
+                    $stmt->fetch();
+                    $stmt->close();
 
-                    if ($resultadoNome->num_rows > 0) {
-                        $rowNome = $resultadoNome->fetch_assoc();
-                        $nome = $rowNome['nome'];
+                    if (!empty($imgData)) {
+                        $imgSrc = 'data:image/jpeg;base64,' . base64_encode($imgData);
+                        $img = "<img src='$imgSrc' alt='Imagem de $nome' class='perfil-imagem'>";
                     } else {
-                        $nome = "Anonimo";
+                        $img = "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='#ffffff' class='perfil-imagem' viewBox='0 0 32 32'>
+                                    <path d='M22 12a6 6 0 1 1-12 0 6 6 0 0 1 12 0'/>
+                                    <path fill-rule='evenodd' d='M0 16a16 16 0 1 1 32 0A16 16 0 0 1 0 16m16-14a14 14 0 0 0-10.937 22.74C6.484 22.452 9.61 20 16 20s9.516 2.452 10.937 4.74A14 14 0 0 0 16 2'/>
+                                </svg>";
                     }
 
-                    if ($cpfComentario == $_SESSION['cpf']) {
+                    if ($_SESSION['tipo'] == "adm") {
                         echo "
                         <div class='comment'>
                         <div class='txt'>
-                        <i class='bi bi-person-circle'></i>
+                        $img
                         <p class='nome'>" . $nome . ": </p>
                         <p>" . $comentario . "</p>
                         </div>
                         <form id='deletar' action='../action/deletarComentario.php?id=$id' method='post'>
                         <input type='hidden' name='comentario' id='comentario' value='$comentario'>
+                        <input type='hidden' name='cpfUser' id='cpfUser' value='$cpfComentario'>
+                        <input type='submit' value='Deletar'>
+                        </form>
+                        </div>
+                        ";
+                    } elseif ($cpfComentario == $_SESSION['cpf']) {
+                        echo "
+                        <div class='comment'>
+                        <div class='txt'>
+                        $img
+                        <p class='nome'>" . $nome . ": </p>
+                        <p>" . $comentario . "</p>
+                        </div>
+                        <form id='deletar' action='../action/deletarComentario.php?id=$id' method='post'>
+                        <input type='hidden' name='comentario' id='comentario' value='$comentario'>
+                        <input type='hidden' name='cpfUser' id='cpfUser' value='$cpfComentario'>
                         <input type='submit' value='Deletar'>
                         </form>
                         </div>
@@ -84,7 +108,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         echo "
                         <div class='comment'>
                         <div class='txt'>
-                        <i class='bi bi-person-circle'></i>
+                        $img
                         <p class='nome'>" . $nome . ": </p>
                         <p>" . $comentario . "</p>
                         </div>

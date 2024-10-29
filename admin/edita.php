@@ -32,9 +32,9 @@ verificarPermissao(['adm']);
             while ($row = $resultado->fetch_assoc()) {
                 echo "<form action = '../action/editar.php' method = 'POST'>";
                 echo "<tr>";
-                echo "<td> <input type = 'text' name = 'cpf' required value = '" . $row["cpf"] . "'> </td>";
-                echo "<td> <input type = 'text' name = 'nome' required value = '" . $row["nome"] . "'> </td>";
-                echo "<td> <input type = 'text' name = 'senha' required value = '" . $row["senha"] . "'> </td>";
+                echo "<td> <input type = 'text' name = 'cpf' id = 'cpf' required value = '" . $row["cpf"] . "'> </td>";
+                echo "<td> <input type = 'text' name = 'nome' id = 'nome' required value = '" . $row["nome"] . "'> </td>";
+                echo "<td> <input type = 'text' name = 'senha' id = 'senha' required value = '" . $row["senha"] . "'> </td>";
                 echo "<td> 
                         <input type = 'hidden' name = 'cpfAnterior' value = '" . $row["cpf"] . "'>
                         <button id = 'edita' type = 'submit'>Editar</button>";
@@ -46,13 +46,14 @@ verificarPermissao(['adm']);
         </table>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['mensagem'])) {
             echo "alert('" . $_SESSION['mensagem'] . "')";
             unset($_SESSION['mensagem']);
         }
         ?>
     </script>
+    <script src="../assets/validaForm.js"></script>
 </body>
 
 </html>

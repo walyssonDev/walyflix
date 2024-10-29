@@ -2,7 +2,7 @@
 include("../admin/conexao.php");
 include("valida.php");
 
-$cpf = $_SESSION['cpf'];
+$cpf = $_POST['cpfUser'];
 $comentario = $_POST['comentario'];
 $id = $_GET['id'];
 
