@@ -28,14 +28,14 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -65,7 +65,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                     $stmt->close();
 
                     if (empty($nome)) {
-                        $nome = "Anonimo";
+                        $nome = "Usuario Deletado";
                     }
 
                     if (!empty($imgData)) {
@@ -131,7 +131,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }
