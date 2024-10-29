@@ -12,7 +12,7 @@ verificarPermissao(['adm']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmes</title>
-    <link rel="stylesheet" href="../assets/filmes_adm.css">
+    <link rel="stylesheet" href="../assets/filmes.css">
 </head>
 
 <body>
@@ -28,10 +28,16 @@ verificarPermissao(['adm']);
             <img src='" . $row['path'] . "'>
             <div class='txt-filme'>
                 <p>" . $row['nome'] . "</p>
-                <form action = '../action/deletar_filme.php' method = 'POST'>
+                <div class='options'>
+                    <form action = '../action/edita_filme.php' method = 'POST'>
                         <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
-                        <input type = 'submit' value = 'Deletar'>
-                        </form>
+                        <input type='submit' value='Editar' id='editar'>
+                    </form>
+                    <form action = '../action/deletar_filme.php' method = 'POST'>
+                        <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
+                        <input type = 'submit' value = 'Deletar' id='deletar'>
+                    </form>
+                </div>
             </div>
         </article>
             ";
@@ -39,6 +45,14 @@ verificarPermissao(['adm']);
         }
         ?>
     </div>
+    <script>
+        <?php
+        if (isset($_SESSION['resposta'])) {
+            echo "alert('" . $_SESSION['resposta'] . "')";
+            unset($_SESSION['resposta']);
+        }
+        ?>
+    </script>
 </body>
 
 </html>

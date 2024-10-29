@@ -28,14 +28,14 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -70,7 +70,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
 
                     if (!empty($imgData)) {
                         $imgSrc = 'data:image/jpeg;base64,' . base64_encode($imgData);
-                        $img = "<img src='$imgSrc' alt='Imagem de $nome' class='perfil-imagem'>";
+                        $img = "<img src='$imgSrc' alt='Imagem de $nome' class='perfil-imagem' loading='lazy'>";
                     } else {
                         $img = "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='#ffffff' class='perfil-imagem' viewBox='0 0 32 32'>
                                     <path d='M22 12a6 6 0 1 1-12 0 6 6 0 0 1 12 0'/>
@@ -131,7 +131,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }

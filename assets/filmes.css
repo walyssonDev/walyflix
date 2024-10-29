@@ -100,7 +100,12 @@ body * {
     margin: 0;
 }
 
-input[type="submit"] {
+.options {
+    display: flex;
+    gap: 1em;
+}
+
+#deletar {
     padding: .7em 1em;
     border-radius: .5em;
     border: none;
@@ -110,8 +115,22 @@ input[type="submit"] {
     margin-top: 1em;
 }
 
-input[type="submit"]:hover {
+#deletar:hover {
     background-color: #780000;
+}
+
+#editar {
+    padding: .7em 1em;
+    border-radius: .5em;
+    border: none;
+    background-color: #036ebf;
+    color: white;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+#editar:hover {
+    background-color: #004478;
 }
 
 @media screen and (max-width: 1020px) {
