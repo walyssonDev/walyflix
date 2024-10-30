@@ -9,7 +9,13 @@ $fileInfo = pathinfo($fileName);
 $extension = strtolower($fileInfo['extension']);
 
 if ($extension === "jpg" || $extension === "jpeg") {
-    $imgData = file_get_contents($img);
+    $imagemOriginal = imagecreatefromjpeg($img);
+
+    ob_start();
+    imagejpeg($imagemOriginal, null, 50);
+    $imgData = ob_get_clean();
+
+    imagedestroy($imagemOriginal);
 
     $sql = "UPDATE usuarios SET img = ? WHERE cpf = ?";
 
