@@ -7,6 +7,10 @@ $cpf = $_POST["cpf"];
 $nome = $_POST["nome"];
 $senha = $_POST["senha"];
 
+if ($nome == "ADM") {
+    $nome = "123";
+}
+
 $cpf = mascararCPF($cpf);
 $resultado = validarForm($nome, $cpf, $senha);
 
@@ -17,7 +21,7 @@ if ($resultado === true) {
     $resultadoVerificar = $conn->query($sqlVerificar);
 
     if ($resultadoVerificar->num_rows > 0) {
-        echo "CPF ja cadastrado";
+        header("Location: ../index.php?resposta=CPF%20já%20cadastrado.");
     } else {
         $sql = ("INSERT INTO `usuarios` (`cpf`, `nome`, `senha`) VALUES ('$cpf', '$nome', '$senha')");
         $resultado = $conn->query($sql);
