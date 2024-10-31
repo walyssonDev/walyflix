@@ -48,7 +48,7 @@ form {
     color: white;
     align-items: center;
     background-color: #0a100d;
-    padding: 2em 3.5em;
+    padding: 1em 2em;
     border-radius: 1em;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -65,6 +65,14 @@ form input {
 
 form label {
     margin-top: 1em;
+}
+
+form #previewImg {
+    height: 12em;
+    width: 12em;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }
 
 form input[type="submit"] {

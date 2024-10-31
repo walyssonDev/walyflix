@@ -12,7 +12,7 @@ if ($extension === "jpg" || $extension === "jpeg") {
     $imagemOriginal = imagecreatefromjpeg($img);
 
     ob_start();
-    imagejpeg($imagemOriginal, null, 50);
+    imagejpeg($imagemOriginal, null, 20);
     $imgData = ob_get_clean();
 
     imagedestroy($imagemOriginal);
