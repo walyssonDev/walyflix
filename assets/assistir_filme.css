@@ -50,6 +50,18 @@ video {
     padding: 0 1em;
 }
 
+.commentADM {
+    display: flex;
+    gap: 1%;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 1em;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0;
+    padding: 0 1em;
+}
+
 .perfil-imagem {
     width: 40px;
     height: 40px;

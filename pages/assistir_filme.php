@@ -108,6 +108,16 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         </form>
                         </div>
                         ";
+                    } elseif ($nome == "ADM") {
+                        echo "
+                        <div class='commentADM'>
+                        <div class='txt'>
+                        $img
+                        <p class='nome'>" . $nome . ": </p>
+                        <p>" . $comentario . "</p>
+                        </div>
+                        </div>
+                        ";
                     } else {
                         echo "
                         <div class='comment'>
