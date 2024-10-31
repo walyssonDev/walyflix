@@ -87,6 +87,7 @@ verificarPermissao(['adm']);
 
         ?>
     </div>
+    <script src="../assets/validaForm.js"></script>
 </body>
 
 </html>
