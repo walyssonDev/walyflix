@@ -35,7 +35,8 @@ verificarPermissao(['adm']);
                 echo "<td> <input type = 'text' name = 'cpf' id = 'cpf' required value = '" . $row["cpf"] . "'> </td>";
                 echo "<td> <input type = 'text' name = 'nome' id = 'nome' required value = '" . $row["nome"] . "'> </td>";
                 echo "<td> <input type = 'text' name = 'senha' id = 'senha' required value = '" . $row["senha"] . "'> </td>";
-                echo "<td> 
+                echo "<td> <input type = 'text' name = 'tipo' id = 'tipo' required value = '" . $row["tipo"] . "'> </td>";
+                echo "<td>
                         <input type = 'hidden' name = 'cpfAnterior' value = '" . $row["cpf"] . "'>
                         <button id = 'edita' type = 'submit'>Editar</button>";
                 echo "</tr>";
