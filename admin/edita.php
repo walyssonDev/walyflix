@@ -23,6 +23,7 @@ verificarPermissao(['adm']);
                 <th>CPF</th>
                 <th>Nome</th>
                 <th>Senha</th>
+                <th>Tipo</th>
                 <th>Ação</th>
             </tr>
             <?php
