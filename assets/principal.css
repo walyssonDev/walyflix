@@ -2,6 +2,7 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -61,7 +62,7 @@ header button a:hover {
 
 .container {
     display: flex;
-    height: 90vh;
+    height: 90%;
 }
 
 nav {
