@@ -28,21 +28,21 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
 <body>
     <div class="interface">
         <div class="filme">
-            <video controls autoplay>
+            <video id="video" controls autoplay>
                 <source type='video/mp4' src='<?php echo $link ?>'>
             </video>
             <h1><?php echo $nomeFilme ?></h1>
@@ -159,11 +159,48 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }
         ?>
+    const video = document.getElementById('video');
+
+    video.addEventListener('timeupdate', () => {
+        const tempoAtual = video.currentTime;
+        enviarTempo(tempoAtual);
+    });
+
+    <?php
+        $cpf = $_SESSION['cpf'];
+        $sql = "SELECT * FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
+        $resultado = $conn->query($sql);
+
+        if ($row = $resultado->fetch_assoc()) {
+            $tempo = $row['tempo'];
+        } else {
+            $tempo = 0;
+        }
+        ?>
+
+    video.addEventListener('loadedmetadata', () => {
+        video.currentTime = <?php echo $tempo?>;
+    })
+
+    const filme_id = <?php echo $id ?>;
+
+    function enviarTempo(tempo) {
+        fetch('../action/salvar_tempo.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                tempo: tempo,
+                id: filme_id
+            })
+        });
+    }
     </script>
 </body>
 
