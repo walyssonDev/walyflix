@@ -28,14 +28,14 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -159,20 +159,20 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }
         ?>
-    const video = document.getElementById('video');
+        const video = document.getElementById('video');
 
-    setInterval(() => {
-        const tempoAtual = video.currentTime;
-        console.log("Enviando minutagem do filme!");
-        enviarTempo(tempoAtual);
-    }, 57600);
+        setInterval(() => {
+            const tempoAtual = video.currentTime;
+            console.log("Enviando minutagem do filme!");
+            enviarTempo(tempoAtual);
+        }, 6000);
 
-    <?php
+        <?php
         $cpf = $_SESSION['cpf'];
         $sql = "SELECT * FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
         $resultado = $conn->query($sql);
@@ -184,24 +184,24 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         }
         ?>
 
-    video.addEventListener('loadedmetadata', () => {
-        video.currentTime = <?php echo $tempo ?>;
-    })
+        video.addEventListener('loadedmetadata', () => {
+            video.currentTime = <?php echo $tempo ?>;
+        })
 
-    const filme_id = <?php echo $id ?>;
+        const filme_id = <?php echo $id ?>;
 
-    function enviarTempo(tempo) {
-        fetch('../action/salvar_tempo.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                tempo: tempo,
-                id: filme_id
-            })
-        });
-    }
+        function enviarTempo(tempo) {
+            fetch('../action/salvar_tempo.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tempo: tempo,
+                    id: filme_id
+                })
+            });
+        }
     </script>
 </body>
 
