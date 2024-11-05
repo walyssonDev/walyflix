@@ -63,6 +63,10 @@ form input {
     padding: .5em;
 }
 
+form input:focus {
+    outline: 2px solid #219ebc;
+}
+
 form label {
     margin-top: 1em;
 }
