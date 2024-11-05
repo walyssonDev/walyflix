@@ -16,14 +16,14 @@ include("../action/valida.php");
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -62,9 +62,6 @@ include("../action/valida.php");
                     ";
             echo "
                     <img src='" . $rowFilme['path'] . "'>
-                    <div class='txt-filme'>
-                        <p>" . $rowFilme['nome'] . "</p>
-                    </div>
                 </article>
                     ";
             echo "</a>";
