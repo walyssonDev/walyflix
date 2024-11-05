@@ -12,7 +12,7 @@ include("../admin/conexao.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon">
     <title>Principal - Filmes</title>
-    <link rel="stylesheet" href="../assets/principal.css">
+    <link rel="stylesheet" href="../assets/principal.css?v=<?php echo time(); ?>">
 
     <script defer>
         function iframe(page) {

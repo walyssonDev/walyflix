@@ -13,8 +13,8 @@ verificarPermissao(['adm']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busca</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../assets/form.css">
-    <link rel="stylesheet" href="../assets/tabela.css">
+    <link rel="stylesheet" href="../assets/form.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/tabela.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
