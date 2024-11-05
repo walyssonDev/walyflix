@@ -11,6 +11,7 @@ while ($row = $resultado->fetch_assoc()) {
     $nome = $row['nome'];
     $path = $row['path'];
     $link = $row['filme'];
+    $genero = $row['genero'];
 }
 
 ?>
@@ -45,6 +46,21 @@ while ($row = $resultado->fetch_assoc()) {
                 <i class="bi bi-card-image"></i>
                 <input type="text" name="path" id="path" value="<?php echo $path ?>" placeholder="Path da imagem: "
                     required>
+            </div>
+            <label for="genero">Genero: </label>
+            <div class="genero">
+                <i class="bi bi-hash"></i>
+                <select name="genero" id="genero" required>
+                    <option value="<?php echo $genero ?>"><?php echo $genero ?></option>
+                    <?php
+                    $sql = "SELECT * FROM generos";
+                    $resultado = $conn->query($sql);
+
+                    while ($row = $resultado->fetch_assoc()) {
+                        echo "<option value='" . $row['genero'] . "'>" . $row['genero'] . "</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <label for="file">Link: </label>
             <div class="link">

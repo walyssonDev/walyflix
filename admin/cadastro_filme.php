@@ -33,12 +33,39 @@ verificarPermissao(['adm']);
                 <i class="bi bi-card-image"></i>
                 <input type="text" name="path" id="path" placeholder="Path da imagem: " required>
             </div>
+            <label for="genero">Genero: </label>
+            <div class="genero">
+                <i class="bi bi-hash"></i>
+                <select name="genero" id="genero" required>
+                    <option value="" disabled selected>Escolha um genero</option>
+                    <?php
+                    $sql = "SELECT * FROM generos";
+                    $resultado = $conn->query($sql);
+
+                    while ($row = $resultado->fetch_assoc()) {
+                        echo "<option value='" . $row['genero'] . "'>" . $row['genero'] . "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
             <label for="file">Link: </label>
             <div class="link">
                 <i class="bi bi-link"></i>
                 <input type="text" name="link" placeholder="Link do filme: " required>
             </div>
             <p>Apenas DROPBOX</p>
+            <input type="submit" value="Enviar">
+        </form>
+        <form action="../action/cadastrar_genero.php" method="post">
+            <h2>Novo genero</h2>
+            <div class="img">
+                <i class="bi bi-clipboard2-plus"></i>
+            </div>
+            <label for="novoGenero">Genero: </label>
+            <div class="novo-genero">
+                <i class="bi bi-plus-circle"></i>
+                <input type="text" name="novoGenero" id="novoGenero" placeholder="Genero: " required>
+            </div>
             <input type="submit" value="Enviar">
         </form>
     </div>
