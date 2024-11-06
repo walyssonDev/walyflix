@@ -5,7 +5,7 @@ include("valida.php");
 $genero = $_POST['novoGenero'];
 $cpf = $_SESSION['cpf'];
 
-$sqlVerifica = "SELECT * FROM generos WHERE nome = $genero";
+$sqlVerifica = "SELECT * FROM generos WHERE genero = $genero";
 $resultado = $conn->query($sqlVerifica);
 
 if ($resultado->num_rows > 0) {
