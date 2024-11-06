@@ -17,14 +17,14 @@
             <!-- Google tag (gtag.js) -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
             <script>
-            window.dataLayer = window.dataLayer || [];
+                window.dataLayer = window.dataLayer || [];
 
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
 
-            gtag('config', 'G-VX1YBC3426');
+                gtag('config', 'G-VX1YBC3426');
             </script>
         </head>
 
@@ -63,6 +63,10 @@
                     ";
                     echo "
                     <img src='" . $row['path'] . "'>
+                    <div class='txt-filme'>
+                        <p>" . $row['nome'] . "</p>
+                        <p id = 'genero-filme'>" . $row['genero'] . "</p>
+                    </div>
                     </article>
                     ";
                     echo "</a>";
@@ -70,20 +74,20 @@
                 ?>
             </div>
             <script>
-            function buscarFilme() {
-                const input = document.getElementById('busca').value.toLowerCase();
-                const filmes = document.getElementsByClassName('filme');
+                function buscarFilme() {
+                    const input = document.getElementById('busca').value.toLowerCase();
+                    const filmes = document.getElementsByClassName('filme');
 
-                for (let i = 0; i < filmes.length; i++) {
-                    const nomeFilme = filmes[i].querySelector('.txt-filme p').textContent.toLowerCase();
+                    for (let i = 0; i < filmes.length; i++) {
+                        const nomeFilme = filmes[i].querySelector('.txt-filme p').textContent.toLowerCase();
 
-                    if (nomeFilme.includes(input)) {
-                        filmes[i].style.display = "";
-                    } else {
-                        filmes[i].style.display = "none";
+                        if (nomeFilme.includes(input)) {
+                            filmes[i].style.display = "";
+                        } else {
+                            filmes[i].style.display = "none";
+                        }
                     }
                 }
-            }
             </script>
         </body>
 

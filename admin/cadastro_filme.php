@@ -56,18 +56,6 @@ verificarPermissao(['adm']);
             <p>Apenas DROPBOX</p>
             <input type="submit" value="Enviar">
         </form>
-        <form action="../action/cadastrar_genero.php" method="post">
-            <h2>Novo genero</h2>
-            <div class="img">
-                <i class="bi bi-clipboard2-plus"></i>
-            </div>
-            <label for="novoGenero">Genero: </label>
-            <div class="novo-genero">
-                <i class="bi bi-plus-circle"></i>
-                <input type="text" name="novoGenero" id="novoGenero" placeholder="Genero: " required>
-            </div>
-            <input type="submit" value="Enviar">
-        </form>
     </div>
     <script>
         <?php

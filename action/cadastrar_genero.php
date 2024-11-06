@@ -19,4 +19,4 @@ if ($resultado->num_rows > 0) {
 }
 
 $_SESSION['resposta'] = $resposta;
-header("Location: ../admin/cadastro_filme.php");
+header("Location: ../admin/generos.php");

@@ -28,6 +28,7 @@ verificarPermissao(['adm']);
             <img src='" . $row['path'] . "'>
             <div class='txt-filme'>
                 <p>" . $row['nome'] . "</p>
+                <p id = 'genero-filme'>" . $row['genero'] . "</p>
                 <div class='options'>
                     <form action = '../action/edita_filme.php' method = 'POST'>
                         <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
