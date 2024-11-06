@@ -50,7 +50,7 @@ include("../admin/conexao.php");
             <a href="uparImg.php">
                 <img src="../action/userImg.php" alt="Foto de Perfil">
             </a>
-            <p>Ola, <?php echo $_SESSION["nome"]; ?>.</p>
+            <p>Olá, <?php echo $_SESSION["nome"]; ?>.</p>
         </div>
         <button><a href="../action/sair.php">Sair</a></button>
     </header>
