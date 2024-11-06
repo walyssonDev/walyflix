@@ -5,8 +5,10 @@ include("valida.php");
 $genero = $_POST['novoGenero'];
 $cpf = $_SESSION['cpf'];
 
-$sqlVerifica = "SELECT * FROM generos WHERE genero = $genero";
-$resultado = $conn->query($sqlVerifica);
+$sqlVerifica = $conn->prepare("SELECT * FROM generos WHERE genero = ?");
+$sqlVerifica->bind_param("s", $genero);
+$sqlVerifica->execute();
+$resultado = $sqlVerifica->get_result();
 
 if ($resultado->num_rows > 0) {
     $resposta = "Genero ja existe!";
