@@ -113,7 +113,7 @@ body * {
 }
 
 .filme .txt-filme p {
-    margin: 0;
+    text-align: center;
 }
 
 .options {
@@ -155,5 +155,13 @@ body * {
     .interface {
         justify-content: center;
         align-items: center;
+    }
+
+    .filme {
+        width: 50vw;
+    }
+
+    .filme img {
+        height: 15em;
     }
 }
