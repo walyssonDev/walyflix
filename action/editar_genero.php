@@ -2,6 +2,8 @@
 include("../admin/conexao.php");
 include("valida.php");
 
+ini_set("display_errors", true);
+
 $genero = $_POST['genero'];
 $id = $_POST['id'];
 $cpf = $_SESSION['cpf'];
