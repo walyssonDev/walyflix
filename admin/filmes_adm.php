@@ -18,17 +18,22 @@ verificarPermissao(['adm']);
 <body>
     <div class="interface">
         <?php
-        $sql = "SELECT * FROM filmes";
+        $sql = "SELECT filmes.*, generos.genero AS nome_genero 
+        FROM filmes 
+        INNER JOIN generos
+        ON filmes.genero = generos.id";
         $resultado = $conn->query($sql);
 
         while ($row = $resultado->fetch_assoc()) {
+            $genero = $row['nome_genero'];
+
             echo "<a href='../pages/assistir_filme.php?id=" . $row['id'] . "'>";
             echo "
             <article class='filme'>
             <img src='" . $row['path'] . "'>
             <div class='txt-filme'>
                 <p>" . $row['nome'] . "</p>
-                <p id = 'genero-filme'>" . $row['genero'] . "</p>
+                <p id = 'genero-filme'>" . $genero . "</p>
                 <div class='options'>
                     <form action = '../action/edita_filme.php' method = 'POST'>
                         <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>

@@ -34,11 +34,16 @@
                 <?php
                 $cpf = $_SESSION['cpf'];
 
-                $sql = "SELECT * FROM filmes";
+                $sql = "SELECT filmes.*, generos.genero AS nome_genero 
+                        FROM filmes 
+                        INNER JOIN generos
+                        ON filmes.genero = generos.id";
+
                 $resultado = $conn->query($sql);
 
                 while ($row = $resultado->fetch_assoc()) {
                     $id = $row['id'];
+                    $genero = $row['nome_genero'];
 
                     $sqlFav = "SELECT * FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
                     $resultadoFav = $conn->query($sqlFav);
@@ -65,7 +70,7 @@
                     <img src='" . $row['path'] . "'>
                     <div class='txt-filme'>
                         <p>" . $row['nome'] . "</p>
-                        <p id = 'genero-filme'>" . $row['genero'] . "</p>
+                        <p id = 'genero-filme'>" . $genero . "</p>
                     </div>
                     </article>
                     ";

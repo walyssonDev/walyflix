@@ -51,13 +51,12 @@ while ($row = $resultado->fetch_assoc()) {
             <div class="genero">
                 <i class="bi bi-hash"></i>
                 <select name="genero" id="genero" required>
-                    <option value="<?php echo $genero ?>"><?php echo $genero ?></option>
                     <?php
                     $sql = "SELECT * FROM generos";
                     $resultado = $conn->query($sql);
 
                     while ($row = $resultado->fetch_assoc()) {
-                        echo "<option value='" . $row['genero'] . "'>" . $row['genero'] . "</option>";
+                        echo "<option " . (($row['id'] == $genero) ? "selected" : "") . " value='" . $row['id'] . "'>" . $row['genero'] . "</option>";
                     }
                     ?>
                 </select>
