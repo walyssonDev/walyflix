@@ -7,6 +7,8 @@ $path = $_POST['path'];
 $filme = $_POST['link'];
 $genero = $_POST['genero'];
 
+error_reporting(E_ALL);
+
 if (strpos($filme, 'dropbox.com') !== false) {
     $filme = str_replace('dl=0', 'raw=1', $filme);
 }
