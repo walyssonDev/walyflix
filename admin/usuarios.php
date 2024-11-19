@@ -18,7 +18,6 @@ verificarPermissao(['adm']);
 
 <body>
     <div class="container">
-        <h1>Usuarios</h1>
         <table>
             <tr>
                 <th>CPF</th>

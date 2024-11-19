@@ -154,6 +154,7 @@ body * {
     .interface {
         justify-content: center;
         align-items: center;
+        padding-bottom: 10%;
     }
 
     .filme {

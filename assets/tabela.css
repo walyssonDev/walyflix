@@ -41,6 +41,12 @@ table #edita {
     cursor: pointer;
 }
 
+table #cpf,
+#nome,
+#senha {
+    width: 10em;
+}
+
 table #edita:hover {
     background-color: #6a994e;
 }
@@ -76,6 +82,7 @@ table #deleta:hover {
     table #edita,
     table #deleta {
         padding: 0.5em 0.8em;
+        margin: 1%;
         font-size: 0.9em;
     }
 }
