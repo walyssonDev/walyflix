@@ -43,7 +43,7 @@ verificarPermissao(['adm']);
                     $resultado = $conn->query($sql);
 
                     while ($row = $resultado->fetch_assoc()) {
-                        echo "<option value='" . $row['genero'] . "'>" . $row['genero'] . "</option>";
+                        echo "<option value='" . $row['id'] . "'>" . $row['genero'] . "</option>";
                     }
                     ?>
                 </select>
