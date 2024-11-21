@@ -15,26 +15,26 @@ include("../admin/conexao.php");
     <link rel="stylesheet" href="../assets/css/principal.css?v=<?php echo time(); ?>">
 
     <script defer>
-        function iframe(page) {
-            document.getElementById('iframe').src = page;
-        }
+    function iframe(page) {
+        document.getElementById('iframe').src = page;
+    }
 
-        function menu() {
-            var nav = document.getElementById('menu');
-            nav.classList.toggle('active');
-        }
+    function menu() {
+        var nav = document.getElementById('menu');
+        nav.classList.toggle('active');
+    }
     </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -76,11 +76,11 @@ include("../admin/conexao.php");
             </ul>
         </nav>
         <div class="conteudo">
-            <iframe id="iframe" src="inicio.php" frameborder="0"></iframe>
+            <iframe id="iframe" src="filmes.php" frameborder="0"></iframe>
         </div>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
