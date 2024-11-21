@@ -24,18 +24,18 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
-    <link rel="stylesheet" href="../assets/assistir_filme.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/assistir_filme.css?v=<?php echo time(); ?>">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -159,20 +159,20 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }
         ?>
-    const video = document.getElementById('video');
+        const video = document.getElementById('video');
 
-    setInterval(() => {
-        const tempoAtual = video.currentTime;
-        console.log("Enviando minutagem do filme!");
-        enviarTempo(tempoAtual);
-    }, 6000);
+        setInterval(() => {
+            const tempoAtual = video.currentTime;
+            console.log("Enviando minutagem do filme!");
+            enviarTempo(tempoAtual);
+        }, 6000);
 
-    <?php
+        <?php
         $cpf = $_SESSION['cpf'];
         $sql = "SELECT * FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
         $resultado = $conn->query($sql);
@@ -184,24 +184,24 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         }
         ?>
 
-    video.addEventListener('loadedmetadata', () => {
-        video.currentTime = <?php echo $tempo ?>;
-    })
+        video.addEventListener('loadedmetadata', () => {
+            video.currentTime = <?php echo $tempo ?>;
+        })
 
-    const filme_id = <?php echo $id ?>;
+        const filme_id = <?php echo $id ?>;
 
-    function enviarTempo(tempo) {
-        fetch('../action/salvar_tempo.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                tempo: tempo,
-                id: filme_id
-            })
-        });
-    }
+        function enviarTempo(tempo) {
+            fetch('../action/salvar_tempo.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tempo: tempo,
+                    id: filme_id
+                })
+            });
+        }
     </script>
 </body>
 

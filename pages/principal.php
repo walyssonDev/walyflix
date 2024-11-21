@@ -10,31 +10,31 @@ include("../admin/conexao.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <title>Principal - Filmes</title>
-    <link rel="stylesheet" href="../assets/principal.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/principal.css?v=<?php echo time(); ?>">
 
     <script defer>
-    function iframe(page) {
-        document.getElementById('iframe').src = page;
-    }
+        function iframe(page) {
+            document.getElementById('iframe').src = page;
+        }
 
-    function menu() {
-        var nav = document.getElementById('menu');
-        nav.classList.toggle('active');
-    }
+        function menu() {
+            var nav = document.getElementById('menu');
+            nav.classList.toggle('active');
+        }
     </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -80,7 +80,7 @@ include("../admin/conexao.php");
         </div>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);

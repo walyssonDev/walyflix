@@ -11,8 +11,9 @@ include("../action/valida.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Imagem de Perfil</title>
-    <link rel="stylesheet" href="../assets/form.css">
-    <link rel="stylesheet" href="../assets/principal.css">
+    <link rel="stylesheet" href="../assets/css/form.css">
+    <link rel="stylesheet" href="../assets/css/principal.css">
+    <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>

@@ -12,7 +12,7 @@ verificarPermissao(['adm']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmes</title>
-    <link rel="stylesheet" href="../assets/filmes.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/filmes.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -35,7 +35,7 @@ verificarPermissao(['adm']);
                 <p>" . $row['nome'] . "</p>
                 <p id = 'genero-filme'>" . $genero . "</p>
                 <div class='options'>
-                    <form action = '../action/edita_filme.php' method = 'POST'>
+                    <form action = 'edita_filme.php' method = 'POST'>
                         <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
                         <input type='submit' value='Editar' id='editar'>
                     </form>

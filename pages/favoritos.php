@@ -12,7 +12,7 @@ include("../action/valida.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../assets/filmes.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/filmes.css?v=<?php echo time(); ?>">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
@@ -45,6 +45,12 @@ include("../action/valida.php");
             $resultadoFilme = $conn->query($sqlFilme);
 
             $rowFilme = $resultadoFilme->fetch_assoc();
+            $idGenero = $rowFilme['genero'];
+
+            $sqlGenero = "SELECT genero FROM generos WHERE id = $idGenero";
+            $resultadoGenero = $conn->query($sqlGenero);
+            $rowGenero = $resultadoGenero->fetch_assoc();
+            $genero  = $rowGenero['genero'];
 
             echo "<a href='assistir_filme.php?id=" . $rowFilme['id'] . "'>";
             echo "
@@ -62,6 +68,10 @@ include("../action/valida.php");
                     ";
             echo "
                     <img src='" . $rowFilme['path'] . "'>
+                    <div class='txt-filme'>
+                        <p>" . $rowFilme['nome'] . "</p>
+                        <p id = 'genero-filme'>" . $genero . "</p>
+                    </div>
                 </article>
                     ";
             echo "</a>";

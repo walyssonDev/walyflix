@@ -7,18 +7,18 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="/assets/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/index.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/index.css?v=<?php echo time(); ?>">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -45,13 +45,13 @@
     </div>
 
     <script>
-        <?php
+    <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }
         ?>
     </script>
-    <script src="assets/validaForm.js"></script>
+    <script src="assets/js/validaForm.js"></script>
 </body>
 
 </html>

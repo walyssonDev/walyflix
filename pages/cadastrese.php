@@ -10,7 +10,7 @@ include("../admin/conexao.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Cadastro usuarios</title>
-    <link rel="stylesheet" href="../assets/cadastrese.css">
+    <link rel="stylesheet" href="../assets/css/cadastrese.css">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
@@ -60,7 +60,7 @@ include("../admin/conexao.php");
         }
         ?>
     </script>
-    <script src="../assets/validaForm.js"></script>
+    <script src="../assets/js/validaForm.js"></script>
 </body>
 
 </html>
