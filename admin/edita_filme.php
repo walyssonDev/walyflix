@@ -1,6 +1,6 @@
 <?php
 include("../admin/conexao.php");
-include("valida.php");
+include("../action/valida.php");
 
 $id = $_POST['id'];
 

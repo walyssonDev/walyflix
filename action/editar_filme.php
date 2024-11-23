@@ -10,6 +10,21 @@ $genero = $_POST['genero'];
 
 if (strpos($filme, 'dropbox.com') !== false) {
     $filme = str_replace('dl=0', 'raw=1', $filme);
+} else if (strpos($filme, 'drive.google.com') !== false) {
+    preg_match('/\/d\/([a-zA-Z0-9_-]+)/', $filme, $matches);
+
+    if (!empty($matches[1])) {
+        $file_id = $matches[1];
+        $filme = "https://drive.google.com/file/d/$file_id/preview";
+    }
+} else {
+    $filme = null;
+}
+
+if ($filme == null) {
+    $_SESSION['resposta'] = "Erro ao editar filme formato invalido";
+    header("Location: ../admin/filmes_adm.php");
+    exit;
 }
 
 $sql = "UPDATE filmes SET nome = ?, path = ?, filme = ?, genero = ? WHERE id = ?";

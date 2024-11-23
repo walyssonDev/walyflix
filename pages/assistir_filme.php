@@ -42,11 +42,20 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
 <body>
     <div class="interface">
         <div class="filme">
-            <video id="video" controls autoplay>
+            <?php
+            if (strpos($link, 'dropbox.com') !== false) {
+                echo "
+                <video id='video' controls autoplay>
                 <source type='video/mp4' src='<?php echo $link ?>'>
-            </video>
+            </video>";
+            } else if (strpos($link, 'drive.google.com') !== false) {
+                echo "
+            <iframe src='$link' allowfullscreen></iframe>";
+            }
+            ?>
             <h1><?php echo $nomeFilme ?></h1>
         </div>
+
         <div class="container">
             <div class="comentarios">
                 <?php
