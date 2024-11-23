@@ -46,7 +46,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
             if (strpos($link, 'dropbox.com') !== false) {
                 echo "
                 <video id='video' controls autoplay>
-                <source type='video/mp4' src='<?php echo $link ?>'>
+                <source type='video/mp4' src='" . $link . "'>
             </video>";
             } else if (strpos($link, 'drive.google.com') !== false) {
                 echo "
