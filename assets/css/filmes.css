@@ -21,9 +21,7 @@ body * {
 
 #busca:focus {
     border-color: #007BFF;
-    /* Cor de destaque ao focar no input */
     box-shadow: 0 2px 8px rgba(0, 123, 255, 0.5);
-    /* Sombra mais intensa no foco */
 }
 
 #busca::placeholder {
@@ -38,10 +36,8 @@ body * {
 .interface {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
     gap: 1em;
-    overflow: visible;
 }
 
 .interface a {
@@ -59,6 +55,10 @@ body * {
     position: relative;
     overflow: hidden;
     filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
+}
+
+.filme:last-child {
+    margin-bottom: 5em;
 }
 
 .fav button {
