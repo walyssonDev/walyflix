@@ -38,6 +38,7 @@ body * {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1em;
+    margin-bottom: 5em
 }
 
 .interface a {
@@ -55,10 +56,6 @@ body * {
     position: relative;
     overflow: hidden;
     filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
-}
-
-.interface:last-child {
-    margin-bottom: 5em;
 }
 
 .fav button {
