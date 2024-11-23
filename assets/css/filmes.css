@@ -31,7 +31,6 @@ body * {
     font-size: 14px;
 }
 
-/* Estilo opcional para remover o contorno de botões nos navegadores móveis */
 #busca:focus-visible {
     outline: none;
 }
@@ -40,6 +39,7 @@ body * {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 1em;
 }
 

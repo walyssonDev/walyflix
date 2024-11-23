@@ -53,7 +53,7 @@ verificarPermissao(['adm']);
                 <i class="bi bi-link"></i>
                 <input type="text" name="link" placeholder="Link do filme: " required>
             </div>
-            <p>Apenas DROPBOX</p>
+            <p>DROPBOX ou Google Drive</p>
             <input type="submit" value="Enviar">
         </form>
     </div>

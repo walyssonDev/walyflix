@@ -67,7 +67,7 @@ while ($row = $resultado->fetch_assoc()) {
                 <input type="text" name="link" id="link" value="<?php echo $link ?>" placeholder="Link do filme: "
                     required>
             </div>
-            <p>Apenas DROPBOX</p>
+            <p>DROPBOX ou Google Drive</p>
             <input type="submit" value="Editar">
         </form>
     </div>
