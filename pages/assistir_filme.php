@@ -175,10 +175,9 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         ?>
         const filme_id = <?php echo $id ?>;
         const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
-        let tempoAtual = 0;
 
         if (isIframe) {
-            fetch('../action/salvar_tempo.php', {
+            fetch('../action/obter_tempo.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -189,15 +188,16 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                 })
                 .then(response => response.json())
                 .then(data => {
-                    tempoAtual = data.tempo || 0;
+                    const tempoSalvo = data.tempo || 0;
                     const iframe = document.querySelector('iframe');
                     if (iframe) {
                         const url = new URL(iframe.src);
-                        url.searchParams.set('start', Math.floor(tempoAtual));
+                        url.searchParams.set('start', Math.floor(tempoSalvo));
                         iframe.src = url.toString();
                     }
                 });
 
+            let tempoAtual = 0;
             setInterval(() => {
                 tempoAtual += 6;
                 fetch('../action/salvar_tempo.php', {
@@ -216,14 +216,9 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
             video.addEventListener('loadedmetadata', () => {
                 <?php
                 $cpf = $_SESSION['cpf'];
-                $sql = "SELECT * FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
+                $sql = "SELECT tempo FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
                 $resultado = $conn->query($sql);
-
-                if ($row = $resultado->fetch_assoc()) {
-                    $tempo = $row['tempo'];
-                } else {
-                    $tempo = 0;
-                }
+                $tempo = ($row = $resultado->fetch_assoc()) ? $row['tempo'] : 0;
                 ?>
                 video.currentTime = <?php echo $tempo ?>;
             });
