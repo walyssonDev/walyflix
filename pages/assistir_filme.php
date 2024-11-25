@@ -176,26 +176,23 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         const filme_id = <?php echo $id ?>;
         const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
 
+        <?php
+        $cpf = $_SESSION['cpf'];
+        $sql = "SELECT tempo FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
+        $resultado = $conn->query($sql);
+        $tempo = ($row = $resultado->fetch_assoc()) ? $row['tempo'] : 0;
+        ?>
+
         if (isIframe) {
-            fetch('../action/obter_tempo.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id: filme_id
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    const tempoSalvo = data.tempo || 0;
-                    const iframe = document.querySelector('iframe');
-                    if (iframe) {
-                        const url = new URL(iframe.src);
-                        url.searchParams.set('start', Math.floor(tempoSalvo));
-                        iframe.src = url.toString();
-                    }
-                });
+
+            const tempoSalvo = $tempo || 0;
+            const iframe = document.querySelector('iframe');
+
+            if (iframe) {
+                const url = new URL(iframe.src);
+                url.searchParams.set('start', Math.floor(tempoSalvo));
+                iframe.src = url.toString();
+            }
 
             let tempoAtual = 0;
             setInterval(() => {
@@ -214,12 +211,6 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         } else {
             const video = document.getElementById('video');
             video.addEventListener('loadedmetadata', () => {
-                <?php
-                $cpf = $_SESSION['cpf'];
-                $sql = "SELECT tempo FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
-                $resultado = $conn->query($sql);
-                $tempo = ($row = $resultado->fetch_assoc()) ? $row['tempo'] : 0;
-                ?>
                 video.currentTime = <?php echo $tempo ?>;
             });
 
