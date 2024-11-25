@@ -28,14 +28,14 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -168,65 +168,66 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }
         ?>
-        const filme_id = <?php echo $id ?>;
-        const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
+    const filme_id = <?php echo $id ?>;
+    const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
 
-        <?php
-        $cpf = $_SESSION['cpf'];
-        $sql = "SELECT tempo FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
-        $resultado = $conn->query($sql);
-        $tempo = ($row = $resultado->fetch_assoc()) ? $row['tempo'] : 0;
-        ?>
+    <?php
+    $cpf = $_SESSION['cpf'];
+    $sql = "SELECT tempo FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
+    $resultado = $conn->query($sql);
+    $tempo = ($row = $resultado->fetch_assoc()) ? $row['tempo'] : 0;
+    ?>
 
-        if (isIframe) {
+    if (isIframe) {
+        const tempoSalvo = <?php echo $tempo ?>;
+        const iframe = document.querySelector('iframe');
 
-            const tempoSalvo = $tempo || 0;
-            const iframe = document.querySelector('iframe');
-
-            if (iframe) {
-                const url = new URL(iframe.src);
-                url.searchParams.set('start', Math.floor(tempoSalvo));
-                iframe.src = url.toString();
-            }
-
-            let tempoAtual = 0;
-            setInterval(() => {
-                tempoAtual += 6;
-                fetch('../action/salvar_tempo.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        tempo: tempoAtual,
-                        id: filme_id
-                    })
-                });
-            }, 6000);
-        } else {
-            const video = document.getElementById('video');
-            video.addEventListener('loadedmetadata', () => {
-                video.currentTime = <?php echo $tempo ?>;
-            });
-
-            setInterval(() => {
-                fetch('../action/salvar_tempo.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        tempo: video.currentTime,
-                        id: filme_id
-                    })
-                });
-            }, 6000);
+        if (iframe) {
+            // Adiciona o parâmetro de início à URL do iframe
+            const url = new URL(iframe.src);
+            url.searchParams.set('start', Math.floor(tempoSalvo));
+            iframe.src = url.toString();
         }
+
+        // Atualiza o tempo no servidor periodicamente
+        let tempoAtual = tempoSalvo; // Baseado no tempo salvo
+        setInterval(() => {
+            tempoAtual += 6; // Incrementa manualmente (melhor se houver API)
+            fetch('../action/salvar_tempo.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tempo: tempoAtual,
+                    id: filme_id
+                })
+            });
+        }, 6000);
+    } else {
+        const video = document.getElementById('video');
+        video.addEventListener('loadedmetadata', () => {
+            video.currentTime = <?php echo $tempo ?>;
+        });
+
+        setInterval(() => {
+            fetch('../action/salvar_tempo.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tempo: video.currentTime,
+                    id: filme_id
+                })
+            });
+        }, 6000);
+    }
     </script>
 </body>
 
