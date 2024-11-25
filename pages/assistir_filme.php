@@ -173,66 +173,73 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
             echo "alert('" . $_GET['resposta'] . "')";
         }
         ?>
-
-        const video = document.getElementById('video');
         const filme_id = <?php echo $id ?>;
         const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
+        let tempoAtual = 0;
 
         if (isIframe) {
-            let intervalo = null;
-
-            function contadorIframe() {
-                intervalo = setInterval(() => {
-                    tempoAtual += 6;
-                    enviarTempo(tempoAtual);
-                }, 6000);
-            }
-
-            function ajustarIframe() {
-                const iframe = document.querySelector('iframe');
-                if (iframe) {
-                    const url = new URL(iframe.src);
-                    url.searchParams.set('start', tempoAtual);
-                    iframe.src = url.toString();
-                }
-            }
-
-            ajustarIframe();
-            contadorIframe();
-        } else {
-            setInterval(() => {
-                const tempoAtual = video.currentTime;
-                enviarTempo(tempoAtual);
-            }, 6000);
-
-            <?php
-            $cpf = $_SESSION['cpf'];
-            $sql = "SELECT * FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
-            $resultado = $conn->query($sql);
-
-            if ($row = $resultado->fetch_assoc()) {
-                $tempo = $row['tempo'];
-            } else {
-                $tempo = 0;
-            }
-            ?>
-
-            video.addEventListener('loadedmetadata', () => {
-                video.currentTime = <?php echo $tempo ?>;
-            })
-        }
-
-        function enviarTempo(tempo) {
             fetch('../action/salvar_tempo.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    tempo: tempo,
-                    id: filme_id
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: filme_id
+                    })
                 })
+                .then(response => response.json())
+                .then(data => {
+                    tempoAtual = data.tempo || 0;
+                    const iframe = document.querySelector('iframe');
+                    if (iframe) {
+                        const url = new URL(iframe.src);
+                        url.searchParams.set('start', Math.floor(tempoAtual));
+                        iframe.src = url.toString();
+                    }
+                });
+
+            setInterval(() => {
+                tempoAtual += 6;
+                fetch('../action/salvar_tempo.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        tempo: tempoAtual,
+                        id: filme_id
+                    })
+                });
+            }, 6000);
+        } else {
+            const video = document.getElementById('video');
+            video.addEventListener('loadedmetadata', () => {
+                <?php
+                $cpf = $_SESSION['cpf'];
+                $sql = "SELECT * FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
+                $resultado = $conn->query($sql);
+
+                if ($row = $resultado->fetch_assoc()) {
+                    $tempo = $row['tempo'];
+                } else {
+                    $tempo = 0;
+                }
+                ?>
+                video.currentTime = <?php echo $tempo ?>;
             });
+
+            setInterval(() => {
+                fetch('../action/salvar_tempo.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        tempo: video.currentTime,
+                        id: filme_id
+                    })
+                });
+            }, 6000);
         }
     </script>
 </body>
