@@ -133,12 +133,12 @@ function validarForm() {
     const nome = document.getElementById("nome").value;
 
     if (!validarNome(nome)) {
-        alert("Nome inv√°lido");
+        alert("Nome inv·lido");
         return false;
     }
 
     if (!validarCPF()) {
-        alert("CPF inv√°lido.");
+        alert("CPF inv·lido.");
         return false;
     }
 

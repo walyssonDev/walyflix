@@ -26,7 +26,7 @@ if (strpos($filme, 'dropbox.com') !== false) {
 if ($filme == null) {
     $_SESSION['resposta'] = "Erro ao cadastrar filme formato invalido";
     header("Location: ../admin/cadastro_filme.php");
-    exit;
+    die;
 }
 
 $sql = "INSERT INTO filmes (nome, path, filme, genero) VALUES (?, ?, ?, ?)";

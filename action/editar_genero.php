@@ -14,6 +14,5 @@ $stmt->bind_param("ss", $genero, $id);
 $stmt->execute();
 $resposta = "Genero editado com sucesso!";
 
-
 $_SESSION['resposta'] = $resposta;
 header("Location: ../admin/generos.php");
