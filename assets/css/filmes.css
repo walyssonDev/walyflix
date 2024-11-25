@@ -55,7 +55,7 @@ body * {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
 }
 
 .fav button {

@@ -173,31 +173,54 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
             echo "alert('" . $_GET['resposta'] . "')";
         }
         ?>
+
         const video = document.getElementById('video');
-
-        setInterval(() => {
-            const tempoAtual = video.currentTime;
-            console.log("Enviando minutagem do filme!");
-            enviarTempo(tempoAtual);
-        }, 6000);
-
-        <?php
-        $cpf = $_SESSION['cpf'];
-        $sql = "SELECT * FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
-        $resultado = $conn->query($sql);
-
-        if ($row = $resultado->fetch_assoc()) {
-            $tempo = $row['tempo'];
-        } else {
-            $tempo = 0;
-        }
-        ?>
-
-        video.addEventListener('loadedmetadata', () => {
-            video.currentTime = <?php echo $tempo ?>;
-        })
-
         const filme_id = <?php echo $id ?>;
+        const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
+
+        if (isIframe) {
+            let intervalo = null;
+
+            function contadorIframe() {
+                intervalo = setInterval(() => {
+                    tempoAtual += 6;
+                    enviarTempo(tempoAtual);
+                }, 6000);
+            }
+
+            function ajustarIframe() {
+                const iframe = document.querySelector('iframe');
+                if (iframe) {
+                    const url = new URL(iframe.src);
+                    url.searchParams.set('start', tempoAtual);
+                    iframe.src = url.toString();
+                }
+            }
+
+            ajustarIframe();
+            contadorIframe();
+        } else {
+            setInterval(() => {
+                const tempoAtual = video.currentTime;
+                enviarTempo(tempoAtual);
+            }, 6000);
+
+            <?php
+            $cpf = $_SESSION['cpf'];
+            $sql = "SELECT * FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
+            $resultado = $conn->query($sql);
+
+            if ($row = $resultado->fetch_assoc()) {
+                $tempo = $row['tempo'];
+            } else {
+                $tempo = 0;
+            }
+            ?>
+
+            video.addEventListener('loadedmetadata', () => {
+                video.currentTime = <?php echo $tempo ?>;
+            })
+        }
 
         function enviarTempo(tempo) {
             fetch('../action/salvar_tempo.php', {
