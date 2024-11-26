@@ -12,19 +12,19 @@ include("../action/valida.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Imagem de Perfil</title>
     <link rel="stylesheet" href="../assets/css/form.css">
-    <link rel="stylesheet" href="../assets/css/principal.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -32,7 +32,7 @@ include("../action/valida.php");
     <header>
         <button onclick="menu()" class="btn-menu"><i class="bi bi-list"></i></button>
         <div class="user">
-            <a href="principal.php">
+            <a href="inicio.php">
                 <img src="../action/userImg.php" alt="Foto de Perfil">
             </a>
             <p>Olá, <?php echo $_SESSION["nome"]; ?>.</p>
@@ -53,22 +53,22 @@ include("../action/valida.php");
         </form>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
         }
         ?>
-        document.getElementById('img').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('previewImg').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+    document.getElementById('img').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('previewImg').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
     </script>
 </body>
 

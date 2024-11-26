@@ -27,7 +27,7 @@ if ($resultadoCpf === true && $resultadoSenha === true) {
             $_SESSION["nome"] = $nome;
             $_SESSION["tipo"] = $tipo;
 
-            header("Location: ../pages/principal.php");
+            header("Location: ../pages/inicio.php");
         } else {
             header("Location: ../index.php?resposta=CPF ou Senha incorretos.");
         }

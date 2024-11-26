@@ -12,31 +12,36 @@ verificarPermissao(['adm']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <title>Cadastro usuarios</title>
     <link rel="stylesheet" href="../assets/css/tabela.css">
 </head>
 
 <body>
-    <div class="container">
-        <table>
-            <tr>
-                <th>CPF</th>
-                <th>Nome</th>
-                <th>Senha</th>
-            </tr>
-            <?php
-            $sql = "SELECT * FROM usuarios";
-            $resultado = $conn->query($sql);
+    <?php include("../includes/header.php") ?>
+    <div class="conteudo">
+        <?php include("../includes/nav.php") ?>
+        <div class="container">
+            <table>
+                <tr>
+                    <th>CPF</th>
+                    <th>Nome</th>
+                    <th>Senha</th>
+                </tr>
+                <?php
+                $sql = "SELECT * FROM usuarios";
+                $resultado = $conn->query($sql);
 
-            while ($row = $resultado->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["cpf"] . "</td>";
-                echo "<td>" . $row["nome"] . "</td>";
-                echo "<td>" . $row["senha"] . "</td>";
-                echo "</tr>";
-            }
-            ?>
-        </table>
+                while ($row = $resultado->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["cpf"] . "</td>";
+                    echo "<td>" . $row["nome"] . "</td>";
+                    echo "<td>" . $row["senha"] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </table>
+        </div>
     </div>
 </body>
 

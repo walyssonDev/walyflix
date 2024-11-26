@@ -34,11 +34,15 @@ body * {
 }
 
 .interface {
+    overflow-y: auto;
+    padding-bottom: 10%;
+}
+
+.filmes {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1em;
-    margin-bottom: 5em
 }
 
 .interface a {

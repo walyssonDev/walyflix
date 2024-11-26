@@ -1,0 +1,75 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    background-color: #0a100d;
+}
+
+header .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 20px;
+    color: white;
+}
+
+header .user a {
+    color: white;
+    transition: .2s;
+}
+
+header .user a:hover {
+    transform: scale(1.3);
+}
+
+header .user img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+header button {
+    border: none;
+    background-color: transparent;
+}
+
+header button a {
+    padding: .5em 2em;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: #bf0603;
+    border-radius: 1em;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+header button a:hover {
+    opacity: .8;
+}
+
+.btn-menu {
+    display: none;
+}
+
+@media screen and (max-width: 1020px) {
+    .btn-menu {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        color: white;
+    }
+}

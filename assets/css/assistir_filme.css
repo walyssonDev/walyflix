@@ -9,6 +9,7 @@ body {
     display: flex;
     gap: 1em;
     padding: 2em 1em;
+    width: 100%;
 }
 
 .filme {
