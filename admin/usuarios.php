@@ -2,7 +2,7 @@
 include("../action/valida.php");
 include("conexao.php");
 
-verificarPermissao(['adm']);
+verificarPermissao('adm');
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ verificarPermissao(['adm']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <title>Cadastro usuarios</title>
-    <link rel="stylesheet" href="../assets/css/tabela.css">
+    <link rel="stylesheet" href="../assets/css/tabela.css?v=<?php echo time(); ?>">
 </head>
 
 <body>

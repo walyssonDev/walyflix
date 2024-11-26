@@ -15,6 +15,7 @@ nav {
     width: 15%;
     background-color: #adb5bd;
     border-right: 2px solid black;
+    overflow-y: auto;
 }
 
 nav ul {
