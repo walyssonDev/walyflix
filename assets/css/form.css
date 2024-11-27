@@ -17,6 +17,14 @@ body {
     overflow-y: auto;
 }
 
+#genero {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
 .img i {
     font-size: 60px;
 }
@@ -116,6 +124,10 @@ form input[type="submit"]:hover {
 }
 
 @media (max-width: 1020px) {
+    #genero {
+        flex-direction: column;
+    }
+
     form {
         padding: 1em 2em;
     }

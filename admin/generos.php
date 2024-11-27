@@ -23,24 +23,25 @@ verificarPermissao(['adm']);
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
         <div class="container">
-            <form action="../action/cadastrar_genero.php" method="post">
-                <h2>Novo genero</h2>
-                <div class="img">
-                    <i class="bi bi-clipboard2-plus"></i>
-                </div>
-                <label for="novoGenero">Genero: </label>
-                <div class="novo-genero">
-                    <i class="bi bi-plus-circle"></i>
-                    <input type="text" name="novoGenero" id="novoGenero" placeholder="Genero: " required>
-                </div>
-                <input type="submit" value="Enviar">
-            </form>
-            <table>
-                <tr>
-                    <th>Genero</th>
-                    <th>Ação</th>
-                </tr>
-                <?php
+            <div id="genero">
+                <form action="../action/cadastrar_genero.php" method="post">
+                    <h2>Novo genero</h2>
+                    <div class="img">
+                        <i class="bi bi-clipboard2-plus"></i>
+                    </div>
+                    <label for="novoGenero">Genero: </label>
+                    <div class="novo-genero">
+                        <i class="bi bi-plus-circle"></i>
+                        <input type="text" name="novoGenero" id="novoGenero" placeholder="Genero: " required>
+                    </div>
+                    <input type="submit" value="Enviar">
+                </form>
+                <table>
+                    <tr>
+                        <th>Genero</th>
+                        <th>Ação</th>
+                    </tr>
+                    <?php
                 $sql = "SELECT * FROM generos";
                 $resultado = $conn->query($sql);
 
@@ -54,11 +55,12 @@ verificarPermissao(['adm']);
                         </form>";
                 }
                 ?>
-            </table>
+                </table>
+            </div>
         </div>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
