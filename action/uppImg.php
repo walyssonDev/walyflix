@@ -24,7 +24,7 @@ if ($extension === "jpg" || $extension === "jpeg") {
     $stmt->send_long_data(0, $imgData);
     $stmt->execute();
     $_SESSION['resposta'] = "Foto atualizada com sucesso.";
-    header("Location: ../pages/principal.php");
+    header("Location: ../pages/inicio.php");
 } else {
     $_SESSION['resposta'] = "Erro ao atualizar a foto.";
     header("Location: ../pages/uparImg.php");
