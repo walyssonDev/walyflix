@@ -1,6 +1,6 @@
 <?php
-include("../admin/conexao.php");
-include("../action/valida.php");
+include("../handler/utils/valida.php");
+include("../handler/utils/conexao.php");
 
 $id = $_POST['id'];
 
@@ -33,7 +33,7 @@ while ($row = $resultado->fetch_assoc()) {
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
         <div class="container">
-            <form method="post" action="../action/editar_filme.php" enctype="multipart/form-data">
+            <form method="post" action="../handler/filme/editar_filme.php" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?php echo $id ?>">
                 <h1>Editar <?php echo $nome ?> </h1>
                 <div class="img">

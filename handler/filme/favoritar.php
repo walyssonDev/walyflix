@@ -1,6 +1,6 @@
 <?php
-include("../admin/conexao.php");
-include("valida.php");
+include("../utils/conexao.php");
+include("../utils/valida.php");
 
 $id = $_POST['id'];
 $cpf = $_SESSION['cpf'];

@@ -11,20 +11,20 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
 <body>
     <div class="container">
-        <form method="post" action="action/login.php">
+        <form method="post" action="handler/usuario/login.php">
             <h1>Login</h1>
             <div class="img">
                 <i class="bi bi-person-circle"></i>
@@ -45,7 +45,7 @@
     </div>
 
     <script>
-    <?php
+        <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }

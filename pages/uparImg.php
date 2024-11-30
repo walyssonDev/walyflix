@@ -1,6 +1,6 @@
 <?php
-include("../admin/conexao.php");
-include("../action/valida.php");
+include("../handler/utils/conexao.php");
+include("../handler/utils/valida.php");
 ?>
 
 <!DOCTYPE html>
@@ -17,14 +17,14 @@ include("../action/valida.php");
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -33,16 +33,16 @@ include("../action/valida.php");
         <button onclick="menu()" class="btn-menu"><i class="bi bi-list"></i></button>
         <div class="user">
             <a href="inicio.php">
-                <img src="../action/userImg.php" alt="Foto de Perfil">
+                <img src="../handler/usuario/userImg.php" alt="Foto de Perfil">
             </a>
             <p>Olá, <?php echo $_SESSION["nome"]; ?>.</p>
         </div>
-        <button><a href="../action/sair.php">Sair</a></button>
+        <button><a href="../handler/usuario/sair.php">Sair</a></button>
     </header>
     <div class="container">
-        <form method="post" action="../action/uppImg.php" enctype="multipart/form-data">
+        <form method="post" action="../handler/usuario/uppImg.php" enctype="multipart/form-data">
             <h1>Escolha sua foto de perfil</h1>
-            <img src="../action/userImg.php" alt="Imagem do Usuario" id="previewImg">
+            <img src="../handler/usuario/userImg.php" alt="Imagem do Usuario" id="previewImg">
             <label for="img">Arquivo: </label>
             <div class="file">
                 <i class="bi bi-file-earmark-fill"></i>
@@ -53,22 +53,22 @@ include("../action/valida.php");
         </form>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
         }
         ?>
-    document.getElementById('img').addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('previewImg').src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+        document.getElementById('img').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImg').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     </script>
 </body>
 

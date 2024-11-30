@@ -1,6 +1,6 @@
 <?php
-include("../admin/conexao.php");
-include("../action/valida.php");
+include("../handler/utils/conexao.php");
+include("../handler/utils/valida.php");
 
 ?>
 
@@ -17,14 +17,14 @@ include("../action/valida.php");
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -61,7 +61,7 @@ include("../action/valida.php");
                     <article class='filme'>";
                 echo "
                     <div class='fav'>
-                    <form method='post' action='../action/favoritar.php'>
+                    <form method='post' action='../handler/filme/favoritar.php'>
                     <input type='hidden' name='pgfav' value='favoritos'>
                     <input type='hidden' name='id' value='" . $rowFilme['id'] . "'>
                     <button type='submit'>

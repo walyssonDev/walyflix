@@ -1,6 +1,6 @@
 <?php
-include("../admin/conexao.php");
-include("valida.php");
+include("../utils/conexao.php");
+include("../utils/valida.php");
 
 ini_set("display_errors", true);
 
@@ -15,4 +15,4 @@ $stmt->execute();
 $resposta = "Genero editado com sucesso!";
 
 $_SESSION['resposta'] = $resposta;
-header("Location: ../admin/generos.php");
+header("Location: ../../admin/generos.php");

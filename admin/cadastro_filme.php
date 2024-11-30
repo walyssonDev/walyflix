@@ -1,6 +1,6 @@
 <?php
-include("../action/valida.php");
-include("conexao.php");
+include("../handler/utils/valida.php");
+include("../handler/utils/conexao.php");
 
 verificarPermissao(['adm']);
 ?>
@@ -22,7 +22,7 @@ verificarPermissao(['adm']);
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
         <div class="container">
-            <form method="post" action="../action/cadastrar_filme.php" enctype="multipart/form-data">
+            <form method="post" action="../handler/filme/cadastrar_filme.php" enctype="multipart/form-data">
                 <h1>Cadastrar Filme</h1>
                 <div class="img">
                     <i class="bi bi-card-checklist"></i>

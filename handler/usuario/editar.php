@@ -1,7 +1,7 @@
 <?php
-include("../admin/conexao.php");
-include("valida.php");
-include("../assets/validaForm.php");
+include("../utils/conexao.php");
+include("../utils/valida.php");
+include("../../assets/php/validaForm.php");
 
 $cpf = $_POST["cpf"];
 $nome = $_POST["nome"];
@@ -18,8 +18,8 @@ if ($resultado === true) {
     $stmt->execute();
 
     $_SESSION['mensagem'] = "Editado com sucesso";
-    header("Location: ../admin/edita.php");
+    header("Location: ../../admin/usuarios.php");
 } else {
     $_SESSION['mensagem'] = $resultado;
-    header("Location: ../admin/edita.php");
+    header("Location: ../../admin/usuarios.php");
 }

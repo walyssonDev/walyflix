@@ -1,6 +1,6 @@
 <?php
-include("conexao.php");
-include("../action/valida.php");
+include("../handler/utils/valida.php");
+include("../handler/utils/conexao.php");
 
 verificarPermissao(['adm']);
 ?>
@@ -45,7 +45,7 @@ verificarPermissao(['adm']);
                         <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
                         <input type='submit' value='Editar' id='editar'>
                     </form>
-                    <form action = '../action/deletar_filme.php' method = 'POST'>
+                    <form action = '../handler/filme/deletar_filme.php' method = 'POST'>
                         <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
                         <input type = 'submit' value = 'Deletar' id='deletar'>
                     </form>

@@ -1,6 +1,6 @@
 <?php
-include("../admin/conexao.php");
-include("valida.php");
+include("../utils/conexao.php");
+include("../utils/valida.php");
 
 $cpf = $_POST['cpfUser'];
 $comentario = $_POST['comentario'];
@@ -15,4 +15,4 @@ if (!$stmt) {
 $stmt->bind_param("ssi", $cpf, $comentario, $id);
 $stmt->execute();
 
-header("Location: ../pages/assistir_filme.php?id=$id");
+header("Location: ../../pages/assistir_filme.php?id=$id");

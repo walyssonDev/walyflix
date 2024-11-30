@@ -21,11 +21,11 @@
         <button onclick="menu()" class="btn-menu"><i class="bi bi-list"></i></button>
         <div class="user">
             <a href="../pages/uparImg.php">
-                <img src="../action/userImg.php" alt="Foto de Perfil">
+                <img src="../handler/usuario/userImg.php" alt="Foto de Perfil">
             </a>
             <p>Olá, <?php echo $_SESSION["nome"]; ?>.</p>
         </div>
-        <button><a href="../action/sair.php">Sair</a></button>
+        <button><a href="../handler/usuario/sair.php">Sair</a></button>
     </header>
 </body>
 

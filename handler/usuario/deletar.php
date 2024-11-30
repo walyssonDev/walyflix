@@ -1,5 +1,5 @@
 <?php
-include("../admin/conexao.php");
+include("../utils/conexao.php");
 
 $cpf = $_POST["cpf"];
 
@@ -21,4 +21,4 @@ $stmt->bind_param("s", $cpf);
 $stmt->execute();
 $stmt->close();
 
-header("Location: ../admin/deleta.php");
+header("Location: ../../admin/usuarios.php");

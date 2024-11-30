@@ -1,6 +1,6 @@
 <?php
-include("../admin/conexao.php");
-include("valida.php");
+include("../utils/conexao.php");
+include("../utils/valida.php");
 
 $genero = $_POST['novoGenero'];
 $cpf = $_SESSION['cpf'];
@@ -21,4 +21,4 @@ if ($resultado->num_rows > 0) {
 }
 
 $_SESSION['resposta'] = $resposta;
-header("Location: ../admin/generos.php");
+header("Location: ../../admin/generos.php");

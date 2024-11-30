@@ -1,14 +1,12 @@
 <?php
-include("../admin/conexao.php");
-include("valida.php");
+include("../utils/conexao.php");
+include("../utils/valida.php");
 
 $nome = $_POST['nome'];
 $path = $_POST['path'];
 $filme = $_POST['link'];
+$id = $_POST['id'];
 $genero = $_POST['genero'];
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 if (strpos($filme, 'dropbox.com') !== false) {
     $filme = str_replace('dl=0', 'raw=1', $filme);
@@ -24,19 +22,21 @@ if (strpos($filme, 'dropbox.com') !== false) {
 }
 
 if ($filme == null) {
-    $_SESSION['resposta'] = "Erro ao cadastrar filme formato invalido";
-    header("Location: ../admin/cadastro_filme.php");
-    die;
+    $_SESSION['resposta'] = "Erro ao editar filme formato invalido";
+    header("Location: ../../admin/filmes_adm.php");
+    exit;
 }
 
-$sql = "INSERT INTO filmes (nome, path, filme, genero) VALUES (?, ?, ?, ?)";
+$sql = "UPDATE filmes SET nome = ?, path = ?, filme = ?, genero = ? WHERE id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssss", $nome, $path, $filme, $genero);
+$stmt->bind_param("ssssi", $nome, $path, $filme, $genero, $id);
 
 if ($stmt->execute()) {
-    $_SESSION['resposta'] = "Filme cadastrado com sucesso";
+    $_SESSION['resposta'] = "Filme editado com sucesso";
+    $stmt->close();
 } else {
-    $_SESSION['resposta'] = "Erro ao cadastrar filme: " . $conn->error;
+    $_SESSION['resposta'] = "Erro ao editar filme: " . $conn->error;
+    $stmt->close();
 }
 
-header("Location: ../admin/cadastro_filme.php");
+header("Location: ../../admin/filmes_adm.php");

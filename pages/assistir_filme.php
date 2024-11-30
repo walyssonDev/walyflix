@@ -1,6 +1,6 @@
 <?php
-include("../admin/conexao.php");
-include("../action/valida.php");
+include("../handler/utils/conexao.php");
+include("../handler/utils/valida.php");
 
 $id = $_GET['id'];
 
@@ -24,19 +24,19 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
-    <title>Document</title>
+    <title><?php echo $nomeFilme ?></title>
     <link rel="stylesheet" href="../assets/css/assistir_filme.css?v=<?php echo time(); ?>">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -101,7 +101,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         <p class='nome'>" . $nome . ": </p>
                         <p>" . $comentario . "</p>
                         </div>
-                        <form id='deletar' action='../action/deletarComentario.php?id=$id' method='post'>
+                        <form id='deletar' action='../handler/comentario/deletarComentario.php?id=$id' method='post'>
                         <input type='hidden' name='comentario' id='comentario' value='$comentario'>
                         <input type='hidden' name='cpfUser' id='cpfUser' value='$cpfComentario'>
                         <input type='submit' value='Deletar'>
@@ -116,7 +116,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         <p class='nome'>" . $nome . ": </p>
                         <p>" . $comentario . "</p>
                         </div>
-                        <form id='deletar' action='../action/deletarComentario.php?id=$id' method='post'>
+                        <form id='deletar' action='../handler/comentario/deletarComentario.php?id=$id' method='post'>
                         <input type='hidden' name='comentario' id='comentario' value='$comentario'>
                         <input type='hidden' name='cpfUser' id='cpfUser' value='$cpfComentario'>
                         <input type='submit' value='Deletar'>
@@ -132,7 +132,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         <p class='nome'>" . $nome . ": </p>
                         <p>" . $comentario . "</p>
                         </div>
-                        <form id='deletar' action='../action/deletarComentario.php?id=$id' method='post'>
+                        <form id='deletar' action='../handler/comentario/deletarComentario.php?id=$id' method='post'>
                         <input type='hidden' name='comentario' id='comentario' value='$comentario'>
                         <input type='hidden' name='cpfUser' id='cpfUser' value='$cpfComentario'>
                         <input type='submit' value='Deletar'>
@@ -163,7 +163,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                     }
                     ?>
                 </div>
-                <form action="../action/comentar.php?id=<?php echo $id ?>" method="post">
+                <form action="../handler/comentario/comentar.php?id=<?php echo $id ?>" method="post">
                     <input type="text" name="comentario" id="comentario" placeholder="Seu comentario: (Max: 100)"
                         required>
                     <button type="submit">
@@ -174,66 +174,66 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }
         ?>
-        const filme_id = <?php echo $id ?>;
-        const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
+    const filme_id = <?php echo $id ?>;
+    const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
 
-        <?php
+    <?php
         $cpf = $_SESSION['cpf'];
         $sql = "SELECT tempo FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
         $resultado = $conn->query($sql);
         $tempo = ($row = $resultado->fetch_assoc()) ? $row['tempo'] : 0;
         ?>
 
-        if (isIframe) {
-            const tempoSalvo = <?php echo $tempo ?>;
-            const iframe = document.querySelector('iframe');
+    if (isIframe) {
+        const tempoSalvo = <?php echo $tempo ?>;
+        const iframe = document.querySelector('iframe');
 
-            if (iframe) {
-                // Adiciona o parâmetro de início à URL do iframe
-                const url = new URL(iframe.src);
-                url.searchParams.set('start', Math.floor(tempoSalvo));
-                iframe.src = url.toString();
-            }
-
-            // Atualiza o tempo no servidor periodicamente
-            let tempoAtual = tempoSalvo; // Baseado no tempo salvo
-            setInterval(() => {
-                tempoAtual += 6; // Incrementa manualmente (melhor se houver API)
-                fetch('../action/salvar_tempo.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        tempo: tempoAtual,
-                        id: filme_id
-                    })
-                });
-            }, 6000);
-        } else {
-            const video = document.getElementById('video');
-            video.addEventListener('loadedmetadata', () => {
-                video.currentTime = <?php echo $tempo ?>;
-            });
-
-            setInterval(() => {
-                fetch('../action/salvar_tempo.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        tempo: video.currentTime,
-                        id: filme_id
-                    })
-                });
-            }, 6000);
+        if (iframe) {
+            // Adiciona o parâmetro de início à URL do iframe
+            const url = new URL(iframe.src);
+            url.searchParams.set('start', Math.floor(tempoSalvo));
+            iframe.src = url.toString();
         }
+
+        // Atualiza o tempo no servidor periodicamente
+        let tempoAtual = tempoSalvo; // Baseado no tempo salvo
+        setInterval(() => {
+            tempoAtual += 6; // Incrementa manualmente (melhor se houver API)
+            fetch('../action/salvar_tempo.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tempo: tempoAtual,
+                    id: filme_id
+                })
+            });
+        }, 6000);
+    } else {
+        const video = document.getElementById('video');
+        video.addEventListener('loadedmetadata', () => {
+            video.currentTime = <?php echo $tempo ?>;
+        });
+
+        setInterval(() => {
+            fetch('../action/salvar_tempo.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tempo: video.currentTime,
+                    id: filme_id
+                })
+            });
+        }, 6000);
+    }
     </script>
 </body>
 

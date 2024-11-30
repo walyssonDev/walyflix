@@ -1,6 +1,6 @@
 <?php
-include("../action/valida.php");
-include("conexao.php");
+include("../handler/utils/valida.php");
+include("../handler/utils/conexao.php");
 
 verificarPermissao('adm');
 ?>
@@ -27,6 +27,7 @@ verificarPermissao('adm');
                     <th>CPF</th>
                     <th>Nome</th>
                     <th>Senha</th>
+                    <th colspan="2">Ações</th>
                 </tr>
                 <?php
                 $sql = "SELECT * FROM usuarios";
@@ -37,12 +38,32 @@ verificarPermissao('adm');
                     echo "<td>" . $row["cpf"] . "</td>";
                     echo "<td>" . $row["nome"] . "</td>";
                     echo "<td>" . $row["senha"] . "</td>";
+                    echo "<td>
+                        <form action = '../admin/edita_usuario.php' method = 'POST'>
+                        <input type = 'hidden' name = 'cpf' value = '" . $row["cpf"] . "'>
+                        <button id = 'edita' type = 'submit'>Editar</button>
+                        </form>
+                        </td>";
+                    echo "<td> 
+                        <form action = '../handler/usuario/deletar.php' method = 'POST'>
+                        <input type = 'hidden' name = 'cpf' value = '" . $row["cpf"] . "'>
+                        <input id = 'deleta' type = 'submit' value = 'Deletar'>
+                        </form>";
+                    echo "</tr>";
                     echo "</tr>";
                 }
                 ?>
             </table>
         </div>
     </div>
+    <script>
+        <?php
+        if (isset($_SESSION['mensagem'])) {
+            echo "alert('" . $_SESSION['mensagem'] . "')";
+            unset($_SESSION['mensagem']);
+        }
+        ?>
+    </script>
 </body>
 
 </html>

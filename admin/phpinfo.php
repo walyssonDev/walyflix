@@ -1,6 +1,6 @@
 <?php
-include("../action/valida.php");
-include("conexao.php");
+include("../handler/utils/valida.php");
+include("../handler/utils/conexao.php");
 
 verificarPermissao(['adm']);
 ?>
@@ -19,7 +19,7 @@ verificarPermissao(['adm']);
     <?php include("../includes/header.php") ?>
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
-        <iframe src="../action/phpinfo.php" style="width: 100%;" frameborder="0"></iframe>
+        <iframe src="../handler/utils/phpinfo.php" style="width: 100%;" frameborder="0"></iframe>
     </div>
 </body>
 

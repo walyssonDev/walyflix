@@ -20,11 +20,8 @@
                     ";
             } elseif ($_SESSION["tipo"] == "adm") {
                 echo "
-                        <li><a href='../admin/usuarios.php'>Inicio</a></li>
+                        <li><a href='../admin/usuarios.php'>Usuarios</a></li>
                         <li><a href='../admin/cadastro.php'>Cadastro</a></li>
-                        <li><a href='../admin/busca.php'>Busca</a></li>
-                        <li><a href='../admin/edita.php'>Edição</a></li>
-                        <li><a href='../admin/deleta.php'>Deletar</a></li>
                         <li><a href='../admin/cadastro_filme.php'>Cadastrar Filme</a></li>
                         <li><a href='../admin/generos.php'>Generos</a></li>
                         <li><a href='../admin/filmes_adm.php'>Filmes</a></li>

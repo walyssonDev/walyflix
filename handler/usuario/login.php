@@ -1,6 +1,6 @@
 <?php
-include("../admin/conexao.php");
-include("../assets/validaForm.php");
+include("../utils/conexao.php");
+include("../../assets/php/validaForm.php");
 
 $cpf = $_POST["cpf"];
 $senha = $_POST["senha"];
@@ -27,12 +27,10 @@ if ($resultadoCpf === true && $resultadoSenha === true) {
             $_SESSION["nome"] = $nome;
             $_SESSION["tipo"] = $tipo;
 
-            header("Location: ../pages/inicio.php");
-        } else {
-            header("Location: ../index.php?resposta=CPF ou Senha incorretos.");
+            header("Location: ../../pages/inicio.php");
         }
     }
 } else {
     $resultado = "CPF ou Senha incorretos";
-    header("Location: ../index.php?resposta=$resultado");
+    header("Location: ../../index.php?resposta=$resultado");
 }

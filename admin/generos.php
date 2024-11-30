@@ -1,6 +1,6 @@
 <?php
-include("../action/valida.php");
-include("conexao.php");
+include("../handler/utils/valida.php");
+include("../handler/utils/conexao.php");
 
 verificarPermissao(['adm']);
 ?>
@@ -24,7 +24,7 @@ verificarPermissao(['adm']);
         <?php include("../includes/nav.php") ?>
         <div class="container">
             <div id="genero">
-                <form action="../action/cadastrar_genero.php" method="post">
+                <form action="../handler/genero/cadastrar_genero.php" method="post">
                     <h2>Novo genero</h2>
                     <div class="img">
                         <i class="bi bi-clipboard2-plus"></i>
@@ -42,25 +42,25 @@ verificarPermissao(['adm']);
                         <th>Ação</th>
                     </tr>
                     <?php
-                $sql = "SELECT * FROM generos";
-                $resultado = $conn->query($sql);
+                    $sql = "SELECT * FROM generos";
+                    $resultado = $conn->query($sql);
 
-                while ($row = $resultado->fetch_assoc()) {
-                    echo "<form action='../action/editar_genero.php' method = 'post'>
+                    while ($row = $resultado->fetch_assoc()) {
+                        echo "<form action='../handler/genero/editar_genero.php' method = 'post'>
                             <tr>
                                 <td><input type='text' id='genero' name='genero' required value='" . $row['genero'] . "'></td>
                                 <input type='hidden' name='id' id='id' value='" . $row['id'] . "'>
                                 <td><button id='edita' type='submit'>Editar</button></td>
                             </tr>
                         </form>";
-                }
-                ?>
+                    }
+                    ?>
                 </table>
             </div>
         </div>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
