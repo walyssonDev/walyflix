@@ -161,12 +161,4 @@ body * {
         align-items: center;
         margin-bottom: 20%;
     }
-
-    .filme {
-        width: 44vw;
-    }
-
-    .filme img {
-        height: 15em;
-    }
 }
