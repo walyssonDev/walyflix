@@ -161,4 +161,12 @@ body * {
         align-items: center;
         margin-bottom: 20%;
     }
+
+    .filme {
+        width: 10em;
+    }
+
+    .filme img {
+        height: 12em;
+    }
 }
