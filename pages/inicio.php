@@ -15,6 +15,7 @@ include("../handler/utils/valida.php");
             padding: 0;
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000814;
         }
 
         h1 {
