@@ -14,18 +14,17 @@
             <?php
             if ($_SESSION["tipo"] == "comum") {
                 echo "
-                        <li><a href='inicio.php'>Inicio</a></li>
-                        <li><a href='filmes.php'>Filmes</a></li>
-                        <li><a href='favoritos.php'>Favoritos</a></li>
+                        <li><a href='inicio.php'><i class='bi bi-house-fill'></i>Inicio</a></li>
+                        <li><a href='filmes.php'><i class='bi bi-film'></i>Filmes</a></li>
+                        <li><a href='favoritos.php'><i class='bi bi-star-fill'></i>Favoritos</a></li>
                     ";
             } elseif ($_SESSION["tipo"] == "adm") {
                 echo "
-                        <li><a href='../admin/usuarios.php'>Usuarios</a></li>
-                        <li><a href='../admin/cadastro.php'>Cadastro</a></li>
-                        <li><a href='../admin/cadastro_filme.php'>Cadastrar Filme</a></li>
-                        <li><a href='../admin/generos.php'>Generos</a></li>
-                        <li><a href='../admin/filmes_adm.php'>Filmes</a></li>
-                        <li><a href='../admin/phpinfo.php'>Info PHP</a></li>
+                        <li><a href='../admin/usuarios.php'><i class='bi bi-people-fill'></i>Usuarios</a></li>
+                        <li><a href='../admin/cadastro.php'><i class='bi bi-person-plus-fill'></i>Cadastro</a></li>
+                        <li><a href='../admin/cadastro_filme.php'><i class='bi bi-cloud-plus-fill'></i>Cadastrar Filme</a></li>
+                        <li><a href='../admin/generos.php'><i class='bi bi-tags-fill'></i>Generos</a></li>
+                        <li><a href='../admin/filmes_adm.php'><i class='bi bi-film'></i>Filmes</a></li>
                 ";
             }
             ?>

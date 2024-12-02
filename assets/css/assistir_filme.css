@@ -13,13 +13,14 @@ body {
 }
 
 .filme {
+    background-color: #1e293b;
+    color: #ffffff;
+    border-radius: 1rem;
+    overflow: hidden;
     height: fit-content;
     width: 50%;
-    background-color: #023047;
-    color: white;
-    border-radius: 1em;
-    overflow: hidden;
     text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 iframe {
@@ -45,10 +46,13 @@ video {
     color: white;
     padding: 1em;
     overflow-y: auto;
-    max-height: 75vh;
+    scrollbar-width: thin;
+    max-height: 60vh;
+    scrollbar-color: #64748b #1e293b;
 }
 
-.comment {
+.comment,
+.commentADM {
     display: flex;
     gap: 1%;
     background-color: #219ebc;
@@ -60,22 +64,8 @@ video {
 }
 
 .commentADM {
-    display: flex;
-    gap: 1%;
     background-color: black;
     border: 2px solid white;
-    border-radius: 1em;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1em 0;
-    padding: 0 1em;
-}
-
-.commentADM .txt {
-    display: flex;
-    align-items: center;
-    width: 90%;
-    gap: 1%;
 }
 
 .perfil-imagem {
@@ -86,7 +76,8 @@ video {
     object-position: center;
 }
 
-.comment .txt {
+.comment .txt,
+.commentADM .txt {
     display: flex;
     align-items: center;
     width: 90%;
@@ -104,47 +95,60 @@ video {
     font-size: 15px;
 }
 
-form {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 #deletar {
-    width: fit-content;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: end;
-    align-items: center;
+    background-color: transparent;
 }
 
 #deletar input[type="submit"] {
-    padding: .5em;
-    background-color: red;
-    color: white;
+    padding: 0.5rem 1rem;
+    background-color: #dc2626;
+    color: #ffffff;
     border: none;
+    border-radius: 0.5rem;
     cursor: pointer;
-    border-radius: .5em;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+#deletar input[type="submit"]:hover {
+    background-color: #b91c1c;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #1e293b;
 }
 
 form input[type="text"] {
-    width: 100%;
-    padding: .5em;
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #0f172a;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+form input[type="text"]::placeholder {
+    color: #94a3b8;
 }
 
 form button[type="submit"] {
-    position: relative;
     border: none;
-    background-color: transparent;
-    font-size: 20px;
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 0.8rem 1.5rem;
+    margin-left: 0.5rem;
+    border-radius: 0.5rem;
     cursor: pointer;
-    margin: 0;
-    padding: 1em;
-    background-color: black;
-    color: white;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #1d4ed8;
 }
 
 @media screen and (max-width: 1020px) {

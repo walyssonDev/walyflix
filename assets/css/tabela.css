@@ -18,51 +18,67 @@ body {
 
 table {
     border-collapse: collapse;
-    background-color: #f2f2f2;
+    background-color: #1e1e1e;
+    width: 80%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 table th,
-td {
-    border: 1px solid black;
+table td {
+    border: 1px solid #343a40;
     text-align: center;
-    overflow: hidden;
     padding: .5em;
+    color: #f5f5f5;
+}
+
+table th {
+    background-color: #272727;
+    /* Cabeçalho mais escuro */
+    font-weight: bold;
 }
 
 table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #1a1a1a;
+    /* Alternância de linhas */
+}
+
+table tr:nth-child(odd) {
+    background-color: #222222;
+    /* Alternância de linhas */
 }
 
 table #edita {
     padding: .7em 1em;
     border-radius: .5em;
     border: none;
-    background-color: #8ac926;
+    background-color: #198754;
+    /* Verde escuro para editar */
     color: white;
     cursor: pointer;
-}
-
-table #cpf,
-#nome,
-#senha {
-    width: 10em;
+    transition: background-color 0.3s ease;
 }
 
 table #edita:hover {
-    background-color: #6a994e;
+    background-color: #157347;
+    /* Verde mais escuro no hover */
 }
 
 table #deleta {
     padding: .7em 1em;
     border-radius: .5em;
     border: none;
-    background-color: #bf0603;
+    background-color: #dc3545;
+    /* Vermelho escuro para deletar */
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 table #deleta:hover {
-    background-color: #780000;
+    background-color: #bb2d3b;
+    /* Vermelho mais escuro no hover */
 }
 
 @media (max-width: 1020px) {
@@ -71,15 +87,14 @@ table #deleta:hover {
     }
 
     table th,
-    td {
-        padding: 0em;
+    table td {
+        padding: 0.5em;
         font-size: 0.9em;
     }
 
     table #edita,
     table #deleta {
         padding: 0.5em 0.8em;
-        margin: 1%;
         font-size: 0.9em;
     }
 }

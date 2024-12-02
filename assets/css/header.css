@@ -11,22 +11,26 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
-    background-color: #0a100d;
+    padding: 1em 2em;
+    background-color: #0d1117;
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header .user {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 1em;
     font-size: 20px;
-    color: white;
+    color: #ffffff;
 }
 
 header .user a {
-    color: white;
-    transition: .2s;
+    color: #ffffff;
+    transition: transform 0.2s ease-in-out, color 0.2s;
 }
 
 header .user a:hover {
@@ -39,37 +43,43 @@ header .user img {
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
+    border: 2px solid #ffffff;
 }
 
 header button {
-    border: none;
     background-color: transparent;
-}
-
-header button a {
-    padding: .5em 2em;
-    text-decoration: none;
-    font-size: 20px;
-    background-color: #bf0603;
-    border-radius: 1em;
     border: none;
-    color: white;
     cursor: pointer;
 }
 
+header button a {
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #bf0603;
+    border: 2px solid #bf0603;
+    border-radius: 2em;
+    transition: all 0.3s ease;
+}
+
 header button a:hover {
-    opacity: .8;
+    background-color: #830c0a;
 }
 
 .btn-menu {
     display: none;
+    font-size: 1.5rem;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 @media screen and (max-width: 1020px) {
     .btn-menu {
         display: block;
-        font-size: 30px;
-        cursor: pointer;
-        color: white;
     }
 }

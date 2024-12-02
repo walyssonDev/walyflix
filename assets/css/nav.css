@@ -12,38 +12,39 @@ body {
 nav {
     position: relative;
     height: 100%;
-    width: 15%;
-    background-color: #adb5bd;
-    border-right: 2px solid black;
+    min-width: 15%;
+    background-color: #1e1e2e;
+    color: #ffffff;
+    border-right: 2px solid #292d3e;
     overflow-y: auto;
 }
 
 nav ul {
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
-    width: 100%;
+    list-style: none;
 }
 
 nav ul a {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 1em 0;
-    border-bottom: 2px solid black;
-    background-color: #edede9;
+    padding: 1em;
     text-decoration: none;
-    color: black;
-    width: 100%;
-    cursor: pointer;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 nav ul a:hover {
-    opacity: .5;
+    background-color: #292d3e;
+}
+
+nav ul a i {
+    margin-right: 10px;
+    font-size: 1.2rem;
 }
 
 @media screen and (max-width: 1020px) {
