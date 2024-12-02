@@ -18,7 +18,7 @@ if ($resultado->num_rows == 0) {
 }
 
 if ($pg == "favoritos") {
-    header("Location: ../pages/favoritos.php");
+    header("Location: ../../pages/favoritos.php");
 } else {
-    header("Location: ../pages/filmes.php");
+    header("Location: ../../pages/filmes.php");
 }

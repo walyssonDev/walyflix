@@ -58,7 +58,7 @@ include("../handler/utils/valida.php");
                     <article class='filme'>";
                     echo "
                     <div class='fav'>
-                    <form method='post' action='../action/favoritar.php'>
+                    <form method='post' action='../handler/filme/favoritar.php'>
                     <input type='hidden' name='id' value='" . $id . "'>
                     <button type='submit'>";
                     if ($isFav) {

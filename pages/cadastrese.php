@@ -11,7 +11,7 @@ include("../handler/utils/conexao.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <title>Cadastro usuarios</title>
-    <link rel="stylesheet" href="../assets/css/cadastrese.css">
+    <link rel="stylesheet" href="../assets/css/form.css?v=<?php echo time(); ?>">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
@@ -27,7 +27,7 @@ include("../handler/utils/conexao.php");
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="index">
         <form method="post" action="../handler/usuario/cadastrar.php">
             <h1>Cadastrar</h1>
             <div class="img">

@@ -1,8 +1,9 @@
-body * {
+body {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('data:image/svg+xml,%3Csvg%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201024%201024%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%230f172a%22%20/%3E%3Cpath%20d%3D%22M0,0L1024,1024M1024,0L0,1024%22%20stroke%3D%22%232563eb%22%20stroke-width%3D%2210%22/%3E%3C/svg%3E');
 }
 
 #busca {
@@ -11,6 +12,7 @@ body * {
     max-width: 600px;
     margin: 1em auto;
     padding: 10px 15px;
+    background-color: #0f172a;
     font-size: 16px;
     border: 2px solid #ccc;
     border-radius: 25px;
@@ -36,11 +38,11 @@ body * {
     align-items: center;
     gap: 2rem;
     overflow-y: auto;
-    padding-bottom: 20%;
 }
 
 .filmes {
     display: flex;
+    padding: .5em;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1em;
@@ -165,18 +167,38 @@ body * {
     background-color: #004478;
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 768px) {
     .interface {
-        justify-content: center;
+        padding: 0 1em;
         align-items: center;
-        margin-bottom: 20%;
+        gap: 0;
+        overflow-y: auto;
+        height: calc(100vh - 6em);
+    }
+
+    #busca {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .filmes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1em;
+        padding-bottom: 1em;
     }
 
     .filme {
         width: 10em;
     }
 
+    .fav button {
+        width: 50%;
+        transform: rotate(45deg) translate(15px, -20px);
+    }
+
     .filme img {
-        height: 12em;
+        height: 13em;
     }
 }

@@ -35,7 +35,7 @@ while ($row = $resultado->fetch_assoc()) {
         <div class="container">
             <form method="post" action="../handler/filme/editar_filme.php" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?php echo $id ?>">
-                <h1>Editar <?php echo $nome ?> </h1>
+                <h1><?php echo $nome ?> </h1>
                 <div class="img">
                     <i class="bi bi-card-checklist"></i>
                 </div>

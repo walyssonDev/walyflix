@@ -7,7 +7,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="/assets/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/index.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/form.css?v=<?php echo time(); ?>">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="index">
         <form method="post" action="handler/usuario/login.php">
             <h1>Login</h1>
             <div class="img">
@@ -40,8 +40,8 @@
                 <input type="password" name="senha" id="senha" placeholder="Sua senha" required>
             </div>
             <input type="submit" value="Enviar">
+            <a href="pages/cadastrese.php">Cadastre-se</a>
         </form>
-        <a href="pages/cadastrese.php">Cadastre-se</a>
     </div>
 
     <script>
