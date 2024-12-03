@@ -20,7 +20,7 @@ if ($resultadoCpf === true && $resultadoSenha === true) {
         $stmt->bind_result($nome, $tipo);
         $stmt->fetch();
 
-        if ($nome != '') {
+        if (!empty($nome)) {
             session_start();
             $_SESSION["cpf"] = $cpf;
             $_SESSION["senha"] = $senha;
@@ -28,9 +28,19 @@ if ($resultadoCpf === true && $resultadoSenha === true) {
             $_SESSION["tipo"] = $tipo;
 
             header("Location: ../../pages/inicio.php");
+            exit;
+        } else {
+            $resultado = "CPF ou Senha incorretos";
+            header("Location: ../../index.php?resposta=$resultado");
+            exit;
         }
+    } else {
+        $resultado = "Erro ao realizar a consulta no banco de dados.";
+        header("Location: ../../index.php?resposta=$resultado");
+        exit;
     }
 } else {
     $resultado = "CPF ou Senha incorretos";
     header("Location: ../../index.php?resposta=$resultado");
+    exit;
 }

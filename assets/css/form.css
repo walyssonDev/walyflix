@@ -22,14 +22,6 @@ body {
     justify-content: center;
 }
 
-#genero {
-    display: flex;
-    gap: 1em;
-    align-items: center;
-    justify-content: center;
-    overflow-y: auto;
-}
-
 .img i {
     font-size: 4rem;
     color: #3b82f6;
@@ -180,6 +172,10 @@ form input[type="submit"]:hover {
 }
 
 @media (max-width: 1020px) {
+    form {
+        padding: 1em;
+    }
+
     #genero {
         flex-direction: column;
     }

@@ -26,6 +26,19 @@ table {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
+.novo-botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    background-color: #3b82f6;
+    padding: .5em;
+    border-radius: .5em;
+    color: #0f172a;
+    line-height: 1;
+}
+
 table th,
 table td {
     border: 1px solid #343a40;
@@ -83,6 +96,12 @@ table #deleta:hover {
 }
 
 @media (max-width: 1020px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
     table {
         width: 90%;
     }

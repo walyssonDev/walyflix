@@ -41,7 +41,7 @@ include("../handler/utils/valida.php");
     </header>
     <div class="container">
         <form method="post" action="../handler/usuario/uppImg.php" enctype="multipart/form-data">
-            <h1>Escolha sua foto de perfil</h1>
+            <h1>Foto de perfil</h1>
             <img src="../handler/usuario/userImg.php" alt="Imagem do Usuario" id="previewImg">
             <label for="img">Arquivo: </label>
             <div class="file">
@@ -51,25 +51,52 @@ include("../handler/utils/valida.php");
             <p>Apenas JPG ou JPEG</p>
             <input type="submit">
         </form>
+        <form action="../handler/usuario/editar.php">
+            <h2>Suas informações</h2>
+            <label for="nome">Seu nome:</label>
+            <div class="nome">
+                <i class="bi bi-person-fill"></i>
+                <input type="text" name="nome" id="nome" placeholder="Seu nome:" value="<?php echo $_SESSION['nome'] ?>"
+                    required>
+            </div>
+            <label for="cpf">Seu CPF:</label>
+            <div class="cpf">
+                <i class="bi bi-person-vcard-fill"></i>
+                <input type="text" name="cpf" id="cpf" placeholder="Seu CPF: " value="<?php echo $_SESSION['cpf'] ?>"
+                    required>
+            </div>
+            <label for="senha">Sua senha:</label>
+            <div class="senha">
+                <i class="bi bi-lock-fill"></i>
+                <input type="text" name="senha" id="senha" placeholder="Sua senha:"
+                    value="<?php echo $_SESSION['senha'] ?>" required>
+            </div>
+            <input type="submit" value="Enviar">
+        </form>
     </div>
+    <script src="../assets/js/validaForm.js"></script>
     <script>
-        <?php
-        if (isset($_SESSION['resposta'])) {
-            echo "alert('" . $_SESSION['resposta'] . "')";
-            unset($_SESSION['resposta']);
-        }
-        ?>
-        document.getElementById('img').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('previewImg').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
+        document.addEventListener('DOMContentLoaded', function() {
+            <?php
+            if (isset($_SESSION['resposta'])) {
+                echo "alert('" . $_SESSION['resposta'] . "');";
+                unset($_SESSION['resposta']);
             }
+            ?>
+
+            document.getElementById('img').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('previewImg').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
         });
     </script>
+
 </body>
 
 </html>

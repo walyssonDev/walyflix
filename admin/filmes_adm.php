@@ -35,27 +35,28 @@ verificarPermissao(['adm']);
 
                     echo "<a href='../pages/assistir_filme.php?id=" . $row['id'] . "'>";
                     echo "
-            <article class='filme'>
-            <img src='" . $row['path'] . "'>
-            <div class='txt-filme'>
-                <p>" . $row['nome'] . "</p>
-                <p id = 'genero-filme'>" . $genero . "</p>
-                <div class='options'>
-                    <form action = 'edita_filme.php' method = 'POST'>
-                        <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
-                        <input type='submit' value='Editar' id='editar'>
-                    </form>
-                    <form action = '../handler/filme/deletar_filme.php' method = 'POST'>
-                        <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
-                        <input type = 'submit' value = 'Deletar' id='deletar'>
-                    </form>
-                </div>
-            </div>
-            </article>
-            ";
+                    <article class='filme'>
+                    <img src='" . $row['path'] . "'>
+                    <div class='txt-filme'>
+                        <p>" . $row['nome'] . "</p>
+                        <p id = 'genero-filme'>" . $genero . "</p>
+                        <div class='options'>
+                            <form action = 'edita_filme.php' method = 'POST'>
+                                <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
+                                <input type='submit' value='Editar' id='editar'>
+                            </form>
+                            <form action = '../handler/filme/deletar_filme.php' method = 'POST'>
+                                <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
+                                <input type = 'submit' value = 'Deletar' id='deletar'>
+                            </form>
+                        </div>
+                    </div>
+                    </article>
+                    ";
                     echo "</a>";
                 }
                 ?>
+                <div class="space"></div>
             </div>
         </div>
     </div>

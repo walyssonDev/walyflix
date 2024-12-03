@@ -8,7 +8,7 @@ include("../handler/utils/valida.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
-    <title>Document</title>
+    <title>WalyFlix</title>
     <style>
         body {
             box-sizing: border-box;
@@ -48,6 +48,14 @@ include("../handler/utils/valida.php");
                                     echo "ADMINISTRADOR";
                                 } ?></h1>
     </div>
+    <script>
+        <?php
+        if (isset($_SESSION['resposta'])) {
+            echo "alert('" . $_SESSION['resposta'] . "')";
+            unset($_SESSION['resposta']);
+        }
+        ?>
+    </script>
 </body>
 
 </html>

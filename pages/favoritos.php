@@ -32,8 +32,11 @@ include("../handler/utils/valida.php");
     <?php include("../includes/header.php") ?>
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
-        <div class="filmes">
-            <?php
+        <div class="interface">
+            <input type="search" name="busca" id="busca" placeholder="Buscar filme" oninput="buscarFilme()">
+
+            <div class="filmes">
+                <?php
             $cpf = $_SESSION['cpf'];
 
             $sql = "SELECT * FROM favoritos WHERE cpf = '$cpf'";
@@ -81,6 +84,7 @@ include("../handler/utils/valida.php");
                 echo "</a>";
             }
             ?>
+            </div>
         </div>
     </div>
 </body>
