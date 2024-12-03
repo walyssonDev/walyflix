@@ -54,6 +54,10 @@ include("../handler/utils/valida.php");
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
         }
+        if (isset($_SESSION['mensagem'])) {
+            echo "alert('" . $_SESSION['mensagem'] . "')";
+            unset($_SESSION['mensagem']);
+        }
         ?>
     </script>
 </body>
