@@ -17,14 +17,14 @@ include("../handler/utils/valida.php");
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -73,28 +73,29 @@ include("../handler/utils/valida.php");
             </div>
             <input type="submit" value="Enviar">
         </form>
+        <div class="space"></div>
     </div>
     <script src="../assets/js/validaForm.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            <?php
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php
             if (isset($_SESSION['resposta'])) {
                 echo "alert('" . $_SESSION['resposta'] . "');";
                 unset($_SESSION['resposta']);
             }
             ?>
 
-            document.getElementById('img').addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('previewImg').src = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
+        document.getElementById('img').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImg').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
         });
+    });
     </script>
 
 </body>

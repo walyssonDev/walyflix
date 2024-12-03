@@ -179,6 +179,10 @@ form input[type="submit"]:hover {
         overflow-y: auto;
     }
 
+    .space {
+        margin-top: 10em;
+    }
+
     form {
         padding: 1em;
     }
