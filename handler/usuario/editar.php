@@ -19,7 +19,9 @@ if ($resultado === true) {
 
     $_SESSION['mensagem'] = "Editado com sucesso";
     header("Location: ../../admin/usuarios.php");
+    exit;
 } else {
     $_SESSION['mensagem'] = $resultado;
     header("Location: ../../admin/usuarios.php");
+    exit;
 }
