@@ -10,7 +10,7 @@ include("../handler/utils/valida.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>Imagem de Perfil</title>
+    <title>Configurações</title>
     <link rel="stylesheet" href="../assets/css/form.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../assets/css/header.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
@@ -29,51 +29,48 @@ include("../handler/utils/valida.php");
 </head>
 
 <body>
-    <header>
-        <button onclick="menu()" class="btn-menu"><i class="bi bi-list"></i></button>
-        <div class="user">
-            <a href="inicio.php">
-                <img src="../handler/usuario/userImg.php" alt="Foto de Perfil">
-            </a>
-            <p>Olá, <?php echo $_SESSION["nome"]; ?>.</p>
+    <?php include("../includes/header.php") ?>
+    <div class="conteudo">
+        <?php include("../includes/nav.php") ?>
+        <div class="container">
+            <form method="post" class="config" action="../handler/usuario/editar.php" enctype="multipart/form-data">
+                <h1>Editar perfil</h1>
+                <div class="img-user">
+                    <img src="../handler/usuario/userImg.php" alt="Imagem do Usuario" id="previewImg">
+                    <div class="file">
+                        <i class="bi bi-file-earmark-fill"></i>
+                        <input type="file" name="img" id="img" accept=".jpeg, .jpg">
+                    </div>
+                </div>
+                <div class="config-nome">
+                    <label for="nome">Seu nome:</label>
+                    <div class="nome">
+                        <i class="bi bi-person-fill"></i>
+                        <input type="text" name="nome" id="nome" placeholder="Seu nome: "
+                            value="<?php echo $_SESSION['nome'] ?>" required>
+                    </div>
+                </div>
+                <div class="config-cpf">
+                    <label for="cpf">Seu CPF:</label>
+                    <div class="cpf">
+                        <i class="bi bi-person-vcard-fill"></i>
+                        <input type="text" name="cpf" id="cpf" placeholder="Seu CPF: "
+                            value="<?php echo $_SESSION['cpf'] ?>" required>
+                    </div>
+                </div>
+                <div class="config-senha">
+                    <label for="senha">Sua senha:</label>
+                    <div class="senha">
+                        <i class="bi bi-lock-fill"></i>
+                        <input type="text" name="senha" id="senha" placeholder="Sua senha:"
+                            value="<?php echo $_SESSION['senha'] ?>" required>
+                    </div>
+                </div>
+                <input type="hidden" name="cpfAnterior" id="cpfAnterior" value="<?php echo $_SESSION['cpf'] ?>">
+                <input type="submit" value="Enviar">
+            </form>
+            <div class="space"></div>
         </div>
-        <button><a href="../handler/usuario/sair.php">Sair</a></button>
-    </header>
-    <div class="container">
-        <form method="post" action="../handler/usuario/uppImg.php" enctype="multipart/form-data">
-            <h1>Foto de perfil</h1>
-            <img src="../handler/usuario/userImg.php" alt="Imagem do Usuario" id="previewImg">
-            <label for="img">Arquivo: </label>
-            <div class="file">
-                <i class="bi bi-file-earmark-fill"></i>
-                <input type="file" name="img" id="img" accept=".jpeg, .jpg" required>
-            </div>
-            <p>Apenas JPG ou JPEG</p>
-            <input type="submit">
-        </form>
-        <form action="../handler/usuario/editar.php">
-            <h2>Suas informações</h2>
-            <label for="nome">Seu nome:</label>
-            <div class="nome">
-                <i class="bi bi-person-fill"></i>
-                <input type="text" name="nome" id="nome" placeholder="Seu nome:" value="<?php echo $_SESSION['nome'] ?>"
-                    required>
-            </div>
-            <label for="cpf">Seu CPF:</label>
-            <div class="cpf">
-                <i class="bi bi-person-vcard-fill"></i>
-                <input type="text" name="cpf" id="cpf" placeholder="Seu CPF: " value="<?php echo $_SESSION['cpf'] ?>"
-                    required>
-            </div>
-            <label for="senha">Sua senha:</label>
-            <div class="senha">
-                <i class="bi bi-lock-fill"></i>
-                <input type="text" name="senha" id="senha" placeholder="Sua senha:"
-                    value="<?php echo $_SESSION['senha'] ?>" required>
-            </div>
-            <input type="submit" value="Enviar">
-        </form>
-        <div class="space"></div>
     </div>
     <script src="../assets/js/validaForm.js"></script>
     <script>

@@ -30,6 +30,27 @@ body {
     margin-bottom: 1rem;
 }
 
+.config {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.config .img-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.config-nome,
+.config-cpf,
+.config-senha {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
 .nome,
 .cpf,
 .senha,
