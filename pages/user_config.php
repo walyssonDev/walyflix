@@ -39,6 +39,7 @@ include("../handler/utils/valida.php");
                     <img src="../handler/usuario/userImg.php" alt="Imagem do Usuario" id="previewImg">
                     <div class="file">
                         <i class="bi bi-file-earmark-fill"></i>
+                        <label for="img">Selecionar imagem</label>
                         <input type="file" name="img" id="img" accept=".jpeg, .jpg">
                     </div>
                 </div>

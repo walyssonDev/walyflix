@@ -43,12 +43,41 @@ body {
     gap: 1em;
 }
 
+.file input[type='file'] {
+    display: none;
+}
+
+.file {
+    display: flex;
+    align-items: center;
+}
+
+.file label {
+    padding: 0.5rem;
+    padding-left: 2.5rem;
+    font-size: 1rem;
+    border: 2px solid #94a3b8;
+    border-radius: 8px;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+}
+
+.file label:hover {
+    background-color: #1e293b;
+    border-color: #64748b;
+}
+
 .config-nome,
 .config-cpf,
 .config-senha {
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
 }
 
 .nome,
@@ -210,5 +239,17 @@ form input[type="submit"]:hover {
 
     #genero {
         flex-direction: column;
+    }
+
+    .config .img-user {
+        flex-direction: column;
+    }
+
+    .config-nome,
+    .config-cpf,
+    .config-senha {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
