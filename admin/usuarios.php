@@ -26,7 +26,6 @@ verificarPermissao('adm');
                 <tr>
                     <th>CPF</th>
                     <th>Nome</th>
-                    <th>Senha</th>
                     <th colspan="2">Ações</th>
                 </tr>
                 <?php
@@ -37,7 +36,6 @@ verificarPermissao('adm');
                     echo "<tr>";
                     echo "<td>" . $row["cpf"] . "</td>";
                     echo "<td>" . $row["nome"] . "</td>";
-                    echo "<td>" . $row["senha"] . "</td>";
                     echo "<td>
                         <form action = '../admin/edita_usuario.php' method = 'POST'>
                         <input type = 'hidden' name = 'cpf' value = '" . $row["cpf"] . "'>
