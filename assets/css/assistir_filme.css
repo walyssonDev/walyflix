@@ -11,6 +11,7 @@ body {
     gap: 1em;
     padding: 2em 1em;
     width: 100%;
+    overflow-y: auto;
 }
 
 .filme {
@@ -38,14 +39,14 @@ video {
 
 .container {
     border-radius: 1em;
-    overflow: hidden;
     width: 50%;
 }
 
 .comentarios {
     background-color: #023047;
     color: white;
-    padding: 1em;
+    padding: 0 .5em;
+    border-radius: 1em 1em 0 0;
     overflow-y: auto;
     scrollbar-width: thin;
     max-height: 60vh;
@@ -61,7 +62,7 @@ video {
     justify-content: space-between;
     align-items: center;
     margin: 1em 0;
-    padding: 0 1em;
+    padding: 0 .5em;
 }
 
 .commentADM {
@@ -98,10 +99,11 @@ video {
 
 #deletar {
     background-color: transparent;
+    padding: 0;
 }
 
 #deletar input[type="submit"] {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     background-color: #dc2626;
     color: #ffffff;
     border: none;
@@ -156,13 +158,19 @@ form button[type="submit"]:hover {
 @media screen and (max-width: 1020px) {
     .interface {
         flex-direction: column;
+        padding: 1em 0;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 7rem;
     }
 
     .container {
-        width: 100%;
+        width: 90%;
+        height: auto;
     }
 
     .filme {
-        width: 100%;
+        width: 90%;
+        height: auto;
     }
 }
