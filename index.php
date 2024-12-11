@@ -41,6 +41,7 @@
             </div>
             <input type="submit" value="Enviar">
             <a href="pages/cadastrese.php">Cadastre-se</a>
+            <a href="pages/rec_senha.php">Esqueceu a senha?</a>
         </form>
     </div>
 
