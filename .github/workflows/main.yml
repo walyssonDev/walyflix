@@ -19,5 +19,4 @@ jobs:
 
     - name: Set Gmail credentials as environment variables
       run: |
-          echo "MAIL_USERNAME=walyssonribeiro3@gmail.com" >> $GITHUB_ENV
-          echo "MAIL_PASSWORD=${{ secrets.GMAIL_PASSWORD }}" >> $GITHUB_ENV
+          echo "MAIL_PASSWORD=${{ secrets.gmail_password }}" >> $GITHUB_ENV
