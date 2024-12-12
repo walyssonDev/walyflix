@@ -171,12 +171,16 @@
                             </div>
 
                             <script>
-                            function copyPassword() {
-                                var passwordField = document.getElementById('password');
-                                passwordField.select();
-                                document.execCommand('copy');
-                                alert('Senha copiada para a área de transferência!');
-                            }
+                                function copyPassword() {
+                                    var passwordField = document.getElementById('password');
+                                    
+                                    // Usando a Clipboard API moderna
+                                    navigator.clipboard.writeText(passwordField.value).then(function() {
+                                        alert('Senha copiada para a área de transferência!');
+                                    }).catch(function(err) {
+                                        alert('Erro ao copiar a senha: ' + err);
+                                    });
+                                }
                             </script>
 
                         </body>
