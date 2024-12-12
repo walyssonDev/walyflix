@@ -1,6 +1,12 @@
 <?php
 include("../utils/conexao.php");
-include("../utils/valida.php");
+require_once("../../libs/PHPMailer/PHPMailer.php");
+require_once("../../libs/PHPMailer/Exception.php");
+require_once("../../libs/PHPMailer/SMTP.php");
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 $cpf = $_POST['cpf'];
 $email = $_POST['email'];
@@ -40,13 +46,41 @@ if ($resultado = $resultado->fetch_assoc()) {
     $stmt->bind_param("ss", $senha, $cpf);
     $stmt->execute();
 
-    $mensagem = "Sua nova senha temporária" . ".\n\n";
-    $mensagem .= "Senha temporária: " . $senha . ".\n\n";
+    $mail = new PHPMailer(true);
+    $mail->CharSet = PHPMailer::CHARSET_UTF8;
 
-    mail($email, "Recuperação de senha", $mensagem);
+    try {
 
-    header("Location: ../../index.php");
-    exit;
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->Port = 587;
+        $mail->Username = "walyssonribeiro3@gmail.com";
+        $mail->Password = getenv('MAIL_PASSWORD');
+
+        $mail->setFrom('walyflix@gmail.com', "WalyFlix");
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject = "Recuperação de senha!";
+        $mail->Body = "Essa é a sua senha de recuperação, altere ela o mais rápido possivel: <strong>$senha</strong>";
+        $mail->AltBody = "Essa é a sua senha de recuperação, altere ela o mais rápido possivel: $senha";
+
+        if ($mail->send()) {
+            $resposta = "Email enviado com sucesso!";
+            header("Location: ../../index.php?resposta=$resposta");
+            exit;
+        } else {
+            $resposta = "Falha ao enviar o email!";
+            header("Location: ../../index.php?resposta=$resposta");
+            exit;
+        }
+    } catch (Exception $e) {
+        $resposta = "Erro ao recuperar senha! {$mail->ErrorInfo}";
+        header("Location: ../../index.php?resposta=$resposta");
+        exit;
+    }
 } else {
     $resposta = "Erro ao recuperar senha!";
     header("Location: ../../index.php?resposta=$resposta");

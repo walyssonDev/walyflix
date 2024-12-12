@@ -86,6 +86,7 @@ body {
 .path,
 .link,
 .file,
+.email,
 .genero,
 .novo-genero {
     position: relative;
@@ -97,6 +98,7 @@ body {
 .path i,
 .link i,
 .file i,
+.email i,
 .genero i,
 .novo-genero i {
     position: absolute;
