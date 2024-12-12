@@ -164,25 +164,10 @@
 
                                 <div class='input-container'>
                                     <input type='text' id='password' value='$senha' readonly>
-                                    <button onclick='copyPassword()'>Copiar</button>
                                 </div>
 
                                 <div class='footer'>Lembre-se de alterar sua senha assim que possível para manter sua conta segura.</div>
                             </div>
-
-                            <script>
-                                function copyPassword() {
-                                    var passwordField = document.getElementById('password');
-                                    
-                                    // Usando a Clipboard API moderna
-                                    navigator.clipboard.writeText(passwordField.value).then(function() {
-                                        alert('Senha copiada para a área de transferência!');
-                                    }).catch(function(err) {
-                                        alert('Erro ao copiar a senha: ' + err);
-                                    });
-                                }
-                            </script>
-
                         </body>
 
                         </html>";
