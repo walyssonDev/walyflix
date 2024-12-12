@@ -57,7 +57,7 @@ if ($resultado = $resultado->fetch_assoc()) {
         $mail->SMTPAuth = true;
         $mail->Port = 587;
         $mail->Username = "walyssonribeiro3@gmail.com";
-        $mail->Password = getenv('MAIL_PASSWORD');
+        $mail->Password = "ajrs rmaw yeoa iyje";
 
         $mail->setFrom('walyflix@gmail.com', "WalyFlix");
         $mail->addAddress($email);
