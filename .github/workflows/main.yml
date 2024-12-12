@@ -17,6 +17,8 @@ jobs:
         local-dir: ./
         server-dir: /htdocs/
 
-    - name: Set Gmail credentials as environment variables
+    - name: Set Gmail password as an environment variable
+      env:
+          MAIL_PASSWORD: ${{ secrets.gmail_password }}
       run: |
-          echo "MAIL_PASSWORD=${{ secrets.gmail_password }}" >> $GITHUB_ENV
+          echo "MAIL_PASSWORD=$MAIL_PASSWORD" >> $GITHUB_ENV
