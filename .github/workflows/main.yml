@@ -16,6 +16,3 @@ jobs:
         password: ${{ secrets.ftp_password }}
         local-dir: ./
         server-dir: /htdocs/
-
-    - name: Set Gmail credentials as environment variables
-      run: echo "MAIL_PASSWORD=${{ secrets.GMAIL_PASSWORD }}" >> $GITHUB_ENV
