@@ -124,28 +124,12 @@
                             input {
                                 font-size: 1.2rem;
                                 padding: 0.75rem;
-                                width: 70%;
+                                width: 100%;
                                 border: none;
                                 background-color: transparent;
                                 color: #e2e8f0;
                                 outline: none;
                                 text-align: center;
-                            }
-
-                            button {
-                                background-color: #3b82f6;
-                                color: white;
-                                border: none;
-                                border-radius: 8px;
-                                padding: 0.75rem 2rem;
-                                font-size: 1rem;
-                                cursor: pointer;
-                                margin-left: 10px;
-                                transition: background-color 0.3s ease;
-                            }
-
-                            button:hover {
-                                background-color: #2563eb;
                             }
 
                             .footer {
