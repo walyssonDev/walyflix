@@ -16,7 +16,7 @@ function gerarSenha($tamanho = 12)
     $letrasMaisculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $letrasMinusculas = "abcdefghijklmnopqrstuvwxyz";
     $numeros = "0123456789";
-    $caractereEspecial = "@!.%#*?_";
+    $caractereEspecial = "@!%#*?_$";
 
     $senha = $letrasMaisculas[random_int(0, strlen($letrasMaisculas) - 1)];
     $senha .= $letrasMinusculas[random_int(0, strlen($letrasMinusculas) - 1)];
