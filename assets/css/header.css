@@ -28,6 +28,8 @@ header .user {
 }
 
 header .user a {
+    display: flex;
+    justify-content: center;
     color: #ffffff;
     transition: transform 0.2s ease-in-out, color 0.2s;
 }
@@ -80,5 +82,9 @@ header button a:hover {
 @media screen and (max-width: 1020px) {
     .btn-menu {
         display: block;
+    }
+
+    header {
+        padding: .1em 1em;
     }
 }

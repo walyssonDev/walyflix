@@ -120,6 +120,7 @@ video {
 form {
     display: flex;
     align-items: center;
+    gap: .5em;
     padding: 1rem;
     background-color: #1e293b;
     border-radius: 0 0 1em 1em;
@@ -144,7 +145,6 @@ form button[type="submit"] {
     background-color: #2563eb;
     color: #ffffff;
     padding: 0.8rem 1.5rem;
-    margin-left: 0.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
     font-size: 1rem;
@@ -158,10 +158,18 @@ form button[type="submit"]:hover {
 @media screen and (max-width: 1020px) {
     .interface {
         flex-direction: column;
-        padding: 1em 0;
+        padding: 0 0;
         align-items: center;
         justify-content: center;
         padding-bottom: 7rem;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    form button[type='submit'] {
+        width: 100%;
     }
 
     .container {
@@ -176,5 +184,9 @@ form button[type="submit"]:hover {
     .filme {
         width: 90%;
         height: auto;
+    }
+
+    .filme h1 {
+        display: none;
     }
 }

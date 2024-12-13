@@ -201,6 +201,25 @@ body {
         width: 8em;
     }
 
+    .filme .txt-filme #genero-filme {
+        font-size: 15px;
+    }
+
+    .filme .txt-filme p {
+        font-size: 15px;
+    }
+
+    .options {
+        margin: 0;
+        padding: 0;
+        gap: .5em;
+    }
+
+    #editar,
+    #deletar {
+        padding: .5em;
+    }
+
     .space {
         height: 5em;
     }

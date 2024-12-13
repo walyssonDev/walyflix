@@ -40,7 +40,9 @@ verificarPermissao(['adm']);
                     <div class='txt-filme'>
                         <p>" . $row['nome'] . "</p>
                         <p id = 'genero-filme'>" . $genero . "</p>
-                        <div class='options'>
+                    </div>
+                    </article>
+                    <div class='options'>
                             <form action = 'edita_filme.php' method = 'POST'>
                                 <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
                                 <input type='submit' value='Editar' id='editar'>
@@ -50,8 +52,6 @@ verificarPermissao(['adm']);
                                 <input type = 'submit' value = 'Deletar' id='deletar'>
                             </form>
                         </div>
-                    </div>
-                    </article>
                     ";
                     echo "</a>";
                 }
