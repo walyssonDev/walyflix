@@ -74,6 +74,7 @@ body {
 
 .config-nome,
 .config-cpf,
+.config-email,
 .config-senha {
     display: flex;
     justify-content: space-between;
@@ -243,15 +244,25 @@ form input[type="submit"]:hover {
         flex-direction: column;
     }
 
+    .config {
+        width: 80%;
+    }
+
     .config .img-user {
         flex-direction: column;
     }
 
     .config-nome,
     .config-cpf,
+    .config-email,
     .config-senha {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .config label,
+    .config input[type='submit'] {
+        margin: 0;
     }
 }

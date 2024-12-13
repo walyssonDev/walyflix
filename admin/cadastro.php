@@ -37,6 +37,11 @@ verificarPermissao(['adm']);
                     <i class="bi bi-person-vcard-fill"></i>
                     <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" required>
                 </div>
+                <label for="email">E-mail: </label>
+                <div class="email">
+                    <i class="bi bi-envelope"></i>
+                    <input type="email" name="email" id="email" placeholder="Seu E-mail: " required>
+                </div>
                 <label for="senha">Senha: </label>
                 <div class="senha">
                     <i class="bi bi-lock-fill"></i>
@@ -47,7 +52,7 @@ verificarPermissao(['adm']);
         </div>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);

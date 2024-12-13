@@ -59,6 +59,14 @@ include("../handler/utils/valida.php");
                             value="<?php echo $_SESSION['cpf'] ?>" required>
                     </div>
                 </div>
+                <div class="config-email">
+                    <label for="email">E-mail: </label>
+                    <div class="email">
+                        <i class="bi bi-envelope"></i>
+                        <input type="email" name="email" id="email" placeholder="Seu E-mail: "
+                            value="<?php echo $_SESSION['email'] ?>" required>
+                    </div>
+                </div>
                 <div class="config-senha">
                     <label for="senha">Sua senha:</label>
                     <div class="senha">

@@ -11,6 +11,7 @@ $resultado = $conn->query($sql);
 
 while ($row = $resultado->fetch_assoc()) {
     $nome = $row['nome'];
+    $email = $row['email'];
     $senha = $row['senha'];
 }
 
@@ -41,13 +42,19 @@ while ($row = $resultado->fetch_assoc()) {
                 <label for="nome">Nome: </label>
                 <div class="nome">
                     <i class="bi bi-person-fill"></i>
-                    <input type="text" name="nome" id="nome" value="<?php echo $nome ?>" placeholder="Seu nome: "
+                    <input type="text" name="nome" id="nome" value="<?php echo $nome ?>" placeholder="Seu nome"
                         required>
                 </div>
                 <label for="cpf">CPF: </label>
                 <div class="cpf">
                     <i class="bi bi-person-vcard-fill"></i>
                     <input type="text" name="cpf" id="cpf" value="<?php echo $cpf ?>" placeholder="Seu CPF" required>
+                </div>
+                <label for="email">E-mail: </label>
+                <div class="email">
+                    <i class="bi bi-envelope"></i>
+                    <input type="email" name="email" id="email" value="<?php echo $email ?>" placeholder="Seu E-mail"
+                        required>
                 </div>
                 <label for="senha">Senha: </label>
                 <div class="senha">

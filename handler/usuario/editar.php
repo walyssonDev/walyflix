@@ -4,6 +4,7 @@ include("../utils/valida.php");
 include("../../assets/php/validaForm.php");
 
 $cpf = $_POST['cpf'];
+$email = $_POST['email'];
 $nome = $_POST["nome"];
 $nome = ucwords(strtolower($nome));
 $senha = $_POST["senha"];
@@ -61,7 +62,7 @@ if ($img) {
 $resultado = validarForm($nome, $cpf, $senha);
 
 if ($resultado === true) {
-    $sql = "UPDATE usuarios SET cpf = ?, nome = ?, senha = ? WHERE cpf = ?";
+    $sql = "UPDATE usuarios SET cpf = ?, email = ?, nome = ?, senha = ? WHERE cpf = ?";
     $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
@@ -69,7 +70,7 @@ if ($resultado === true) {
         header("Location: ../../admin/usuarios.php");
         exit;
     } else {
-        $stmt->bind_param("ssss", $cpf, $nome, $senha, $cpfAnterior);
+        $stmt->bind_param("sssss", $cpf, $email, $nome, $senha, $cpfAnterior);
 
         if (!$stmt->execute()) {
             $_SESSION['mensagem'] = "Erro ao editar";
@@ -77,6 +78,7 @@ if ($resultado === true) {
             exit;
         } else {
             $_SESSION["cpf"] = $cpf;
+            $_SESSION['email'] = $email;
             $_SESSION["senha"] = $senha;
             $_SESSION["nome"] = $nome;
 

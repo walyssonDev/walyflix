@@ -15,14 +15,14 @@ include("../handler/utils/conexao.php");
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -41,12 +41,17 @@ include("../handler/utils/conexao.php");
             <label for="cpf">CPF: </label>
             <div class="cpf">
                 <i class="bi bi-person-vcard-fill"></i>
-                <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" required>
+                <input type="text" name="cpf" id="cpf" placeholder="Seu CPF: " required>
+            </div>
+            <label for="email">E-mail: </label>
+            <div class="email">
+                <i class="bi bi-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="Seu E-mail: " required>
             </div>
             <label for="senha">Senha: </label>
             <div class="senha">
                 <i class="bi bi-lock-fill"></i>
-                <input type="password" name="senha" id="senha" placeholder="Sua senha" required>
+                <input type="password" name="senha" id="senha" placeholder="Sua senha: " required>
             </div>
             <input type="submit" value="Enviar">
             <input type="hidden" name="cadastro" value="cadastro">
@@ -54,7 +59,7 @@ include("../handler/utils/conexao.php");
         </form>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);

@@ -4,6 +4,7 @@ include("../utils/conexao.php");
 include("../utils/valida.php");
 
 $cpf = $_POST["cpf"];
+$email = $_POST['email'];
 $nome = $_POST["nome"];
 $senha = $_POST["senha"];
 
@@ -23,15 +24,20 @@ if ($resultado === true) {
     if ($resultadoVerificar->num_rows > 0) {
         header("Location: ../../index.php?resposta=CPF%20já%20cadastrado.");
     } else {
-        $sql = ("INSERT INTO `usuarios` (`cpf`, `nome`, `senha`) VALUES ('$cpf', '$nome', '$senha')");
-        $resultado = $conn->query($sql);
+        $sql = "INSERT INTO usuarios (cpf, email, nome, senha) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $cpf, $email, $nome, $senha);
 
-        $_SESSION['resposta'] = "Usuario cadastrado com sucesso";
+        if ($stmt->execute()) {
+            $_SESSION['resposta'] = "Usuario cadastrado com sucesso";
 
-        if ($_POST['cadastro'] == 'cadastro') {
-            header("Location: ../../index.php");
+            if ($_POST['cadastro'] == 'cadastro') {
+                header("Location: ../../index.php");
+            } else {
+                header("Location: ../../admin/cadastro.php");
+            }
         } else {
-            header("Location: ../../admin/cadastro.php");
+            $_SESSION['resposta'] = "Erro ao cadastrar usuario";
         }
     }
 } else {
