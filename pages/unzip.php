@@ -1,15 +1,10 @@
 <?php
 $zipFilePath = __DIR__ . '/../vendor.zip'; // Caminho absoluto para o arquivo vendor.zip
-$extractToPath = __DIR__ . '/../vendor'; // Diretório onde os arquivos serão extraídos
+$extractToPath = __DIR__ . '/../'; // Diretório onde os arquivos serão extraídos
 
 // Verificar se o arquivo zip existe
 if (!file_exists($zipFilePath)) {
     die('Erro: O arquivo vendor.zip não foi encontrado.');
-}
-
-// Criar o diretório de extração se não existir
-if (!is_dir($extractToPath)) {
-    mkdir($extractToPath, 0755, true);
 }
 
 $zip = new ZipArchive;
