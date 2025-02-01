@@ -16,3 +16,13 @@ jobs:
         password: ${{ secrets.ftp_password }}
         local-dir: ./
         server-dir: /htdocs/
+
+    - name: 🛠️ Install Composer
+      run: sudo apt-get update && sudo apt-get install -y composer
+
+    - name: 🛠️ Install Dependencies
+      run: |
+        sshpass -p "${{ secrets.ftp_password }}" ssh -o StrictHostKeyChecking=no if0_37334546@ftpupload.net << 'EOF'
+        cd /htdocs
+        composer install
+        EOF
