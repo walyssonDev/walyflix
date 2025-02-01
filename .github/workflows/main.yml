@@ -22,5 +22,6 @@ jobs:
         server: ftpupload.net
         username: if0_37334546
         password: ${{ secrets.ftp_password }}
-        local-dir: ./
-        server-dir: /htdocs/
+        local-dir: ./  # Diretório local onde os arquivos estão
+        server-dir: /htdocs/  # Diretório no servidor FTP onde os arquivos devem ser enviados
+        only-new: true  # Adiciona essa linha para enviar apenas arquivos novos
