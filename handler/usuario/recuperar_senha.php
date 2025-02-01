@@ -10,7 +10,6 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use Dotenv\Dotenv;
 
-// Ajuste o caminho aqui para apontar para o arquivo senha.env na raiz do projeto
 $dotenv = Dotenv::createImmutable(dirname(__DIR__, 2), 'senha.env');
 $dotenv->load();
 
