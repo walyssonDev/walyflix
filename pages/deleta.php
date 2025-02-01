@@ -1,5 +1,23 @@
 <?php
 
+function deleteFilesWithVendorInName($dirPath)
+{
+    if (!is_dir($dirPath)) {
+        throw new InvalidArgumentException("$dirPath must be a directory");
+    }
+
+    $files = glob($dirPath . '/*vendor*');
+    foreach ($files as $file) {
+        if (is_file($file)) {
+            unlink($file);
+            echo "Arquivo removido: $file<br>";
+        } elseif (is_dir($file)) {
+            deleteDir($file);
+            echo "Diretório removido: $file<br>";
+        }
+    }
+}
+
 function deleteDir($dirPath)
 {
     if (!is_dir($dirPath)) {
@@ -19,10 +37,9 @@ function deleteDir($dirPath)
     rmdir($dirPath);
 }
 
-$vendorDir = __DIR__ . '/vendor';
-if (is_dir($vendorDir)) {
-    deleteDir($vendorDir);
-    echo 'Diretório vendor removido com sucesso!';
-} else {
-    echo 'Diretório vendor não encontrado.';
-}
+$rootDir = __DIR__ . '/../';
+echo "Verificando o diretório: $rootDir<br>";
+
+deleteFilesWithVendorInName($rootDir);
+
+echo 'Remoção concluída!';
