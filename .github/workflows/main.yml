@@ -17,12 +17,19 @@ jobs:
         local-dir: ./
         server-dir: /htdocs/
 
-    - name: 🛠️ Install Composer
-      run: sudo apt-get update && sudo apt-get install -y composer
+    - name: 📦 Upload vendor.zip
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ftpupload.net
+        username: if0_37334546
+        password: ${{ secrets.ftp_password }}
+        local-dir: vendor.zip
+        server-dir: /htdocs/
 
-    - name: 🛠️ Install Dependencies
+    - name: 🛠️ Unzip vendor.zip
       run: |
         sshpass -p "${{ secrets.ftp_password }}" ssh -o StrictHostKeyChecking=no if0_37334546@ftpupload.net << 'EOF'
         cd /htdocs
-        composer install
+        unzip vendor.zip
+        rm vendor.zip
         EOF
