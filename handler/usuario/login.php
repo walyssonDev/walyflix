@@ -11,7 +11,7 @@ $resultadoSenha = validarSenha($senha);
 $resultadoCpf = validarCPF($cpf);
 
 if ($resultadoCpf === true && $resultadoSenha === true) {
-    $sql = "select nome, email, tipo from usuarios where cpf = ? and senha = ? ";
+    $sql = "SELECT nome, email, tipo FROM usuarios WHERE cpf = ? AND senha = ? ";
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
