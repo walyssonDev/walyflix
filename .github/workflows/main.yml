@@ -9,10 +9,10 @@ jobs:
       uses: actions/checkout@v4
 
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
       with:
         server: ftpupload.net
         username: if0_37334546
         password: ${{ secrets.ftp_password }}
-        local-dir: ./ 
+        local-dir: ./
         server-dir: /htdocs/
