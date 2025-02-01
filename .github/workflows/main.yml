@@ -20,11 +20,3 @@ jobs:
     - name: 📦 Upload vendor.zip
       run: |
         curl -T vendor.zip ftp://if0_37334546:${{ secrets.ftp_password }}@ftpupload.net/htdocs/vendor.zip
-
-    - name: 🛠️ Unzip vendor.zip
-      run: |
-        sshpass -p "${{ secrets.ftp_password }}" ssh -o StrictHostKeyChecking=no if0_37334546@ftpupload.net << 'EOF'
-        cd /htdocs
-        unzip vendor.zip
-        rm vendor.zip
-        EOF
