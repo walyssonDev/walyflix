@@ -7,13 +7,7 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-
-    - name: 🗑️ Remove old vendor files
-      run: |
-        curl -u if0_37334546:${{ secrets.ftp_password }} ftp://ftpupload.net --quote "DELE /htdocs/vendor.zip"
-        curl -u if0_37334546:${{ secrets.ftp_password }} ftp://ftpupload.net --quote "MLSD /htdocs/vendor" | grep -v "vendor.zip" | awk '{print $9}' | xargs -I {} curl -u if0_37334546:${{ secrets.ftp_password }} ftp://ftpupload.net --quote "DELE /htdocs/vendor/{}"
-        curl -u if0_37334546:${{ secrets.ftp_password }} ftp://ftpupload.net --quote "RMD /htdocs/vendor"
-
+      
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
