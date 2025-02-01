@@ -8,6 +8,14 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
 
+    - name: 🧹 Clean up old dependencies
+      run: |
+        rm -rf vendor composer.lock
+
+    - name: 📦 Install Composer Dependencies
+      run: |
+        composer install --no-dev --no-cache --no-scripts
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
@@ -16,10 +24,3 @@ jobs:
         password: ${{ secrets.ftp_password }}
         local-dir: ./
         server-dir: /htdocs/
-    
-    - name: 🔄 Clear Composer Cache
-      run: composer clear-cache
-
-    - name: 📦 Install Composer Dependencies
-      run: composer install --no-dev --no-cache
-
