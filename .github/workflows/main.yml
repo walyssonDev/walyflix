@@ -9,8 +9,8 @@ jobs:
       uses: actions/checkout@v4
       
     - name: 📦 Install Composer Dependencies
-      run: composer install --no-dev --optimize-autoloader
-      
+      run: composer install --no-dev
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
