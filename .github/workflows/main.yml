@@ -8,22 +8,11 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
 
-    - name: 📂 Check if composer files changed
-      id: check_composer_changes
-      run: |
-        git diff --exit-code composer.json composer.lock || echo "composer files changed"
-      
-    - name: 📦 Install Composer Dependencies if changed
-      if: steps.check_composer_changes.outputs.changed == 'composer files changed'
-      run: |
-        composer install --no-dev --no-cache --no-scripts
-
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ftpupload.net
         username: if0_37334546
         password: ${{ secrets.ftp_password }}
-        local-dir: ./  # Diretório local onde os arquivos estão
-        server-dir: /htdocs/  # Diretório no servidor FTP onde os arquivos devem ser enviados
-        only-new: true  # Só envia arquivos novos ou modificados
+        local-dir: ./ 
+        server-dir: /htdocs/
