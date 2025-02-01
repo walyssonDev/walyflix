@@ -18,13 +18,8 @@ jobs:
         server-dir: /htdocs/
 
     - name: 📦 Upload vendor.zip
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ftpupload.net
-        username: if0_37334546
-        password: ${{ secrets.ftp_password }}
-        local-dir: vendor.zip
-        server-dir: /htdocs/
+      run: |
+        curl -T vendor.zip ftp://if0_37334546:${{ secrets.ftp_password }}@ftpupload.net/htdocs/vendor.zip
 
     - name: 🛠️ Unzip vendor.zip
       run: |
