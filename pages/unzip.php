@@ -1,8 +1,8 @@
 <?php
-$zipFilePath = __DIR__ . '/../vendor.zip'; // Caminho absoluto para o arquivo vendor.zip
-$extractToPath = __DIR__ . '/../vendor'; // Diretório onde os arquivos serão extraídos
+$zipFilePath = __DIR__ . '/../vendor.zip'; // Caminho do arquivo ZIP
+$extractToPath = __DIR__ . '/../vendor'; // Pasta onde os arquivos serão extraídos
 
-// Verificar se o arquivo zip existe
+// Verificar se o arquivo ZIP existe
 if (!file_exists($zipFilePath)) {
     die('Erro: O arquivo vendor.zip não foi encontrado.');
 }
@@ -15,8 +15,27 @@ if (!is_dir($extractToPath)) {
 $zip = new ZipArchive;
 $res = $zip->open($zipFilePath);
 if ($res === TRUE) {
-    // Extrair o conteúdo do zip para o diretório vendor
-    $zip->extractTo($extractToPath);
+    for ($i = 0; $i < $zip->numFiles; $i++) {
+        $filePath = $zip->getNameIndex($i);
+        $fullPath = $extractToPath . '/' . $filePath;
+
+        // Se for um diretório, cria ele antes de extrair os arquivos
+        if (str_ends_with($filePath, '/')) {
+            if (!is_dir($fullPath)) {
+                mkdir($fullPath, 0755, true);
+            }
+        } else {
+            // Criar diretório pai, se não existir
+            $dir = dirname($fullPath);
+            if (!is_dir($dir)) {
+                mkdir($dir, 0755, true);
+            }
+
+            // Extrair arquivo individualmente
+            copy("zip://$zipFilePath#$filePath", $fullPath);
+        }
+    }
+
     $zip->close();
     echo 'Descompactação concluída com sucesso!';
 } else {
