@@ -17,10 +17,14 @@ $res = $zip->open($zipFilePath);
 if ($res === TRUE) {
     for ($i = 0; $i < $zip->numFiles; $i++) {
         $filePath = $zip->getNameIndex($i);
+
+        // Corrige barras invertidas para garantir a estrutura correta
+        $filePath = str_replace('\\', '/', $filePath);
+
         $fullPath = $extractToPath . '/' . $filePath;
 
         // Se for um diretório, cria ele antes de extrair os arquivos
-        if (str_ends_with($filePath, '/')) {
+        if (substr($filePath, -1) === '/') {
             if (!is_dir($fullPath)) {
                 mkdir($fullPath, 0755, true);
             }
@@ -31,7 +35,7 @@ if ($res === TRUE) {
                 mkdir($dir, 0755, true);
             }
 
-            // Extrair arquivo individualmente
+            // Extrair arquivo corretamente
             copy("zip://$zipFilePath#$filePath", $fullPath);
         }
     }
