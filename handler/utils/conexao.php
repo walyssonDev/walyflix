@@ -4,8 +4,12 @@ require __DIR__ . '/../../../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../..');
+$dotenv = Dotenv::createImmutable(dirname(__DIR__, 2), 'senha.env');
 $dotenv->load();
+
+if (!isset($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME'])) {
+    die('Erro: Variáveis de ambiente não carregadas corretamente.');
+}
 
 /*$servidor = "localhost";
 $usuario = "root";
