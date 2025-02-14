@@ -51,29 +51,27 @@ nav ul a i {
     nav {
         position: fixed;
         left: 0;
-        width: 0%;
+        bottom: 0;
+        width: 100%;
         z-index: 1000;
-        visibility: hidden;
-        height: 100%;
+        height: auto;
         transition: .5s;
         overflow-x: auto;
     }
 
-    nav.active {
-        visibility: visible;
-        left: 0;
-        width: 50%;
-        z-index: 1001;
+    nav ul{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
     }
 
-    nav.active::before {
-        content: "";
-        position: fixed;
-        width: 100%;
+    nav ul li a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100%;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.421);
-        z-index: -1;
+        text-align: center;
     }
 }

@@ -8,17 +8,10 @@
     <link rel="stylesheet" href="../assets/css/nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>header</title>
-    <script>
-    function menu() {
-        var nav = document.getElementById('menu');
-        nav.classList.toggle('active');
-    }
-    </script>
 </head>
 
 <body>
     <header>
-        <button onclick="menu()" class="btn-menu"><i class="bi bi-list"></i></button>
         <div class="user">
             <a href="../pages/user_config.php">
                 <img src="../handler/usuario/userImg.php" alt="Foto de Perfil">

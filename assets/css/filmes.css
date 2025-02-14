@@ -49,11 +49,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1em;
-}
-
-.space {
-    height: 25em;
-    width: 12em;
+    padding-bottom: 10em;
 }
 
 .filme {
@@ -194,7 +190,7 @@ body {
         flex-wrap: wrap;
         justify-content: center;
         gap: 1em;
-        padding-bottom: 1em;
+        padding-bottom: 5em;
     }
 
     .filme {
@@ -220,13 +216,9 @@ body {
         padding: .5em;
     }
 
-    .space {
-        height: 5em;
-    }
-
     .fav button {
         width: 50%;
-        transform: rotate(45deg) translate(20px, -22px);
+        transform: rotate(45deg) translate(15px, -16px);
     }
 
     .filme img {
