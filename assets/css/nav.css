@@ -67,13 +67,21 @@ nav ul a i {
         height: 100%;
     }
 
+    nav ul li{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
     nav ul li a{
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
-        width: 2em;
-        padding: .2em;
+        width: 100%;
+        padding: .5em;
         text-align: center;
         flex-direction: column;
     }
