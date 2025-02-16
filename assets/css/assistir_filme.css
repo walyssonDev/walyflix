@@ -157,10 +157,11 @@ form button[type="submit"]:hover {
 @media screen and (max-width: 1020px) {
     .interface {
         flex-direction: column;
-        padding: 0 0;
+        padding: 0;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         padding-bottom: 10rem;
+        padding-top: .5em;
     }
 
     form {
