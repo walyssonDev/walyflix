@@ -72,6 +72,13 @@ nav ul a i {
         justify-content: center;
         align-items: center;
         height: 100%;
+        width: 2em;
+        padding: .2em;
         text-align: center;
+        flex-direction: column;
+    }
+
+    nav ul li a i{
+        margin: 0;
     }
 }
