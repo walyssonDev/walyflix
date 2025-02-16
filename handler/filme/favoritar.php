@@ -2,23 +2,38 @@
 include("../utils/conexao.php");
 include("../utils/valida.php");
 
-$id = $_POST['id'];
 $cpf = $_SESSION['cpf'];
-$pg = $_POST['pgfav'];
+$id = $_POST['id'];
 
-$sqlVerificar = "SELECT * FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
-$resultado = $conn->query($sqlVerificar);
+$sqlFav = "SELECT * FROM favoritos WHERE cpf = ? AND filme_id = ?";
+$stmt = $conn->prepare($sqlFav);
+$stmt->bind_param("ss", $cpf, $id);
+$stmt->execute();
+$resultadoFav = $stmt->get_result();
+$isFav = $resultadoFav->fetch_assoc();
 
-if ($resultado->num_rows == 0) {
-    $sql = "INSERT INTO favoritos (cpf, filme_id) VALUES ('$cpf', '$id')";
-    $conn->query($sql);
+if ($isFav) {
+    $sql = "DELETE FROM favoritos WHERE cpf = ? AND filme_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $cpf, $id);
+    $stmt->execute();
+    $favoritado = false;
 } else {
-    $sql = "DELETE FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
-    $conn->query($sql);
+    $sql = "INSERT INTO favoritos (cpf, filme_id) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $cpf, $id);
+    $stmt->execute();
+    $favoritado = true;
 }
 
-if ($pg == "favoritos") {
-    header("Location: ../../pages/favoritos.php");
+if ($stmt->affected_rows > 0) {
+    echo json_encode([
+        'success' => true,
+        'favoritado' => $favoritado
+    ]);
 } else {
-    header("Location: ../../pages/filmes.php");
+    echo json_encode([
+        'success' => false,
+        'message' => 'Erro ao favoritar o filme.'
+    ]);
 }

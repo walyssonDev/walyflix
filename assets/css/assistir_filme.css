@@ -32,6 +32,10 @@ iframe {
     border: none;
 }
 
+iframe{
+    height: 15em;
+}
+
 .container {
     border-radius: 1em;
     width: 50%;
@@ -92,12 +96,12 @@ iframe {
     font-size: 15px;
 }
 
-#deletar {
+.deletarForm {
     background-color: transparent;
     padding: 0;
 }
 
-#deletar input[type="submit"] {
+.deletarForm input[type="submit"] {
     padding: 0.5rem;
     background-color: #dc2626;
     color: #ffffff;
@@ -108,7 +112,7 @@ iframe {
     transition: background-color 0.3s ease;
 }
 
-#deletar input[type="submit"]:hover {
+.deletarForm input[type="submit"]:hover {
     background-color: #b91c1c;
 }
 
@@ -156,7 +160,7 @@ form button[type="submit"]:hover {
         padding: 0 0;
         align-items: center;
         justify-content: center;
-        padding-bottom: 7rem;
+        padding-bottom: 10rem;
     }
 
     form {
@@ -173,7 +177,7 @@ form button[type="submit"]:hover {
     }
 
     .comentarios {
-        height: 38vh;
+        height: 30vh;
     }
 
     .filme {

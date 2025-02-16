@@ -55,27 +55,24 @@ include("../handler/utils/valida.php");
 
                     echo "<a href='assistir_filme.php?id=" . $id . "'>";
                     echo "
-                    <article class='filme'>";
-                    echo "
-                    <div class='fav'>
-                    <form method='post' action='../handler/filme/favoritar.php'>
-                    <input type='hidden' name='id' value='" . $id . "'>
-                    <button type='submit'>";
+                    <article class='filme'>
+                        <div class='fav'>
+                            <form class='favoritarForm' method='post' action='../handler/filme/favoritar.php'>
+                                <input type='hidden' name='id' value='" . $id . "'>
+                                <button type='submit' class='btn-favoritar'>";
                     if ($isFav) {
                         echo "<i class='bi bi-star-fill'></i>";
                     } else {
                         echo "<i class='bi bi-star'></i>";
                     }
                     echo "</button>
-                    </form>
-                    </div>
-                    ";
-                    echo "
-                    <img src='" . $row['path'] . "'>
-                    <div class='txt-filme'>
-                        <p>" . $row['nome'] . "</p>
-                        <p id = 'genero-filme'>" . $genero . "</p>
-                    </div>
+                            </form>
+                        </div>
+                        <img src='" . $row['path'] . "'>
+                        <div class='txt-filme'>
+                            <p>" . $row['nome'] . "</p>
+                            <p id='genero-filme'>" . $genero . "</p>
+                        </div>
                     </article>
                     ";
                     echo "</a>";
@@ -99,6 +96,35 @@ include("../handler/utils/valida.php");
                 }
             }
         }
+
+        document.querySelectorAll('.favoritarForm').forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const form = event.target;
+                const formData = new FormData(form);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', form.action, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const resposta = JSON.parse(xhr.responseText);
+                        if (resposta.success) {
+                            const button = form.querySelector('.btn-favoritar');
+                            if (resposta.favoritado) {
+                                button.innerHTML = "<i class='bi bi-star-fill'></i>";
+                            } else {
+                                button.innerHTML = "<i class='bi bi-star'></i>";
+                            }
+                        } else {
+                            alert(resposta.message);
+                        }
+                    } else {
+                        alert('Erro ao favoritar o filme');
+                    }
+                };
+                xhr.send(formData);
+            });
+        });
     </script>
 </body>
 

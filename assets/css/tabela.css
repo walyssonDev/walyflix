@@ -81,6 +81,7 @@ table #deleta {
     padding: .7em 1em;
     border-radius: .5em;
     border: none;
+    width: auto;
     background-color: #dc3545;
     color: white;
     cursor: pointer;

@@ -3,6 +3,8 @@ include("../handler/utils/conexao.php");
 include("../handler/utils/valida.php");
 
 $id = $_GET['id'];
+$cpfLogado = $_SESSION['cpf'];
+$nomeLogado = $_SESSION['nome'];
 
 $sql = "SELECT * FROM filmes WHERE id = '$id'";
 $resultado = $conn->query($sql);
@@ -61,7 +63,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
             </div>
 
             <div class="container">
-                <div class="comentarios">
+                <div id="comentarios" class="comentarios">
                     <?php
                     $sql = "SELECT * FROM comentarios WHERE filme_id = $id ORDER BY id";
                     $resultado = $conn->query($sql);
@@ -91,79 +93,31 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                                 </svg>";
                         }
 
-                        if ($_SESSION['tipo'] == "adm") {
+                        $commentClass = ($nome == "ADM" || $nome == "Adm") ? 'commentADM' : 'comment';
 
-                            if ($nome == "ADM" || $nome == "Adm") {
-                                echo "
-                        <div class='commentADM'>
+                        echo "
+                        <div class='$commentClass'>
                         <div class='txt'>
                         $img
                         <p class='nome'>" . $nome . ": </p>
                         <p>" . $comentario . "</p>
-                        </div>
-                        <form id='deletar' action='../handler/comentario/deletarComentario.php?id=$id' method='post'>
-                        <input type='hidden' name='comentario' id='comentario' value='$comentario'>
-                        <input type='hidden' name='cpfUser' id='cpfUser' value='$cpfComentario'>
-                        <input type='submit' value='Deletar'>
-                        </form>
-                        </div>
-                        ";
-                            } else {
-                                echo "
-                        <div class='comment'>
-                        <div class='txt'>
-                        $img
-                        <p class='nome'>" . $nome . ": </p>
-                        <p>" . $comentario . "</p>
-                        </div>
-                        <form id='deletar' action='../handler/comentario/deletarComentario.php?id=$id' method='post'>
-                        <input type='hidden' name='comentario' id='comentario' value='$comentario'>
-                        <input type='hidden' name='cpfUser' id='cpfUser' value='$cpfComentario'>
-                        <input type='submit' value='Deletar'>
-                        </form>
-                        </div>
-                        ";
-                            }
-                        } elseif ($cpfComentario == $_SESSION['cpf']) {
+                        </div>";
+
+                        if ($nomeLogado == "ADM" || $nomeLogado == "Adm" || $cpfComentario == $cpfLogado) {
                             echo "
-                        <div class='comment'>
-                        <div class='txt'>
-                        $img
-                        <p class='nome'>" . $nome . ": </p>
-                        <p>" . $comentario . "</p>
-                        </div>
-                        <form id='deletar' action='../handler/comentario/deletarComentario.php?id=$id' method='post'>
-                        <input type='hidden' name='comentario' id='comentario' value='$comentario'>
-                        <input type='hidden' name='cpfUser' id='cpfUser' value='$cpfComentario'>
-                        <input type='submit' value='Deletar'>
-                        </form>
-                        </div>
-                        ";
-                        } elseif ($nome == "ADM") {
-                            echo "
-                        <div class='commentADM'>
-                        <div class='txt'>
-                        $img
-                        <p class='nome'>" . $nome . ": </p>
-                        <p>" . $comentario . "</p>
-                        </div>
-                        </div>
-                        ";
-                        } else {
-                            echo "
-                        <div class='comment'>
-                        <div class='txt'>
-                        $img
-                        <p class='nome'>" . $nome . ": </p>
-                        <p>" . $comentario . "</p>
-                        </div>
-                        </div>
-                        ";
+                            <form class='deletarForm' action='../handler/comentario/deletarComentario.php?id=$id' method='post'>
+                            <input type='hidden' name='comentario' id='comentario' value='$comentario'>
+                            <input type='hidden' name='cpfUser' id='cpfUser' value='$cpfComentario'>
+                            <input type='submit' value='Deletar'>
+                            </form>";
                         }
+
+                        echo "</div>";
                     }
                     ?>
                 </div>
-                <form action="../handler/comentario/comentar.php?id=<?php echo $id ?>" method="post">
+                <form id="comentarioForm" action="../handler/comentario/comentar.php?id=<?php echo $id ?>"
+                    method="post">
                     <input type="text" name="comentario" id="comentario" placeholder="Seu comentario: (Max: 100)"
                         required>
                     <button type="submit">
@@ -182,58 +136,73 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         const filme_id = <?php echo $id ?>;
         const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
 
-        <?php
-        $cpf = $_SESSION['cpf'];
-        $sql = "SELECT tempo FROM minutagem WHERE filme_id = $id AND cpf = '$cpf'";
-        $resultado = $conn->query($sql);
-        $tempo = ($row = $resultado->fetch_assoc()) ? $row['tempo'] : 0;
-        ?>
+        document.getElementById('comentarioForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        if (isIframe) {
-            const tempoSalvo = <?php echo $tempo ?>;
-            const iframe = document.querySelector('iframe');
+            const form = event.target;
+            const formData = new FormData(form);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const resposta = JSON.parse(xhr.responseText);
+                    if (resposta.success) {
+                        const div = document.createElement('div');
+                        div.classList.add(resposta.nome.toLowerCase() === 'adm' ? 'commentADM' : 'comment');
+                        div.innerHTML = `
+                        <div class='txt'>
+                            ${resposta.img}
+                            <p class='nome'>${resposta.nome}: </p>
+                            <p>${resposta.comentario}</p>
+                        </div>`;
 
-            if (iframe) {
-                // Adiciona o parâmetro de início à URL do iframe
-                const url = new URL(iframe.src);
-                url.searchParams.set('start', Math.floor(tempoSalvo));
-                iframe.src = url.toString();
-            }
+                        if (resposta.nome.toLowerCase() === 'adm' || resposta.cpf === '<?php echo $cpfLogado ?>') {
+                            div.innerHTML += `
+                            <form class='deletarForm' action='../handler/comentario/deletarComentario.php?id=${filme_id}' method='post'>
+                                <input type='hidden' name='comentario' value='${resposta.comentario}'> 
+                                <input type='hidden' name='cpfUser' value='${resposta.cpf}'>
+                                <input type='submit' value='Deletar' class='btn-deletar'>
+                            </form>`;
+                        }
 
-            // Atualiza o tempo no servidor periodicamente
-            let tempoAtual = tempoSalvo; // Baseado no tempo salvo
-            setInterval(() => {
-                tempoAtual += 6; // Incrementa manualmente (melhor se houver API)
-                fetch('../action/salvar_tempo.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        tempo: tempoAtual,
-                        id: filme_id
-                    })
-                });
-            }, 6000);
-        } else {
-            const video = document.getElementById('video');
-            video.addEventListener('loadedmetadata', () => {
-                video.currentTime = <?php echo $tempo ?>;
+                        document.getElementById('comentarios').appendChild(div);
+                        form.reset();
+                        addDeleteEvent(div.querySelector('.deletarForm'));
+                    } else {
+                        alert(resposta.message);
+                    }
+                } else {
+                    alert('Erro ao enviar o comentário');
+                }
+            };
+            xhr.send(formData);
+        });
+
+        function addDeleteEvent(form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const form = event.target;
+                const formData = new FormData(form);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', form.action, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const resposta = JSON.parse(xhr.responseText);
+                        if (resposta.success) {
+                            form.parentElement.remove();
+                        } else {
+                            alert(resposta.message);
+                        }
+                    } else {
+                        alert('Erro ao deletar o comentário');
+                    }
+                };
+                xhr.send(formData);
             });
-
-            setInterval(() => {
-                fetch('../action/salvar_tempo.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        tempo: video.currentTime,
-                        id: filme_id
-                    })
-                });
-            }, 6000);
         }
+
+        document.querySelectorAll('.deletarForm').forEach(addDeleteEvent);
     </script>
 </body>
 
