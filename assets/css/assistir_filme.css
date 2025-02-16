@@ -177,12 +177,16 @@ form button[type="submit"]:hover {
     }
 
     .comentarios {
-        height: 30vh;
+        height: 25vh;
     }
 
     .filme {
         width: 90%;
         height: auto;
+    }
+
+    iframe{
+        height: 100%;
     }
 
     .filme h1 {
