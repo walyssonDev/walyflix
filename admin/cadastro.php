@@ -18,6 +18,7 @@ verificarPermissao(['adm']);
 </head>
 
 <body>
+    <?php include("../includes/load.php") ?>
     <?php include("../includes/header.php") ?>
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
@@ -52,7 +53,7 @@ verificarPermissao(['adm']);
         </div>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);

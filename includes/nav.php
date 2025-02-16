@@ -30,6 +30,18 @@
             ?>
         </ul>
     </nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var loader = document.getElementById('loader');
+
+            // Mostrar o loader ao clicar em links do menu
+            document.querySelectorAll('#menu a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    loader.style.display = 'flex';
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

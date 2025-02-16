@@ -43,6 +43,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
 </head>
 
 <body>
+    <?php include("../includes/load.php") ?>
     <?php include("../includes/header.php") ?>
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
@@ -156,7 +157,8 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                             <p>${resposta.comentario}</p>
                         </div>`;
 
-                        if (resposta.nome.toLowerCase() === 'adm' || resposta.cpf === '<?php echo $cpfLogado ?>') {
+                        if (resposta.nome.toLowerCase() === 'adm' || resposta.cpf ===
+                            '<?php echo $cpfLogado ?>') {
                             div.innerHTML += `
                             <form class='deletarForm' action='../handler/comentario/deletarComentario.php?id=${filme_id}' method='post'>
                                 <input type='hidden' name='comentario' value='${resposta.comentario}'> 

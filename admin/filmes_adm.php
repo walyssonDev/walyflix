@@ -17,6 +17,7 @@ verificarPermissao(['adm']);
 </head>
 
 <body>
+    <?php include("../includes/load.php") ?>
     <?php include("../includes/header.php") ?>
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
