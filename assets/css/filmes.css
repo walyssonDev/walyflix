@@ -67,7 +67,6 @@ body {
     display: flex;
     overflow-x: auto;
     padding: 10px 0;
-    white-space: nowrap;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -171,8 +170,8 @@ body {
     justify-content: center;
     position: absolute;
     bottom: 0;
-    width: 100%;
-    padding: 1rem;
+    width: -webkit-fill-available;
+    padding: 1em;
     background: rgba(15, 23, 42, 0.8);
     color: #e2e8f0;
     opacity: 0;
