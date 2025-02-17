@@ -46,37 +46,44 @@ include("../handler/utils/valida.php");
 
                 $resultado = $conn->query($sql);
 
+                $filmesPorGenero = [];
                 while ($row = $resultado->fetch_assoc()) {
-                    $id = $row['id'];
-                    $genero = $row['nome_genero'];
+                    $filmesPorGenero[$row['nome_genero']][] = $row;
+                }
 
-                    $sqlFav = "SELECT * FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
-                    $resultadoFav = $conn->query($sqlFav);
-                    $isFav = $resultadoFav->fetch_assoc();
+                foreach ($filmesPorGenero as $genero => $filmes) {
+                    echo "<h2>$genero</h2>";
+                    echo "<div class='filmes-por-genero'>";
+                    foreach ($filmes as $row) {
+                        $id = $row['id'];
+                        $sqlFav = "SELECT * FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
+                        $resultadoFav = $conn->query($sqlFav);
+                        $isFav = $resultadoFav->fetch_assoc();
 
-                    echo "<a href='assistir_filme.php?id=" . $id . "'>";
-                    echo "
-                    <article class='filme'>
-                        <div class='fav'>
-                            <form class='favoritarForm' method='post' action='../handler/filme/favoritar.php'>
-                                <input type='hidden' name='id' value='" . $id . "'>
-                                <button type='submit' class='btn-favoritar'>";
-                    if ($isFav) {
-                        echo "<i class='bi bi-star-fill'></i>";
-                    } else {
-                        echo "<i class='bi bi-star'></i>";
+                        echo "<a href='assistir_filme.php?id=" . $id . "'>";
+                        echo "
+                        <article class='filme'>
+                            <div class='fav'>
+                                <form class='favoritarForm' method='post' action='../handler/filme/favoritar.php'>
+                                    <input type='hidden' name='id' value='" . $id . "'>
+                                    <button type='submit' class='btn-favoritar'>";
+                        if ($isFav) {
+                            echo "<i class='bi bi-star-fill'></i>";
+                        } else {
+                            echo "<i class='bi bi-star'></i>";
+                        }
+                        echo "</button>
+                                </form>
+                            </div>
+                            <img src='" . $row['path'] . "'>
+                            <div class='txt-filme'>
+                                <p>" . $row['nome'] . "</p>
+                            </div>
+                        </article>
+                        ";
+                        echo "</a>";
                     }
-                    echo "</button>
-                            </form>
-                        </div>
-                        <img src='" . $row['path'] . "'>
-                        <div class='txt-filme'>
-                            <p>" . $row['nome'] . "</p>
-                            <p id='genero-filme'>" . $genero . "</p>
-                        </div>
-                    </article>
-                    ";
-                    echo "</a>";
+                    echo "</div>";
                 }
                 ?>
             </div>

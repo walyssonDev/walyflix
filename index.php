@@ -20,6 +20,11 @@
 
         gtag('config', 'G-VX1YBC3426');
     </script>
+    <style>
+        .container {
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>

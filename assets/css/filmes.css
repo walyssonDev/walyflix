@@ -46,10 +46,27 @@ body {
 .filmes {
     display: flex;
     padding: .5em;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     gap: 1em;
     padding-bottom: 10em;
+    width: 99%;
+}
+
+.filmes h2{
+    margin: 0;
+}
+
+.filmes-por-genero {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.filmes-por-genero .filme {
+    flex: 0 0 auto;
+    margin-right: 10px;
 }
 
 .filme {
