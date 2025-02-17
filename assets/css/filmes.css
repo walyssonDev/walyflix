@@ -80,7 +80,6 @@ body {
 .filmes-por-genero .filme {
     flex: 0 0 auto;
     margin-right: 10px;
-    display: inline-block;
 }
 
 .scroll-btn {
