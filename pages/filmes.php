@@ -53,6 +53,8 @@ include("../handler/utils/valida.php");
 
                 foreach ($filmesPorGenero as $genero => $filmes) {
                     echo "<h2>$genero</h2>";
+                    echo "<div class='filmes-por-genero-container'>";
+                    echo "<button class='scroll-btn left' onclick='scrollParaEsquerda(this)'><i class='bi bi-chevron-left'></i></button>";
                     echo "<div class='filmes-por-genero'>";
                     foreach ($filmes as $row) {
                         $id = $row['id'];
@@ -84,6 +86,8 @@ include("../handler/utils/valida.php");
                         echo "</a>";
                     }
                     echo "</div>";
+                    echo "<button class='scroll-btn right' onclick='scrollParaDireita(this)'><i class='bi bi-chevron-right'></i></button>";
+                    echo "</div>";
                 }
                 ?>
             </div>
@@ -104,6 +108,35 @@ include("../handler/utils/valida.php");
                 }
             }
         }
+
+        function scrollParaEsquerda(button) {
+            const container = button.parentElement.querySelector('.filmes-por-genero');
+            if (!container) {
+                console.error("Elemento filmes-por-genero não encontrado!");
+                return;
+            }
+            console.log("Scroll antes:", container.scrollLeft);
+            container.scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+            console.log("Scroll depois:", container.scrollLeft);
+        }
+
+        function scrollParaDireita(button) {
+            const container = button.parentElement.querySelector('.filmes-por-genero');
+            if (!container) {
+                console.error("Elemento filmes-por-genero não encontrado!");
+                return;
+            }
+            console.log("Scroll antes:", container.scrollLeft);
+            container.scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+            console.log("Scroll depois:", container.scrollLeft);
+        }
+
 
         document.querySelectorAll('.favoritarForm').forEach(form => {
             form.addEventListener('submit', function(event) {

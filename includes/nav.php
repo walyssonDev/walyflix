@@ -25,8 +25,6 @@
                         <li><a href='../admin/cadastro_filme.php'><i class='bi bi-cloud-plus-fill'></i><span>Cadastrar Filme</span></a></li>
                         <li><a href='../admin/generos.php'><i class='bi bi-tags-fill'></i><span>Generos</span></a></li>
                         <li><a href='../admin/filmes_adm.php'><i class='bi bi-film'></i><span>Filmes ADM</span></a></li>
-                        <li><a href='../pages/filmes.php'><i class='bi bi-film'></i><span>Filmes</span></a></li>
-                        <li><a href='favoritos.php'><i class='bi bi-star-fill'></i><span>Favoritos</span></a></li>
                 ";
             }
             ?>

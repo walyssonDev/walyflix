@@ -57,16 +57,58 @@ body {
     margin: 0;
 }
 
+.filmes-por-genero-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .filmes-por-genero {
     display: flex;
     overflow-x: auto;
     padding: 10px 0;
-    width: 100%;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.filmes-por-genero::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .filmes-por-genero .filme {
     flex: 0 0 auto;
     margin-right: 10px;
+    display: inline-block;
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1;
+    height: 50%;
+    transition: .2s ease all;
+}
+
+.scroll-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.scroll-btn.left {
+    left: 0;
+    border-radius: 0 1em 1em 0;
+}
+
+.scroll-btn.right {
+    right: 0;
+    border-radius: 1em 0 0 1em;
 }
 
 .filme {
@@ -207,6 +249,7 @@ body {
         flex-wrap: wrap;
         justify-content: center;
         gap: 1em;
+        padding: 0;
         padding-bottom: 5em;
     }
 
@@ -218,8 +261,32 @@ body {
         font-size: 15px;
     }
 
+    .filmes-por-genero {
+        display: flex;
+        overflow-x: scroll;
+        gap: 10px;
+        padding-bottom: 10px;
+        scroll-behavior: smooth;
+        width: 100%;
+    }
+
+    .filmes-por-genero-container {
+        overflow-x: auto;
+        display: flex;
+        padding: 0;
+        width: 100%;
+    }
+
+    .filmes-por-genero .filme {
+        flex: 0 0 150px;
+    }
+
     .filme .txt-filme p {
         font-size: 15px;
+    }
+
+    .filmes .scroll-btn{
+        display: none;
     }
 
     .options {

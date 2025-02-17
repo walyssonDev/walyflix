@@ -26,35 +26,42 @@ verificarPermissao(['adm']);
             <div class="filmes">
                 <?php
                 $sql = "SELECT filmes.*, generos.genero AS nome_genero 
-                    FROM filmes 
-                    INNER JOIN generos
-                    ON filmes.genero = generos.id";
+                        FROM filmes 
+                        INNER JOIN generos
+                        ON filmes.genero = generos.id";
                 $resultado = $conn->query($sql);
 
+                $filmesPorGenero = [];
                 while ($row = $resultado->fetch_assoc()) {
-                    $genero = $row['nome_genero'];
+                    $filmesPorGenero[$row['nome_genero']][] = $row;
+                }
 
-                    echo "<a href='../pages/assistir_filme.php?id=" . $row['id'] . "'>";
-                    echo "
-                    <article class='filme'>
-                    <img src='" . $row['path'] . "'>
-                    <div class='txt-filme'>
-                        <p>" . $row['nome'] . "</p>
-                        <p id = 'genero-filme'>" . $genero . "</p>
-                    </div>
-                    </article>
-                    <div class='options'>
-                            <form action = 'edita_filme.php' method = 'POST'>
-                                <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
+                foreach ($filmesPorGenero as $genero => $filmes) {
+                    echo "<h2>$genero</h2>";
+                    echo "<div class='filmes-por-genero'>";
+                    foreach ($filmes as $row) {
+                        echo "<a href='../pages/assistir_filme.php?id=" . $row['id'] . "'>";
+                        echo "
+                        <article class='filme'>
+                            <img src='" . $row['path'] . "'>
+                            <div class='txt-filme'>
+                                <p>" . $row['nome'] . "</p>
+                            </div>
+                        </article>
+                        <div class='options'>
+                            <form action='edita_filme.php' method='POST'>
+                                <input type='hidden' name='id' value='" . $row["id"] . "'>
                                 <input type='submit' value='Editar' id='editar'>
                             </form>
-                            <form action = '../handler/filme/deletar_filme.php' method = 'POST'>
-                                <input type = 'hidden' name = 'id' value = '" . $row["id"] . "'>
-                                <input type = 'submit' value = 'Deletar' id='deletar'>
+                            <form action='../handler/filme/deletar_filme.php' method='POST'>
+                                <input type='hidden' name='id' value='" . $row["id"] . "'>
+                                <input type='submit' value='Deletar' id='deletar'>
                             </form>
                         </div>
-                    ";
-                    echo "</a>";
+                        ";
+                        echo "</a>";
+                    }
+                    echo "</div>";
                 }
                 ?>
                 <div class="space"></div>
