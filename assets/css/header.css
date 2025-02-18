@@ -19,6 +19,18 @@ header {
     z-index: 1000;
 }
 
+header h1 {
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+    filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+    text-shadow: 
+    -2px -2px 0 #004aad,  
+     2px -2px 0 #004aad,  
+    -2px  2px 0 #004aad,  
+     2px  2px 0 #004aad;
+}
+
 header .user {
     display: flex;
     align-items: center;

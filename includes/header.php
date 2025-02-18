@@ -12,13 +12,12 @@
 
 <body>
     <header>
+        <h1>WALYFLIX</h1>
         <div class="user">
             <a href="../pages/user_config.php">
                 <img src="../handler/usuario/userImg.php" alt="Foto de Perfil">
             </a>
-            <p>Olá, <?php echo $_SESSION["nome"]; ?>.</p>
         </div>
-        <button><a href="../handler/usuario/sair.php">Sair</a></button>
     </header>
 </body>
 

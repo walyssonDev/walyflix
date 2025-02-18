@@ -57,6 +57,7 @@ nav ul a i {
         height: auto;
         transition: .5s;
         overflow-x: auto;
+        background-color: #1e1e2ed7;
     }
 
     nav ul{
@@ -86,7 +87,21 @@ nav ul a i {
         flex-direction: column;
     }
 
+    nav ul li a span{
+        font-size: 13px;
+        color: #a1a1a1;
+    }
+
     nav ul li a i{
         margin: 0;
+        color: #a1a1a1;
+    }
+
+    .active i {
+        color: #fff;
+    }
+    
+    .active span {
+        color: #fff;
     }
 }
