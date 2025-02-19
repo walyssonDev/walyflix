@@ -10,18 +10,24 @@ body {
 }
 
 nav {
-    position: relative;
-    height: 100%;
-    min-width: 15%;
-    background-color: #1e1e2e;
-    color: #ffffff;
-    border-right: 2px solid #292d3e;
-    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: .5em;
+    left: 50%;
+    width: auto;
+    transform: translateX(-50%);
+    color: #7a7a7a;
 }
 
 nav ul {
     padding: 0;
     margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 nav ul li {
@@ -33,13 +39,13 @@ nav ul a {
     align-items: center;
     padding: 1em;
     text-decoration: none;
-    color: #ffffff;
+    color: #7a7a7a;
     font-size: 1rem;
-    transition: background-color 0.3s, color 0.3s;
+    transition: .3s ease all;
 }
 
 nav ul a:hover {
-    background-color: #292d3e;
+    border-bottom: 2px solid #fff;
 }
 
 nav ul a i {
@@ -47,20 +53,34 @@ nav ul a i {
     font-size: 1.2rem;
 }
 
+.active i {
+    color: #fff;
+}
+
+.active span {
+    color: #fff;
+}
+
+.active span~a {
+    border-bottom: 2px solid #fff;
+}
+
 @media screen and (max-width: 1020px) {
     nav {
         position: fixed;
         left: 0;
+        top: auto;
+        transform: translateX(0);
         bottom: 0;
         width: 100%;
         z-index: 1000;
         height: auto;
         transition: .5s;
         overflow-x: auto;
-        background-color: #1e1e2ed7;
+        background-color: #1e1e2eec;
     }
 
-    nav ul{
+    nav ul {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -68,7 +88,7 @@ nav ul a i {
         height: 100%;
     }
 
-    nav ul li{
+    nav ul li {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -76,32 +96,24 @@ nav ul a i {
         width: 100%;
     }
 
-    nav ul li a{
+    nav ul li a {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
         width: 100%;
-        padding: .5em;
+        padding: 0;
         text-align: center;
         flex-direction: column;
     }
 
-    nav ul li a span{
+    nav ul li a span {
         font-size: 13px;
-        color: #a1a1a1;
+        color: #7a7a7a;
     }
 
-    nav ul li a i{
+    nav ul li a i {
         margin: 0;
-        color: #a1a1a1;
-    }
-
-    .active i {
-        color: #fff;
-    }
-    
-    .active span {
-        color: #fff;
+        color: #7a7a7a;
     }
 }

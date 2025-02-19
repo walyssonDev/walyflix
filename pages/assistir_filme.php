@@ -12,6 +12,14 @@ $resultado = $conn->query($sql);
 while ($row = $resultado->fetch_assoc()) {
     $link = $row['filme'];
     $nomeFilme = $row['nome'];
+    $genero_id = $row['genero'];
+}
+
+$sqlGenero = "SELECT genero FROM generos WHERE id = $genero_id";
+$resultadoGenero = $conn->query($sqlGenero);
+
+while ($row = $resultadoGenero->fetch_assoc()) {
+    $genero = $row['genero'];
 }
 
 $link_limpo = parse_url($link, PHP_URL_PATH);
@@ -44,23 +52,48 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
 
 <body>
     <?php include("../includes/load.php") ?>
-    <?php include("../includes/header.php") ?>
     <div class="conteudo">
-        <?php include("../includes/nav.php") ?>
         <div class="interface">
-            <div class="filme">
-                <?php
-                if (strpos($link, 'dropbox.com') !== false) {
-                    echo "
-                <video id='video' controls autoplay>
-                <source type='video/mp4' src='" . $link . "'>
-            </video>";
-                } else if (strpos($link, 'drive.google.com') !== false) {
-                    echo "
-            <iframe src='$link' allowfullscreen></iframe>";
-                }
-                ?>
-                <h1><?php echo $nomeFilme ?></h1>
+            <div class="left">
+                <div class="filme">
+                    <button id="btn-voltar"><i class="bi bi-arrow-left-short"></i></button>
+                    <?php
+                    if (strpos($link, 'dropbox.com') !== false) {
+                        echo "
+                    <video id='video' controls autoplay>
+                    <source type='video/mp4' src='" . $link . "'>
+                    </video>";
+                    } else if (strpos($link, 'drive.google.com') !== false) {
+                        echo "<iframe src='$link' allowfullscreen></iframe>";
+                    }
+                    ?>
+                </div>
+
+                <div class="info">
+                    <div class="top">
+                        <h1><?php echo $nomeFilme ?></h1>
+                        <div class='fav'>
+                            <form id="fav-form" class='favoritarForm' method='post'
+                                action='../handler/filme/favoritar.php'>
+                                <?php
+                                $sqlFav = "SELECT * FROM favoritos WHERE cpf = '$cpfLogado' AND filme_id = '$id'";
+                                $resultadoFav = $conn->query($sqlFav);
+                                $isFav = $resultadoFav->num_rows > 0;
+                                echo "
+                                <input type='hidden' name='id' value='" . $id . "'>
+                                <button type='submit' class='btn-favoritar'>";
+                                if ($isFav) {
+                                    echo "<i class='bi bi-bookmark-fill'></i>";
+                                } else {
+                                    echo "<i class='bi bi-bookmark'></i>";
+                                }
+                                echo "</button>
+                            " ?>
+                            </form>
+                        </div>
+                    </div>
+                    <p><?php echo $genero ?></p>
+                </div>
             </div>
 
             <div class="container">
@@ -129,6 +162,9 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
+        document.getElementById('btn-voltar').addEventListener('click', function() {
+            window.history.back();
+        });
         <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
@@ -205,6 +241,35 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         }
 
         document.querySelectorAll('.deletarForm').forEach(addDeleteEvent);
+
+        document.querySelectorAll('.favoritarForm').forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const form = event.target;
+                const formData = new FormData(form);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', form.action, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const resposta = JSON.parse(xhr.responseText);
+                        if (resposta.success) {
+                            const button = form.querySelector('.btn-favoritar');
+                            if (resposta.favoritado) {
+                                button.innerHTML = "<i class='bi bi-bookmark-fill'></i>";
+                            } else {
+                                button.innerHTML = "<i class='bi bi-bookmark'></i>";
+                            }
+                        } else {
+                            alert(resposta.message);
+                        }
+                    } else {
+                        alert('Erro ao favoritar o filme');
+                    }
+                };
+                xhr.send(formData);
+            });
+        });
     </script>
 </body>
 

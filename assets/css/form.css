@@ -240,8 +240,31 @@ form input[type="submit"]:hover {
         padding: 1em;
     }
 
+    form h1,
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    form input,
+    form select {
+        padding: .4rem;
+        padding-left: 2.2rem;
+    }
+
+    form input[type="submit"] {
+        padding: .4rem;
+        margin-top: .7rem;
+    }
+
+    .img i {
+        margin: 0;
+        font-size: 3rem;
+    }
+
     #genero {
         flex-direction: column;
+        padding: .4rem;
+        padding-left: 2.2rem;
     }
 
     .config {

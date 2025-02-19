@@ -20,15 +20,18 @@ header {
 }
 
 header h1 {
+    font-family: "Rochester", serif;
+    font-weight: 400;
+    font-style: normal;
     color: #ffffff;
     padding: 0;
     margin: 0;
     filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
-    text-shadow: 
-    -2px -2px 0 #004aad,  
-     2px -2px 0 #004aad,  
-    -2px  2px 0 #004aad,  
-     2px  2px 0 #004aad;
+    text-shadow:
+        -1px -1px 0 #004aad,
+        1px -1px 0 #004aad,
+        -1px 1px 0 #004aad,
+        1px 1px 0 #004aad;
 }
 
 header .user {
@@ -51,8 +54,8 @@ header .user a:hover {
 }
 
 header .user img {
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;

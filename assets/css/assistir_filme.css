@@ -10,19 +10,68 @@ body {
     display: flex;
     gap: 1em;
     padding: 2em 1em;
-    width: 100%;
     overflow-y: auto;
 }
 
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    flex-direction: column;
+}
+
 .filme {
-    background-color: #1e293b;
+    position: relative;
     color: #ffffff;
     border-radius: 1rem;
     overflow: hidden;
-    height: fit-content;
-    width: 50%;
+    height: auto;
+    width: 100%;
     text-align: center;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#btn-voltar {
+    position: absolute;
+    top: 1%;
+    left: 0;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: #fff;
+    font-size: 3em;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    color: #fff;
+    width: 100%;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    background-color: #023047;
+    margin-top: .2em;
+    border-radius: .5em;
+    padding: 1%;
+}
+
+.info h1 {
+    margin: 0;
+}
+
+.info p {
+    background-color: #023047;
+    margin: 0;
+    padding: 1%;
+    border-radius: .5em;
 }
 
 video,
@@ -32,7 +81,7 @@ iframe {
     border: none;
 }
 
-iframe{
+iframe {
     height: 15em;
 }
 
@@ -125,6 +174,12 @@ form {
     border-radius: 0 0 1em 1em;
 }
 
+#fav-form {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
 form input[type="text"] {
     width: -webkit-fill-available;
     padding: 0.8rem;
@@ -161,7 +216,6 @@ form button[type="submit"]:hover {
         align-items: center;
         justify-content: flex-start;
         padding-bottom: 10rem;
-        padding-top: .5em;
     }
 
     form {
@@ -173,20 +227,29 @@ form button[type="submit"]:hover {
     }
 
     .container {
-        width: 90%;
+        width: 95%;
         height: auto;
     }
 
     .comentarios {
-        height: 25vh;
+        height: 40vh;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .info {
+        width: 95%;
     }
 
     .filme {
-        width: 90%;
+        width: 100%;
         height: auto;
+        border-radius: 0;
     }
 
-    iframe{
+    iframe {
         height: 100%;
     }
 

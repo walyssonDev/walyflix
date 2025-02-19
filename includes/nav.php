@@ -26,7 +26,7 @@ function isActive($page)
                 echo "
                     <li><a href='inicio.php' " . isActive('inicio.php') . "><i class='bi bi-house-fill'></i><span>Inicio</span></a></li>
                     <li><a href='filmes.php' " . isActive('filmes.php') . "><i class='bi bi-film'></i><span>Filmes</span></a></li>
-                    <li><a href='favoritos.php' " . isActive('favoritos.php') . "><i class='bi bi-star-fill'></i><span>Favoritos</span></a></li>
+                    <li><a href='lista.php' " . isActive('lista.php') . "><i class='bi bi-bookmark-fill'></i><span>Minha lista</span></a></li>
                 ";
             } elseif ($_SESSION["tipo"] == "adm") {
                 echo "

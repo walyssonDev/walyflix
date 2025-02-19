@@ -16,6 +16,21 @@ body {
     width: 100%;
 }
 
+.titulo {
+    width: 100%;
+}
+
+.titulo h1 {
+    margin: 0;
+    text-align: left;
+    padding: .5em;
+    font-size: 2em;
+}
+
+.filme-container {
+    display: flex;
+}
+
 .filmes {
     display: flex;
     padding: .5em;
@@ -26,60 +41,26 @@ body {
     width: 99%;
 }
 
-.filmes h2 {
-    margin: 0;
-}
-
-.filmes-por-genero-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.filmes-por-genero {
-    display: flex;
-    overflow-x: auto;
-    padding: 10px 0;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.filmes-por-genero::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-.filmes-por-genero .filme {
-    flex: 0 0 auto;
-    margin-right: 10px;
-}
-
-.scroll-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 1;
-    height: 50%;
+.filmes a {
+    text-decoration: none;
+    color: #fff;
     transition: .2s ease all;
+    border-radius: .5em;
+    overflow: hidden;
 }
 
-.scroll-btn:hover {
-    background-color: rgba(0, 0, 0, 0.9);
+.filmes a:hover {
+    outline: 2px solid #004478;
 }
 
-.scroll-btn.left {
-    left: 0;
-    border-radius: 0 1em 1em 0;
+.txt h2 {
+    margin: 0;
+    font-size: 1.5em;
 }
 
-.scroll-btn.right {
-    right: 0;
-    border-radius: 1em 0 0 1em;
+.txt p {
+    margin: 0;
+    font-size: 1em;
 }
 
 .filme {
@@ -97,31 +78,42 @@ body {
     cursor: pointer;
 }
 
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1em;
+}
+
 .filme:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
-.fav button {
+.botoes {
+    display: flex;
+    gap: 1em;
+}
+
+.botoes button {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    right: 0;
-    padding: 1%;
-    border: none;
-    width: 40%;
-    background-color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    transform: rotate(45deg) translate(20px, -20px);
+    padding: 1em;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: transparent;
     cursor: pointer;
+    transition: .2s ease all;
 }
 
-.fav i {
-    color: #FFD100;
-    font-size: 20px;
-    transform: rotate(-45deg) translate(-2px);
+.botoes button:hover {
+    background-color: #004478;
+}
+
+.botoes button i {
+    color: #fff;
+    font-size: 1.5em;
 }
 
 .filme img {
@@ -210,6 +202,10 @@ body {
         height: calc(100dvh - 6em);
     }
 
+    .titulo h1 {
+        font-size: 1.5em;
+    }
+
     .filmes {
         display: flex;
         flex-wrap: wrap;
@@ -219,44 +215,38 @@ body {
         padding-bottom: 5em;
     }
 
-    .filmes h2 {
-        margin-top: .5rem;
+    .filmes a {
+        margin-top: .5em;
+    }
+
+    .txt h2 {
+        font-size: 1.2em;
+    }
+
+    .botoes {
+        flex-direction: column;
+        gap: .3em;
+    }
+
+    .botoes button {
+        padding: .5em;
+    }
+
+    .botoes button i {
+        font-size: 1.5em;
     }
 
     .filme {
         width: 8em;
     }
 
-    .filme .txt-filme #genero-filme {
-        font-size: 15px;
-    }
-
-    .filmes-por-genero {
-        display: flex;
-        overflow-x: scroll;
-        gap: 0;
-        padding-bottom: 10px;
-        scroll-behavior: smooth;
-        width: 100%;
-    }
-
-    .filmes-por-genero-container {
-        overflow-x: auto;
-        display: flex;
-        padding: 0;
-        width: 100%;
-    }
-
-    .filmes-por-genero .filme {
-        flex: 0 0 150px;
+    .filme img {
+        border-radius: .5em;
+        height: 8em;
     }
 
     .filme .txt-filme p {
         font-size: 15px;
-    }
-
-    .filmes .scroll-btn {
-        display: none;
     }
 
     .options {
@@ -268,14 +258,5 @@ body {
     #editar,
     #deletar {
         padding: .5em;
-    }
-
-    .fav button {
-        width: 50%;
-        transform: rotate(45deg) translate(15px, -16px);
-    }
-
-    .filme img {
-        height: 10em;
     }
 }
