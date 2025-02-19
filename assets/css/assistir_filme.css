@@ -57,6 +57,7 @@ body {
 .top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #023047;
     margin-top: .2em;
     border-radius: .5em;
