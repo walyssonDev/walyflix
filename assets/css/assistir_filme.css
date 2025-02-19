@@ -61,6 +61,7 @@ body {
     margin-top: .2em;
     border-radius: .5em;
     padding: 1%;
+    text-align: center;
 }
 
 .info h1 {
@@ -245,7 +246,7 @@ form button[type="submit"]:hover {
 
     .filme {
         width: 100%;
-        height: auto;
+        height: 12em;
         border-radius: 0;
     }
 

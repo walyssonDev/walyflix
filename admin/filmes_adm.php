@@ -22,7 +22,6 @@ verificarPermissao(['adm']);
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
         <div class="interface">
-            <input type="search" name="busca" id="busca" placeholder="Buscar filme" oninput="buscarFilme()">
             <div class="filmes">
                 <?php
                 $sql = "SELECT filmes.*, generos.genero AS nome_genero 
@@ -73,55 +72,40 @@ verificarPermissao(['adm']);
         </div>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
         }
         ?>
 
-    function scrollParaEsquerda(button) {
-        const container = button.parentElement.querySelector('.filmes-por-genero');
-        if (!container) {
-            console.error("Elemento filmes-por-genero não encontrado!");
-            return;
-        }
-        console.log("Scroll antes:", container.scrollLeft);
-        container.scrollBy({
-            left: -300,
-            behavior: 'smooth'
-        });
-        console.log("Scroll depois:", container.scrollLeft);
-    }
-
-    function scrollParaDireita(button) {
-        const container = button.parentElement.querySelector('.filmes-por-genero');
-        if (!container) {
-            console.error("Elemento filmes-por-genero não encontrado!");
-            return;
-        }
-        console.log("Scroll antes:", container.scrollLeft);
-        container.scrollBy({
-            left: 300,
-            behavior: 'smooth'
-        });
-        console.log("Scroll depois:", container.scrollLeft);
-    }
-
-    function buscarFilme() {
-        const input = document.getElementById('busca').value.toLowerCase();
-        const filmes = document.getElementsByClassName('filme');
-
-        for (let i = 0; i < filmes.length; i++) {
-            const nomeFilme = filmes[i].querySelector('.txt-filme p').textContent.toLowerCase();
-
-            if (nomeFilme.includes(input)) {
-                filmes[i].style.display = "";
-            } else {
-                filmes[i].style.display = "none";
+        function scrollParaEsquerda(button) {
+            const container = button.parentElement.querySelector('.filmes-por-genero');
+            if (!container) {
+                console.error("Elemento filmes-por-genero não encontrado!");
+                return;
             }
+            console.log("Scroll antes:", container.scrollLeft);
+            container.scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+            console.log("Scroll depois:", container.scrollLeft);
         }
-    }
+
+        function scrollParaDireita(button) {
+            const container = button.parentElement.querySelector('.filmes-por-genero');
+            if (!container) {
+                console.error("Elemento filmes-por-genero não encontrado!");
+                return;
+            }
+            console.log("Scroll antes:", container.scrollLeft);
+            container.scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+            console.log("Scroll depois:", container.scrollLeft);
+        }
     </script>
 </body>
 

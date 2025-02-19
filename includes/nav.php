@@ -24,8 +24,8 @@ function isActive($page)
             <?php
             if ($_SESSION["tipo"] == "comum") {
                 echo "
-                    <li><a href='inicio.php' " . isActive('inicio.php') . "><i class='bi bi-house-fill'></i><span>Inicio</span></a></li>
-                    <li><a href='filmes.php' " . isActive('filmes.php') . "><i class='bi bi-film'></i><span>Filmes</span></a></li>
+                    <li><a href='filmes.php' " . isActive('filmes.php') . "><i class='bi bi-house-fill'></i><span>Inicio</span></a></li>
+                    <li><a href='busca.php' " . isActive('busca.php') . "><i class='bi bi-search'></i><span>Busca</span></a></li>
                     <li><a href='lista.php' " . isActive('lista.php') . "><i class='bi bi-bookmark-fill'></i><span>Minha lista</span></a></li>
                 ";
             } elseif ($_SESSION["tipo"] == "adm") {
