@@ -294,4 +294,8 @@ form input[type="submit"]:hover {
         margin: 0;
         padding: .4rem;
     }
+
+    .config label {
+        padding-left: 2.2rem;
+    }
 }
