@@ -257,8 +257,8 @@ form input[type="submit"]:hover {
     }
 
     form #previewImg {
-        height: 10em;
-        width: 10em;
+        height: 8em;
+        width: 8em;
     }
 
     .img i {
@@ -273,7 +273,8 @@ form input[type="submit"]:hover {
     }
 
     .config {
-        width: 80%;
+        width: auto;
+        gap: 0;
     }
 
     .config .img-user {
@@ -289,13 +290,21 @@ form input[type="submit"]:hover {
         align-items: center;
     }
 
-    .config label,
     .config input[type='submit'] {
         margin: 0;
         padding: .4rem;
     }
 
-    .config label {
+    .config input[type='submit'] {
+        margin-top: .5em;
+    }
+
+    .config #input-img {
+        padding: .4rem;
         padding-left: 2.2rem;
+    }
+
+    .config label {
+        padding: 0;
     }
 }
