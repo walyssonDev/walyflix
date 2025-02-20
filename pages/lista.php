@@ -77,11 +77,11 @@ include("../handler/utils/valida.php");
                                             <input type='hidden' name='pgfav' value='favoritos'>
                                             <input type='hidden' name='id' value='<?php echo $id ?>'>
                                             <button type='submit' class='btn-favoritar'>
-                                                <i class="bi bi-x-lg"></i>
+                                                <i class="bi bi-x-circle"></i>
                                             </button>
                                         </form>
                                         <button>
-                                            <i class="bi bi-caret-right-fill"></i>
+                                            <i class="bi bi-play-circle"></i>
                                         </button>
                                     </div>
                                 </div>

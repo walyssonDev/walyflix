@@ -87,5 +87,6 @@ header button a:hover {
 @media screen and (max-width: 1020px) {
     header {
         padding: .5em 1em;
+        background-color: #0d11177d;
     }
 }
