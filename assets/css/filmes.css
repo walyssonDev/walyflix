@@ -34,6 +34,7 @@ body {
     position: relative;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .filmes-por-genero {
@@ -42,6 +43,10 @@ body {
     padding: 10px 0;
     scrollbar-width: none;
     -ms-overflow-style: none;
+}
+
+.filmes-por-genero-container:hover .scroll-btn {
+    visibility: visible;
 }
 
 .filmes-por-genero::-webkit-scrollbar {
@@ -55,31 +60,27 @@ body {
 }
 
 .scroll-btn {
+    visibility: hidden;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    border: none;
     color: white;
     font-size: 2rem;
     cursor: pointer;
+    border: none;
     z-index: 1;
-    height: 50%;
-    transition: .2s ease all;
-}
-
-.scroll-btn:hover {
-    background-color: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.93);
+    box-shadow: 0 0 100px 50px rgb(0, 0, 0);
+    transition: .3s ease all;
+    height: 100%;
 }
 
 .scroll-btn.left {
     left: 0;
-    border-radius: 0 1em 1em 0;
 }
 
 .scroll-btn.right {
     right: 0;
-    border-radius: 1em 0 0 1em;
 }
 
 .filme {
