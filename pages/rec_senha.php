@@ -12,13 +12,17 @@ include("../handler/utils/conexao.php");
     <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/form.css?v=<?php echo time(); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap"
+        rel="stylesheet">
     <title>Recuperar senha</title>
 </head>
 
 <body>
     <div class="container" id="index">
+        <h1>WalyFlix</h1>
         <form action="../handler/usuario/recuperar_senha.php" method="post">
-            <h1>Recuperar senha</h1>
+            <h2>Recuperar senha</h2>
             <p>Uma mensagem chegara no seu email.</p>
             <label for="cpf">CPF: </label>
             <div class="cpf">

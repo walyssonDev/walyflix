@@ -39,13 +39,13 @@ nav ul a {
     align-items: center;
     padding: 1em;
     text-decoration: none;
-    color: #7a7a7a;
+    color: #fff;
     font-size: 1rem;
     transition: .3s ease all;
 }
 
 nav ul a:hover {
-    border-bottom: 2px solid #fff;
+    color: #9ec8ff;
 }
 
 nav ul a i {
@@ -53,16 +53,9 @@ nav ul a i {
     font-size: 1.2rem;
 }
 
-.active i {
-    color: #fff;
-}
-
+.active i,
 .active span {
-    color: #fff;
-}
-
-.active span~a {
-    border-bottom: 2px solid #fff;
+    color: #2885ff;
 }
 
 @media screen and (max-width: 1020px) {
@@ -109,11 +102,9 @@ nav ul a i {
 
     nav ul li a span {
         font-size: 13px;
-        color: #7a7a7a;
     }
 
     nav ul li a i {
         margin: 0;
-        color: #7a7a7a;
     }
 }

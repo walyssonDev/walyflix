@@ -1,4 +1,5 @@
 body {
+    position: relative;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -15,11 +16,77 @@ body {
     height: 100%;
     padding-top: 1%;
     overflow-y: auto;
+    position: relative;
+    z-index: 2;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    background-color: #1e293b;
+    padding: 2rem;
+    border-radius: 1em;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 3;
 }
 
 #index {
     align-items: center;
     justify-content: center;
+    background-image: url(../../assets/img/fundo.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+#index::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+    background-repeat: inherit;
+    z-index: -1;
+}
+
+#index::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.596);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#index h1 {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    color: #fff;
+    font-family: "Rochester", serif;
+    font-size: 2.5em;
+    font-weight: 600;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+    filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+    text-shadow:
+        -1px -1px 0 #004aad,
+        1px -1px 0 #004aad,
+        -1px 1px 0 #004aad,
+        1px 1px 0 #004aad;
+    z-index: 100;
 }
 
 .img i {
@@ -133,26 +200,11 @@ body {
     box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5);
 }
 
-
-
 form select:focus,
 form input:focus {
     border-color: #3b82f6;
     outline: none;
     box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5);
-}
-
-
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
-    align-items: center;
-    background-color: #1e293b;
-    padding: 2rem;
-    border-radius: 1em;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 form a {

@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="assets/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/form.css?v=<?php echo time(); ?>">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap"
+        rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
@@ -29,8 +32,9 @@
 
 <body>
     <div class="container" id="index">
+        <h1>WalyFlix</h1>
         <form method="post" action="handler/usuario/login.php">
-            <h1>Login</h1>
+            <h2>Login</h2>
             <div class="img">
                 <i class="bi bi-person-circle"></i>
             </div>

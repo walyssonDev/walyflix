@@ -10,26 +10,30 @@ include("../handler/utils/conexao.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap"
+        rel="stylesheet">
     <title>Cadastro usuarios</title>
     <link rel="stylesheet" href="../assets/css/form.css?v=<?php echo time(); ?>">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
 <body>
     <div class="container" id="index">
+        <h1>WalyFlix</h1>
         <form method="post" action="../handler/usuario/cadastrar.php">
-            <h1>Cadastrar</h1>
+            <h2>Cadastrar</h2>
             <div class="img">
                 <i class="bi bi-person-plus"></i>
             </div>
@@ -59,7 +63,7 @@ include("../handler/utils/conexao.php");
         </form>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
