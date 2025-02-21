@@ -23,7 +23,10 @@ verificarPermissao(['adm']);
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
         <div class="container">
-            <a class="novo-botao" href="../admin/cadastrar_genero.php"><i class="bi bi-plus-circle"> Novo genero</i></a>
+            <div class="top">
+                <h2>Generos</h2>
+                <a href="../admin/cadastrar_genero.php"><i class="bi bi-plus-circle"> Novo genero</i></a>
+            </div>
             <table>
                 <tr>
                     <th>Genero</th>

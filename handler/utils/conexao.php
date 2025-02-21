@@ -14,15 +14,15 @@ if (!isset($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME'
     die('Erro: Variáveis de ambiente não carregadas corretamente.');
 }
 
-$servidor = "localhost";
+/*$servidor = "localhost";
 $usuario = "root";
 $senha = "";
-$dbname = "cadastro_filmes";
+$dbname = "cadastro_filmes";*/
 
-/*$servidor = $_ENV['DB_HOST'];
+$servidor = $_ENV['DB_HOST'];
 $usuario = $_ENV['DB_USER'];
 $senha = $_ENV['DB_PASS'];
-$dbname = $_ENV['DB_NAME'];*/
+$dbname = $_ENV['DB_NAME'];
 
 $conn = new mysqli($servidor, $usuario, $senha, $dbname);
 if ($conn->connect_error) {
