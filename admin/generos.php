@@ -27,20 +27,28 @@ verificarPermissao(['adm']);
             <table>
                 <tr>
                     <th>Genero</th>
-                    <th>Ação</th>
+                    <th colspan="2">Ação</th>
                 </tr>
                 <?php
                 $sql = "SELECT * FROM generos";
                 $resultado = $conn->query($sql);
 
                 while ($row = $resultado->fetch_assoc()) {
-                    echo "<form action='../handler/genero/editar_genero.php' method = 'post'>
-                            <tr>
-                                <td><input type='text' id='genero' name='genero' required value='" . $row['genero'] . "'></td>
-                                <input type='hidden' name='id' id='id' value='" . $row['id'] . "'>
-                                <td><button id='edita' type='submit'>Editar</button></td>
-                            </tr>
-                        </form>";
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($row['genero']) . "</td>";
+                    echo "<td>
+                        <form action='edita_genero.php' method='post'>
+                            <input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>
+                            <button  id='edita' type='submit'>Editar</button>
+                        </form>
+                      </td>";
+                    echo "<td>
+                        <form action='../handler/genero/deletar_genero.php' method='post'>
+                            <input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>
+                            <button  id='deleta' type='submit'>Deletar</button>
+                        </form>
+                      </td>";
+                    echo "</tr>";
                 }
                 ?>
             </table>
