@@ -28,6 +28,8 @@ if ($resultadoCpf === true && $resultadoSenha === true) {
             $_SESSION["nome"] = $nome;
             $_SESSION["tipo"] = $tipo;
 
+            setcookie("cpf_usuario", $cpf, time() + (365 * 24 * 60 * 60), "/", "", false, true);
+
             header("Location: ../../pages/inicio.php");
             exit;
         } else {
