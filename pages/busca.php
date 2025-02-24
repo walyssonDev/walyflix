@@ -8,45 +8,41 @@ include("../handler/utils/valida.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/busca.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/filmes.css?v=<?php echo time(); ?>">
     <title>WalyFlix</title>
-    <style>
-        body {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000814;
-        }
-
-        h1 {
-            margin: 1em;
-            color: #fff;
-            filter: drop-shadow(0 0 0.75rem black);
-        }
-    </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-VX1YBC3426');
+    gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
 <body>
     <?php include("../includes/load.php") ?>
     <?php include("../includes/header.php") ?>
+    <?php include("../includes/nav.php") ?>
     <div class="conteudo">
-        <?php include("../includes/nav.php") ?>
-        <h1>EM BREVE</h1>
+        <div class="container">
+            <div class="input-busca">
+                <form action="../handler/busca/buscar.php" method="POST">
+                    <input type="text" name="busca" id="busca" placeholder="Buscar..." required>
+                    <i class="bi bi-search"></i>
+                </form>
+            </div>
+            <div id="loading" style="display: none;">Carregando...</div>
+            <div id="resultados-busca"></div>
+        </div>
     </div>
     <script>
-        <?php
+    <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
@@ -56,6 +52,28 @@ include("../handler/utils/valida.php");
             unset($_SESSION['mensagem']);
         }
         ?>
+    document.getElementById('busca').addEventListener('input', function() {
+        var query = this.value;
+        var loading = document.getElementById('loading');
+        var resultadosBusca = document.getElementById('resultados-busca');
+
+        if (query.length > 0) {
+            loading.style.display = 'block';
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', '../handler/busca/buscar.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    resultadosBusca.innerHTML = xhr.responseText;
+                    loading.style.display = 'none';
+                }
+            };
+            xhr.send('busca=' + encodeURIComponent(query));
+        } else {
+            resultadosBusca.innerHTML = '';
+            loading.style.display = 'none';
+        }
+    });
     </script>
 </body>
 

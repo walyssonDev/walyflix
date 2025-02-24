@@ -34,7 +34,9 @@ function isActive($page)
                     <li><a href='../admin/cadastro.php' " . isActive('cadastro.php') . "><i class='bi bi-person-plus-fill'></i><span>Cadastro</span></a></li>
                     <li><a href='../admin/cadastro_filme.php' " . isActive('cadastro_filme.php') . "><i class='bi bi-cloud-plus-fill'></i><span>Cadastrar Filme</span></a></li>
                     <li><a href='../admin/generos.php' " . isActive('generos.php') . "><i class='bi bi-tags-fill'></i><span>Generos</span></a></li>
+                    <li><a href='../pages/busca.php' " . isActive('busca.php') . "><i class='bi bi-search'></i><span>Busca</span></a></li>
                     <li><a href='../admin/filmes_adm.php' " . isActive('filmes_adm.php') . "><i class='bi bi-film'></i><span>Filmes ADM</span></a></li>
+                    <li><a href='../pages/lista.php' " . isActive('lista.php') . "><i class='bi bi-bookmark-fill'></i><span>Minha lista</span></a></li>
                 ";
             }
             ?>

@@ -78,8 +78,11 @@ include("../handler/utils/valida.php");
                 </div>
                 <input type="hidden" name="cpfAnterior" id="cpfAnterior" value="<?php echo $_SESSION['cpf'] ?>">
                 <input type="submit" value="Enviar">
+                <div class="btn-sair">
+                    <p>Quer trocar de conta?</p>
+                    <a href="../handler/usuario/sair.php">Sair</a>
+                </div>
             </form>
-            <div class="space"></div>
         </div>
     </div>
     <script src="../assets/js/validaForm.js"></script>

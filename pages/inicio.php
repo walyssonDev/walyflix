@@ -47,7 +47,8 @@ include("../handler/utils/valida.php");
         if ($_SESSION['tipo'] == "adm") {
             echo "<h1>BEM VINDO ADMINISTRADOR</h1>";
         } else {
-            header("location: filmes.php");
+            echo "<script>window.location.href = 'filmes.php';</script>";
+            exit();
         }
         ?>
     </div>
