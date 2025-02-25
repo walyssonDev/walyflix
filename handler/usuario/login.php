@@ -19,6 +19,13 @@ if ($resultadoCpf === true && $resultadoSenha === true) {
         $stmt->execute();
         $stmt->bind_result($nome, $email, $tipo);
         $stmt->fetch();
+        $stmt->close();
+
+        $sqlStatus = "UPDATE usuarios SET status = 1, ultima_atualizacao = NOW() WHERE cpf = ?";
+        $stmtStatus = $conn->prepare($sqlStatus);
+        $stmtStatus->bind_param("s", $cpf);
+        $stmtStatus->execute();
+        $stmtStatus->close();
 
         if (!empty($nome)) {
             session_start();

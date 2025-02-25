@@ -109,20 +109,9 @@ include("../handler/utils/valida.php");
             console.log("Scroll depois:", container.scrollLeft);
         }
 
-        function atualizarStatus(status) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "../handler/usuario/atualiza_status.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("status=" + status);
-        }
-
-        setInterval(function() {
-            atualizarStatus(0);
-        }, 300000);
-
-        window.onload = function() {
-            atualizarStatus(1);
-        };
+        setInterval(() => {
+            fetch("../handler/usuario/atualiza_status.php");
+        }, 30000);
     </script>
 </body>
 

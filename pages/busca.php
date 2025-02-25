@@ -13,14 +13,14 @@ include("../handler/utils/valida.php");
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -41,7 +41,7 @@ include("../handler/utils/valida.php");
         </div>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);
@@ -51,43 +51,32 @@ include("../handler/utils/valida.php");
             unset($_SESSION['mensagem']);
         }
         ?>
-    document.getElementById('busca').addEventListener('input', function() {
-        var query = this.value;
-        var loading = document.getElementById('loading');
-        var resultadosBusca = document.getElementById('resultados-busca');
+        document.getElementById('busca').addEventListener('input', function() {
+            var query = this.value;
+            var loading = document.getElementById('loading');
+            var resultadosBusca = document.getElementById('resultados-busca');
 
-        if (query.length > 0) {
-            loading.style.display = 'block';
-            var xhr = new XMLHttpRequest();
-            xhr.open('post', '../handler/busca/buscar.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    resultadosBusca.innerHTML = xhr.responseText;
-                    loading.style.display = 'none';
-                }
-            };
-            xhr.send('busca=' + encodeURIComponent(query));
-        } else {
-            resultadosBusca.innerHTML = '';
-            loading.style.display = 'none';
-        }
-    });
+            if (query.length > 0) {
+                loading.style.display = 'block';
+                var xhr = new XMLHttpRequest();
+                xhr.open('post', '../handler/busca/buscar.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        resultadosBusca.innerHTML = xhr.responseText;
+                        loading.style.display = 'none';
+                    }
+                };
+                xhr.send('busca=' + encodeURIComponent(query));
+            } else {
+                resultadosBusca.innerHTML = '';
+                loading.style.display = 'none';
+            }
+        });
 
-    function atualizarStatus(status) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../handler/usuario/atualiza_status.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("status=" + status);
-    }
-
-    setInterval(function() {
-        atualizarStatus(0);
-    }, 300000);
-
-    window.onload = function() {
-        atualizarStatus(1);
-    };
+        setInterval(() => {
+            fetch("../handler/usuario/atualiza_status.php");
+        }, 30000);
     </script>
 </body>
 

@@ -271,16 +271,9 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
             });
         });
 
-        function atualizarStatus(status) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "../handler/usuario/atualiza_status.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("status=" + status);
-        }
-
-        window.onload = function() {
-            atualizarStatus(1);
-        };
+        setInterval(() => {
+            fetch("../handler/usuario/atualiza_status.php");
+        }, 30000);
     </script>
 </body>
 

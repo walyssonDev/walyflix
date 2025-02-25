@@ -55,33 +55,33 @@ verificarPermissao('adm');
         </div>
     </div>
     <script>
-        function atualizarStatusTabela() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "buscar_status.php", true);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    var usuarios = JSON.parse(xhr.responseText);
-                    usuarios.forEach(function(usuario) {
-                        var row = document.querySelector("tr[data-cpf='" + usuario.cpf + "']");
-                        if (row) {
-                            var statusIcon = row.querySelector("i");
-                            if (usuario.status == 1) {
-                                statusIcon.classList.remove('inativo');
-                                statusIcon.classList.add('ativo');
-                            } else {
-                                statusIcon.classList.remove('ativo');
-                                statusIcon.classList.add('inativo');
-                            }
+    function atualizarStatusTabela() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "buscar_status.php", true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var usuarios = JSON.parse(xhr.responseText);
+                usuarios.forEach(function(usuario) {
+                    var row = document.querySelector("tr[data-cpf='" + usuario.cpf + "']");
+                    if (row) {
+                        var statusIcon = row.querySelector("i");
+                        if (usuario.status == 1) {
+                            statusIcon.classList.remove('inativo');
+                            statusIcon.classList.add('ativo');
+                        } else {
+                            statusIcon.classList.remove('ativo');
+                            statusIcon.classList.add('inativo');
                         }
-                    });
-                }
-            };
-            xhr.send();
-        }
+                    }
+                });
+            }
+        };
+        xhr.send();
+    }
 
-        setInterval(atualizarStatusTabela, 500);
+    setInterval(atualizarStatusTabela, 1000);
 
-        <?php
+    <?php
         if (isset($_SESSION['mensagem'])) {
             echo "alert('" . $_SESSION['mensagem'] . "')";
             unset($_SESSION['mensagem']);

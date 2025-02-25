@@ -106,6 +106,10 @@ include("../handler/utils/valida.php");
                 }
             });
         });
+
+        setInterval(() => {
+            fetch("../handler/usuario/atualiza_status.php");
+        }, 30000);
     </script>
 
 </body>
