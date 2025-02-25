@@ -48,11 +48,11 @@ body {
     background-color: #2563eb;
 }
 
-.ativo{
+.ativo {
     color: #198754;
 }
 
-.inativo{
+.inativo {
     color: #dc3545;
 }
 
@@ -136,6 +136,7 @@ table input:focus {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        padding-bottom: 10em;
     }
 
     table {

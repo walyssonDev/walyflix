@@ -31,7 +31,7 @@ include("../handler/utils/valida.php");
     <div class="conteudo">
         <div class="container">
             <div class="input-busca">
-                <form action="../handler/busca/buscar.php" method="POST">
+                <form action="" method="post">
                     <input type="text" name="busca" id="busca" placeholder="Buscar..." required>
                     <i class="bi bi-search"></i>
                 </form>
