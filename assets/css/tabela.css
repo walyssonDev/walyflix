@@ -48,6 +48,14 @@ body {
     background-color: #2563eb;
 }
 
+.ativo{
+    color: #198754;
+}
+
+.inativo{
+    color: #dc3545;
+}
+
 table {
     border-collapse: collapse;
     background-color: #1e1e1e;

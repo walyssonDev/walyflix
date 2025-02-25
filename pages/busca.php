@@ -9,7 +9,6 @@ include("../handler/utils/valida.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/busca.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../assets/css/filmes.css?v=<?php echo time(); ?>">
     <title>WalyFlix</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
@@ -74,6 +73,21 @@ include("../handler/utils/valida.php");
             loading.style.display = 'none';
         }
     });
+
+    function atualizarStatus(status) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../handler/usuario/atualiza_status.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("status=" + status);
+    }
+
+    setInterval(function() {
+        atualizarStatus(0);
+    }, 300000);
+
+    window.onload = function() {
+        atualizarStatus(1);
+    };
     </script>
 </body>
 

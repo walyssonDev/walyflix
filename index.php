@@ -1,22 +1,20 @@
 <?php
 session_start();
 
-// Se o usuário já estiver logado, redireciona para inicio.php
 if (isset($_SESSION['cpf'])) {
     header("Location: pages/inicio.php");
     exit;
 }
 
-// Se não houver sessão, mas existir um cookie, restaura os dados do usuário
 if (!isset($_SESSION['cpf']) && isset($_COOKIE['cpf_usuario'])) {
-    include("utils/conexao.php"); // Ajuste o caminho se necessário
+    include("handler/utils/conexao.php");
 
     $cpf = $_COOKIE['cpf_usuario'];
-    $sql = "SELECT nome, email, tipo FROM usuarios WHERE cpf = ?";
+    $sql = "SELECT nome, email, tipo, senha FROM usuarios WHERE cpf = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $cpf);
     $stmt->execute();
-    $stmt->bind_result($nome, $email, $tipo);
+    $stmt->bind_result($nome, $email, $tipo, $senha);
     $stmt->fetch();
 
     if (!empty($nome)) {
@@ -24,6 +22,7 @@ if (!isset($_SESSION['cpf']) && isset($_COOKIE['cpf_usuario'])) {
         $_SESSION["email"] = $email;
         $_SESSION["nome"] = $nome;
         $_SESSION["tipo"] = $tipo;
+        $_SESSION['senha'] = $senha;
 
         header("Location: pages/inicio.php");
         exit;

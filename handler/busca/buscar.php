@@ -10,13 +10,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (mysqli_num_rows($resultado) > 0) {
         while ($row = mysqli_fetch_assoc($resultado)) {
+            $sqlGenero = "SELECT * FROM generos WHERE id = " . $row['genero'];
+            $resultadoGenero = $conn->query($sqlGenero);
+            $resultadoGenero = $resultadoGenero->fetch_assoc();
+            $genero = $resultadoGenero['genero'];
+
             echo "<a href='assistir_filme.php?id=" . $row['id'] . "'>";
             echo "
                         <article class='filme'>
                             <img src='" . $row['path'] . "'>
                             <div class='txt-filme'>
-                                <p>" . $row['nome'] . "</p>
+                                <p id='nome'>" . $row['nome'] . "</p>
+                                <p id='genero'>" . $genero . "</p>
                             </div>
+                            <i class='bi bi-play-circle'></i>
                         </article>
                         ";
             if ($_SESSION['tipo'] == "adm") {

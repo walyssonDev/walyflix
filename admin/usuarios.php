@@ -23,9 +23,9 @@ verificarPermissao('adm');
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
         <div class="container">
-            <table>
+            <table id="usuariosTable">
                 <tr>
-                    <th>CPF</th>
+                    <th>Status</th>
                     <th>Nome</th>
                     <th colspan="2">Ações</th>
                 </tr>
@@ -34,8 +34,8 @@ verificarPermissao('adm');
                 $resultado = $conn->query($sql);
 
                 while ($row = $resultado->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["cpf"] . "</td>";
+                    echo "<tr data-cpf='" . $row["cpf"] . "'>";
+                    echo "<td><i class='bi bi-circle-fill " . ($row["status"] == 1 ? 'ativo' : 'inativo') . "'></i></td>";
                     echo "<td>" . $row["nome"] . "</td>";
                     echo "<td>
                         <form action = '../admin/edita_usuario.php' method = 'POST'>
@@ -49,13 +49,38 @@ verificarPermissao('adm');
                         <input id = 'deleta' type = 'submit' value = 'Deletar'>
                         </form>";
                     echo "</tr>";
-                    echo "</tr>";
                 }
                 ?>
             </table>
         </div>
     </div>
     <script>
+        function atualizarStatusTabela() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "buscar_status.php", true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var usuarios = JSON.parse(xhr.responseText);
+                    usuarios.forEach(function(usuario) {
+                        var row = document.querySelector("tr[data-cpf='" + usuario.cpf + "']");
+                        if (row) {
+                            var statusIcon = row.querySelector("i");
+                            if (usuario.status == 1) {
+                                statusIcon.classList.remove('inativo');
+                                statusIcon.classList.add('ativo');
+                            } else {
+                                statusIcon.classList.remove('ativo');
+                                statusIcon.classList.add('inativo');
+                            }
+                        }
+                    });
+                }
+            };
+            xhr.send();
+        }
+
+        setInterval(atualizarStatusTabela, 500);
+
         <?php
         if (isset($_SESSION['mensagem'])) {
             echo "alert('" . $_SESSION['mensagem'] . "')";
