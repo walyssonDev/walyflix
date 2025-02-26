@@ -162,6 +162,9 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
+        document.querySelector("video").requestFullscreen();
+        document.querySelector("iframe").requestFullscreen();
+
         document.getElementById('btn-voltar').addEventListener('click', function() {
             window.history.back();
         });
