@@ -36,7 +36,7 @@ include("../handler/utils/valida.php");
                     <i class="bi bi-search"></i>
                 </form>
             </div>
-            <div id="loading" style="display: none;">Carregando...</div>
+            <div id="loading" style="display: none; color: #fff;">Carregando...</div>
             <div id="resultados-busca"></div>
         </div>
     </div>
