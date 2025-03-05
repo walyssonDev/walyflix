@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <a href='assistir_filme.php?id=<?= $row['id'] ?>'>
                 <article class='filme'>
                     <div class='esquerda'>
-                        <img src='<?= $row['path'] ?>'>
+                        <img src='<?= $row['img'] ?>'>
                         <div class='txt-filme'>
                             <p id='nome'><?= $row['nome'] ?></p>
                             <p id='genero'><?= $genero ?></p>
