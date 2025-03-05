@@ -157,19 +157,6 @@ include("../handler/utils/valida.php");
                                             <p>" . $row['nome'] . "</p>
                                         </div>
                                     </article>";
-                                    if ($_SESSION['tipo'] == "adm") {
-                                        echo "
-                                        <div class='options'>
-                                            <form action='../admin/edita_filme.php' method='POST'>
-                                                <input type='hidden' name='id' value='" . $row["id"] . "'>
-                                                <input type='submit' value='Editar' id='editar'>
-                                            </form>
-                                            <form action='../handler/filme/deletar_filme.php' method='POST'>
-                                                <input type='hidden' name='id' value='" . $row["id"] . "'>
-                                                <input type='submit' value='Deletar' id='deletar'>
-                                            </form>
-                                        </div>";
-                                    }
                                     echo "</a>";
                                     $ordem++;
                                 }
