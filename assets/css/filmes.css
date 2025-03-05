@@ -215,6 +215,11 @@ body {
     letter-spacing: -15px;
     color: transparent;
     -webkit-text-stroke: 2px #036ebf;
+    text-shadow:
+        -2px -2px 0 #036ebf,
+        2px -2px 0 #036ebf,
+        -2px 2px 0 #036ebf,
+        2px 2px 0 #036ebf;
     margin: 0;
     font-weight: 600;
     transition: .2s ease all;
