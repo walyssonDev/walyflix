@@ -34,6 +34,21 @@ include("../handler/utils/valida.php");
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
         <div class="interface">
+            <div class="destaque">
+                <?php
+                $sqlDestaque = "SELECT * FROM filmes WHERE destaque = 1";
+                $resultadoDestaque = $conn->query($sqlDestaque);
+                $row = $resultadoDestaque->fetch_assoc();
+                ?>
+                <div class="info-destaque">
+                    <h1><?= $row['nome'] ?></h1>
+                    <a href='assistir_filme.php?id=<?= $row['id'] ?>'>Assistir filme</a>
+                </div>
+                <video id="video-destaque" autoplay>
+                    <source src="<?= htmlspecialchars($row['filme']) ?>" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+                </video>
+            </div>
             <div class="filmes">
                 <?php
                 $cpf = $_SESSION['cpf'];
@@ -57,19 +72,31 @@ include("../handler/utils/valida.php");
                     echo "<div class='filmes-por-genero'>";
                     foreach ($filmes as $row) {
                         $id = $row['id'];
-                        $sqlFav = "SELECT * FROM favoritos WHERE cpf = '$cpf' AND filme_id = '$id'";
+                        $sqlFav = "SELECT * FROM lista WHERE cpf = '$cpf' AND filme_id = '$id'";
                         $resultadoFav = $conn->query($sqlFav);
                         $isFav = $resultadoFav->fetch_assoc();
 
                         echo "<a href='assistir_filme.php?id=" . $id . "'>";
                         echo "
                         <article class='filme'>
-                            <img src='" . $row['path'] . "'>
+                            <img src='" . $row['img'] . "'>
                             <div class='txt-filme'>
                                 <p>" . $row['nome'] . "</p>
                             </div>
-                        </article>
-                        ";
+                        </article>";
+                        if ($_SESSION['tipo'] == "adm") {
+                            echo "
+                            <div class='options'>
+                                <form action='../admin/edita_filme.php' method='POST'>
+                                    <input type='hidden' name='id' value='" . $row["id"] . "'>
+                                    <input type='submit' value='Editar' id='editar'>
+                                </form>
+                                <form action='../handler/filme/deletar_filme.php' method='POST'>
+                                    <input type='hidden' name='id' value='" . $row["id"] . "'>
+                                    <input type='submit' value='Deletar' id='deletar'>
+                                </form>
+                            </div>";
+                        }
                         echo "</a>";
                     }
                     echo "</div>";
@@ -81,6 +108,17 @@ include("../handler/utils/valida.php");
         </div>
     </div>
     <script>
+        <?php
+        if (isset($_SESSION['resposta'])) {
+            echo "alert('" . $_SESSION['resposta'] . "')";
+            unset($_SESSION['resposta']);
+        }
+        if (isset($_SESSION['mensagem'])) {
+            echo "alert('" . $_SESSION['mensagem'] . "')";
+            unset($_SESSION['mensagem']);
+        }
+        ?>
+
         function scrollParaEsquerda(button) {
             const container = button.parentElement.querySelector('.filmes-por-genero');
             if (!container) {
@@ -112,6 +150,12 @@ include("../handler/utils/valida.php");
         setInterval(() => {
             fetch("../handler/usuario/atualiza_status.php");
         }, 30000);
+
+        const video = document.getElementById("video-destaque");
+
+        video.addEventListener("loadedmetadata", () => {
+            video.currentTime = video.duration / 2;
+        });
     </script>
 </body>
 

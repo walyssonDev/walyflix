@@ -18,14 +18,14 @@ include("../handler/utils/conexao.php");
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -34,7 +34,7 @@ include("../handler/utils/conexao.php");
         <h1>WalyFlix</h1>
         <form method="post" action="../handler/usuario/cadastrar.php">
             <h2>Cadastrar</h2>
-            <div class="img">
+            <div class="img-principal">
                 <i class="bi bi-person-plus"></i>
             </div>
             <label for="nome">Nome: </label>
@@ -63,7 +63,7 @@ include("../handler/utils/conexao.php");
         </form>
     </div>
     <script>
-    <?php
+        <?php
         if (isset($_SESSION['resposta'])) {
             echo "alert('" . $_SESSION['resposta'] . "')";
             unset($_SESSION['resposta']);

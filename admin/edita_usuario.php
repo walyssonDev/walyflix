@@ -37,7 +37,7 @@ while ($row = $resultado->fetch_assoc()) {
         <div class="container">
             <form method="post" action="../handler/usuario/editar.php">
                 <h1>Editar <?php echo $nome ?></h1>
-                <div class="img">
+                <div class="img-principal">
                     <i class="bi bi-person-up"></i>
                 </div>
                 <label for="nome">Nome: </label>

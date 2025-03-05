@@ -25,7 +25,7 @@ verificarPermissao(['adm']);
         <div class="container">
             <form method="post" action="../handler/usuario/cadastrar.php">
                 <h1>Cadastrar</h1>
-                <div class="img">
+                <div class="img-principal">
                     <i class="bi bi-person-plus"></i>
                 </div>
                 <label for="nome">Nome: </label>

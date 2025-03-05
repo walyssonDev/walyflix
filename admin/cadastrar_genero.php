@@ -25,7 +25,7 @@ verificarPermissao(['adm']);
         <div class="container">
             <form action="../handler/genero/cadastrar_genero.php" method="post">
                 <h2>Novo genero</h2>
-                <div class="img">
+                <div class="img-principal">
                     <i class="bi bi-clipboard2-plus"></i>
                 </div>
                 <label for="novoGenero">Genero: </label>

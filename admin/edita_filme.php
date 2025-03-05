@@ -9,7 +9,7 @@ $resultado = $conn->query($sql);
 
 while ($row = $resultado->fetch_assoc()) {
     $nome = $row['nome'];
-    $path = $row['path'];
+    $img = $row['img'];
     $link = $row['filme'];
     $genero = $row['genero'];
 }
@@ -37,7 +37,7 @@ while ($row = $resultado->fetch_assoc()) {
             <form method="post" action="../handler/filme/editar_filme.php" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?php echo $id ?>">
                 <h1><?php echo $nome ?> </h1>
-                <div class="img">
+                <div class="img-principal">
                     <i class="bi bi-card-checklist"></i>
                 </div>
                 <label for="nome">Nome: </label>
@@ -46,10 +46,10 @@ while ($row = $resultado->fetch_assoc()) {
                     <input type="text" name="nome" id="nome" value="<?php echo $nome ?>" placeholder="Nome do filme: "
                         required>
                 </div>
-                <label for="path">Path: </label>
-                <div class="path">
+                <label for="img">Imagem: </label>
+                <div class="img">
                     <i class="bi bi-card-image"></i>
-                    <input type="text" name="path" id="path" value="<?php echo $path ?>" placeholder="Path da imagem: "
+                    <input type="text" name="img" id="img" value="<?php echo $img ?>" placeholder="Link da imagem: "
                         required>
                 </div>
                 <label for="genero">Genero: </label>

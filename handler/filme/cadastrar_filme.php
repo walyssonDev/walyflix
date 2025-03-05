@@ -3,7 +3,7 @@ include("../utils/conexao.php");
 include("../utils/valida.php");
 
 $nome = $_POST['nome'];
-$path = $_POST['path'];
+$img = $_POST['img'];
 $filme = $_POST['link'];
 $genero = $_POST['genero'];
 
@@ -29,9 +29,9 @@ if ($filme == null) {
     die;
 }
 
-$sql = "INSERT INTO filmes (nome, path, filme, genero) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO filmes (nome, img, filme, genero) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssss", $nome, $path, $filme, $genero);
+$stmt->bind_param("ssss", $nome, $img, $filme, $genero);
 
 if ($stmt->execute()) {
     $_SESSION['resposta'] = "Filme cadastrado com sucesso";

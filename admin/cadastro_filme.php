@@ -25,7 +25,7 @@ verificarPermissao(['adm']);
         <div class="container">
             <form method="post" action="../handler/filme/cadastrar_filme.php" enctype="multipart/form-data">
                 <h1>Cadastrar Filme</h1>
-                <div class="img">
+                <div class="img-principal">
                     <i class="bi bi-card-checklist"></i>
                 </div>
                 <label for="nome">Nome: </label>
@@ -33,10 +33,10 @@ verificarPermissao(['adm']);
                     <i class="bi bi-pencil-square"></i>
                     <input type="text" name="nome" id="nome" placeholder="Nome do filme: " required>
                 </div>
-                <label for="path">Path: </label>
-                <div class="path">
+                <label for="img">Imagem: </label>
+                <div class="img">
                     <i class="bi bi-card-image"></i>
-                    <input type="text" name="path" id="path" placeholder="Path da imagem: " required>
+                    <input type="text" name="img" id="img" placeholder="Link da imagem: " required>
                 </div>
                 <label for="genero">Genero: </label>
                 <div class="genero">

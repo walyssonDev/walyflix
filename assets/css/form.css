@@ -21,6 +21,13 @@ body {
     z-index: 2;
 }
 
+h1 {
+    font-size: 2.5rem;
+    color: #3b82f6;
+    text-align: center;
+    margin: 0;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -123,7 +130,7 @@ form {
     z-index: 100;
 }
 
-.img i {
+.img-principal i {
     font-size: 4rem;
     color: #3b82f6;
     display: block;
@@ -185,7 +192,7 @@ form {
 .nome,
 .cpf,
 .senha,
-.path,
+.img,
 .link,
 .file,
 .email,
@@ -197,7 +204,7 @@ form {
 .nome i,
 .cpf i,
 .senha i,
-.path i,
+.img i,
 .link i,
 .file i,
 .email i,
@@ -347,7 +354,7 @@ form input[type="submit"]:hover {
         width: 8em;
     }
 
-    .img i {
+    .img-principal i {
         margin: 0;
         font-size: 3rem;
     }

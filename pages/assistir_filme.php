@@ -39,14 +39,14 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VX1YBC3426"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VX1YBC3426');
+        gtag('config', 'G-VX1YBC3426');
     </script>
 </head>
 
@@ -74,9 +74,9 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         <h1><?php echo $nomeFilme ?></h1>
                         <div class='fav'>
                             <form id="fav-form" class='favoritarForm' method='post'
-                                action='../handler/filme/favoritar.php'>
+                                action='../handler/filme/listar.php'>
                                 <?php
-                                $sqlFav = "SELECT * FROM favoritos WHERE cpf = '$cpfLogado' AND filme_id = '$id'";
+                                $sqlFav = "SELECT * FROM lista WHERE cpf = '$cpfLogado' AND filme_id = '$id'";
                                 $resultadoFav = $conn->query($sqlFav);
                                 $isFav = $resultadoFav->num_rows > 0;
                                 echo "
@@ -162,118 +162,118 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
         </div>
     </div>
     <script>
-    document.getElementById('btn-voltar').addEventListener('click', function() {
-        window.history.back();
-    });
-    <?php
+        document.getElementById('btn-voltar').addEventListener('click', function() {
+            window.history.back();
+        });
+        <?php
         if (isset($_GET['resposta'])) {
             echo "alert('" . $_GET['resposta'] . "')";
         }
         ?>
-    const filme_id = <?php echo $id ?>;
-    const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
+        const filme_id = <?php echo $id ?>;
+        const isIframe = <?php echo (strpos($link, 'drive.google.com') !== false) ? 'true' : 'false'; ?>;
 
-    document.getElementById('comentarioForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+        document.getElementById('comentarioForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        const form = event.target;
-        const formData = new FormData(form);
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', form.action, true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                const resposta = JSON.parse(xhr.responseText);
-                if (resposta.success) {
-                    const div = document.createElement('div');
-                    div.classList.add(resposta.nome.toLowerCase() === 'adm' ? 'commentADM' : 'comment');
-                    div.innerHTML = `
+            const form = event.target;
+            const formData = new FormData(form);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const resposta = JSON.parse(xhr.responseText);
+                    if (resposta.success) {
+                        const div = document.createElement('div');
+                        div.classList.add(resposta.nome.toLowerCase() === 'adm' ? 'commentADM' : 'comment');
+                        div.innerHTML = `
                         <div class='txt'>
                             ${resposta.img}
                             <p class='nome'>${resposta.nome}: </p>
                             <p>${resposta.comentario}</p>
                         </div>`;
 
-                    if (resposta.nome.toLowerCase() === 'adm' || resposta.cpf ===
-                        '<?php echo $cpfLogado ?>') {
-                        div.innerHTML += `
+                        if (resposta.nome.toLowerCase() === 'adm' || resposta.cpf ===
+                            '<?php echo $cpfLogado ?>') {
+                            div.innerHTML += `
                             <form class='deletarForm' action='../handler/comentario/deletarComentario.php?id=${filme_id}' method='post'>
                                 <input type='hidden' name='comentario' value='${resposta.comentario}'> 
                                 <input type='hidden' name='cpfUser' value='${resposta.cpf}'>
                                 <input type='submit' value='Deletar' class='btn-deletar'>
                             </form>`;
-                    }
+                        }
 
-                    document.getElementById('comentarios').appendChild(div);
-                    form.reset();
-                    addDeleteEvent(div.querySelector('.deletarForm'));
-                } else {
-                    alert(resposta.message);
-                }
-            } else {
-                alert('Erro ao enviar o comentário');
-            }
-        };
-        xhr.send(formData);
-    });
-
-    function addDeleteEvent(form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const form = event.target;
-            const formData = new FormData(form);
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', form.action, true);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    const resposta = JSON.parse(xhr.responseText);
-                    if (resposta.success) {
-                        form.parentElement.remove();
+                        document.getElementById('comentarios').appendChild(div);
+                        form.reset();
+                        addDeleteEvent(div.querySelector('.deletarForm'));
                     } else {
                         alert(resposta.message);
                     }
                 } else {
-                    alert('Erro ao deletar o comentário');
+                    alert('Erro ao enviar o comentário');
                 }
             };
             xhr.send(formData);
         });
-    }
 
-    document.querySelectorAll('.deletarForm').forEach(addDeleteEvent);
+        function addDeleteEvent(form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
 
-    document.querySelectorAll('.favoritarForm').forEach(form => {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const form = event.target;
-            const formData = new FormData(form);
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', form.action, true);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    const resposta = JSON.parse(xhr.responseText);
-                    if (resposta.success) {
-                        const button = form.querySelector('.btn-favoritar');
-                        if (resposta.favoritado) {
-                            button.innerHTML = "<i class='bi bi-bookmark-fill'></i>";
+                const form = event.target;
+                const formData = new FormData(form);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', form.action, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const resposta = JSON.parse(xhr.responseText);
+                        if (resposta.success) {
+                            form.parentElement.remove();
                         } else {
-                            button.innerHTML = "<i class='bi bi-bookmark'></i>";
+                            alert(resposta.message);
                         }
                     } else {
-                        alert(resposta.message);
+                        alert('Erro ao deletar o comentário');
                     }
-                } else {
-                    alert('Erro ao favoritar o filme');
-                }
-            };
-            xhr.send(formData);
-        });
-    });
+                };
+                xhr.send(formData);
+            });
+        }
 
-    setInterval(() => {
-        fetch("../handler/usuario/atualiza_status.php");
-    }, 30000);
+        document.querySelectorAll('.deletarForm').forEach(addDeleteEvent);
+
+        document.querySelectorAll('.favoritarForm').forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const form = event.target;
+                const formData = new FormData(form);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', form.action, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const resposta = JSON.parse(xhr.responseText);
+                        if (resposta.success) {
+                            const button = form.querySelector('.btn-favoritar');
+                            if (resposta.favoritado) {
+                                button.innerHTML = "<i class='bi bi-bookmark-fill'></i>";
+                            } else {
+                                button.innerHTML = "<i class='bi bi-bookmark'></i>";
+                            }
+                        } else {
+                            alert(resposta.message);
+                        }
+                    } else {
+                        alert('Erro ao listar o filme');
+                    }
+                };
+                xhr.send(formData);
+            });
+        });
+
+        setInterval(() => {
+            fetch("../handler/usuario/atualiza_status.php");
+        }, 30000);
     </script>
 </body>
 

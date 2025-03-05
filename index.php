@@ -68,7 +68,7 @@ if (!isset($_SESSION['cpf']) && isset($_COOKIE['cpf_usuario'])) {
         <h1>WalyFlix</h1>
         <form method="post" action="handler/usuario/login.php">
             <h2>Login</h2>
-            <div class="img">
+            <div class="img-principal">
                 <i class="bi bi-person-circle"></i>
             </div>
             <label for="cpf">CPF: </label>

@@ -9,7 +9,7 @@ include("../handler/utils/valida.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favoritos</title>
+    <title>Sua lista</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/lista.css?v=<?php echo time(); ?>">
@@ -40,18 +40,18 @@ include("../handler/utils/valida.php");
                 <?php
                 $cpf = $_SESSION['cpf'];
 
-                $sql = "SELECT * FROM favoritos WHERE cpf = '$cpf'";
+                $sql = "SELECT * FROM lista WHERE cpf = '$cpf'";
                 $resultado = $conn->query($sql);
 
                 if ($resultado->num_rows == 0) {
-                    echo "Você não tem filmes favoritos!";
+                    echo "Você não tem filmes na sua lista!";
                 } else {
                     while ($row = $resultado->fetch_assoc()) {
                         $sqlFilme = "SELECT * FROM filmes WHERE id = " . $row['filme_id'];
                         $resultadoFilme = $conn->query($sqlFilme);
                         $rowFilme = $resultadoFilme->fetch_assoc();
                         $nome = $rowFilme['nome'];
-                        $img = $rowFilme['path'];
+                        $img = $rowFilme['img'];
                         $filme = $rowFilme['filme'];
                         $genero_id = $rowFilme['genero'];
                         $id = $rowFilme['id'];
@@ -73,8 +73,8 @@ include("../handler/utils/valida.php");
                                     </div>
 
                                     <div class='botoes'>
-                                        <form class='favoritarForm' method='post' action='../handler/filme/favoritar.php'>
-                                            <input type='hidden' name='pgfav' value='favoritos'>
+                                        <form class='favoritarForm' method='post' action='../handler/filme/listar.php'>
+                                            <input type='hidden' name='pgfav' value='listar'>
                                             <input type='hidden' name='id' value='<?php echo $id ?>'>
                                             <button type='submit' class='btn-favoritar'>
                                                 <i class="bi bi-x-circle"></i>
@@ -113,7 +113,7 @@ include("../handler/utils/valida.php");
                             alert(resposta.message);
                         }
                     } else {
-                        alert('Erro ao favoritar o filme');
+                        alert('Erro ao listar o filme');
                     }
                 };
                 xhr.send(formData);

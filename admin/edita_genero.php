@@ -29,7 +29,7 @@ $row = $resultado->fetch_assoc();
         <div class="container">
             <form action="../handler/genero/editar_genero.php" method="post">
                 <h2>Editar <?php echo $row['genero'] ?></h2>
-                <div class="img">
+                <div class="img-principal">
                     <i class="bi bi-tags-fill"></i>
                 </div>
                 <label for="novoGenero">Genero: </label>

@@ -5,7 +5,7 @@ include("../utils/valida.php");
 $cpf = $_SESSION['cpf'];
 $id = $_POST['id'];
 
-$sqlFav = "SELECT * FROM favoritos WHERE cpf = ? AND filme_id = ?";
+$sqlFav = "SELECT * FROM lista WHERE cpf = ? AND filme_id = ?";
 $stmt = $conn->prepare($sqlFav);
 $stmt->bind_param("ss", $cpf, $id);
 $stmt->execute();
@@ -13,13 +13,13 @@ $resultadoFav = $stmt->get_result();
 $isFav = $resultadoFav->fetch_assoc();
 
 if ($isFav) {
-    $sql = "DELETE FROM favoritos WHERE cpf = ? AND filme_id = ?";
+    $sql = "DELETE FROM lista WHERE cpf = ? AND filme_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $cpf, $id);
     $stmt->execute();
     $favoritado = false;
 } else {
-    $sql = "INSERT INTO favoritos (cpf, filme_id) VALUES (?, ?)";
+    $sql = "INSERT INTO lista (cpf, filme_id) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $cpf, $id);
     $stmt->execute();

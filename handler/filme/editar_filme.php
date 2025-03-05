@@ -3,7 +3,7 @@ include("../utils/conexao.php");
 include("../utils/valida.php");
 
 $nome = $_POST['nome'];
-$path = $_POST['path'];
+$img = $_POST['img'];
 $filme = $_POST['link'];
 $id = $_POST['id'];
 $genero = $_POST['genero'];
@@ -27,9 +27,9 @@ if ($filme == null) {
     exit;
 }
 
-$sql = "UPDATE filmes SET nome = ?, path = ?, filme = ?, genero = ? WHERE id = ?";
+$sql = "UPDATE filmes SET nome = ?, img = ?, filme = ?, genero = ? WHERE id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssi", $nome, $path, $filme, $genero, $id);
+$stmt->bind_param("ssssi", $nome, $img, $filme, $genero, $id);
 
 if ($stmt->execute()) {
     $_SESSION['resposta'] = "Filme editado com sucesso";

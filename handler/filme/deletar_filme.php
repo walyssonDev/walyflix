@@ -9,10 +9,10 @@ $stmt->bind_param("s", $id);
 $stmt->execute();
 $stmt->close();
 
-$sql = "DELETE FROM favoritos WHERE filme_id = ?";
+$sql = "DELETE FROM lista WHERE filme_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $id);
 $stmt->execute();
 $stmt->close();
 
-header("Location: ../../admin/filmes_adm.php");
+header("Location: ../../pages/filmes.php");

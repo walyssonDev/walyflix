@@ -14,7 +14,14 @@ body {
     width: 100%;
     overflow: auto;
     padding-top: 1%;
-    padding-bottom: 5em;
+    padding-bottom: 10em;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #3b82f6;
+    text-align: center;
+    margin: 0;
 }
 
 .top {
@@ -86,6 +93,11 @@ table tr:nth-child(odd) {
     background-color: #222222;
 }
 
+table #destacado {
+    background-color: #1a8f2d;
+    color: #fff;
+}
+
 table #edita {
     padding: .7em 1em;
     border-radius: .5em;
@@ -115,6 +127,21 @@ table #deleta:hover {
     background-color: #bb2d3b;
 }
 
+table #destacar {
+    padding: .7em 1em;
+    border-radius: .5em;
+    border: none;
+    width: auto;
+    background-color: #1a8f2d;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+table #destacar:hover {
+    background-color: #157347;
+}
+
 table input {
     padding: 0.5em;
     border: 1px solid #343a40;
@@ -136,7 +163,7 @@ table input:focus {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        padding-bottom: 10em;
+        padding-bottom: 15em;
     }
 
     table {
