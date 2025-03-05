@@ -103,29 +103,6 @@ body {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
-.fav button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    right: 0;
-    padding: 1%;
-    border: none;
-    width: 40%;
-    background-color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    transform: rotate(45deg) translate(20px, -20px);
-    cursor: pointer;
-}
-
-.fav i {
-    color: #FFD100;
-    font-size: 20px;
-    transform: rotate(-45deg) translate(-2px);
-}
-
 .filme img {
     width: 100%;
     height: 18em;
@@ -203,17 +180,93 @@ body {
     background-color: #004478;
 }
 
+.top-10-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.top-10-container:hover .scroll-btn {
+    visibility: visible;
+}
+
+.top-10 {
+    display: flex;
+    gap: 1em;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.top-10 img {
+    border-radius: .5em;
+}
+
+.top-10-item {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.top-10-item p {
+    font-size: 10em;
+    width: 80%;
+    letter-spacing: -15px;
+    color: transparent;
+    -webkit-text-stroke: 2px #036ebf;
+    margin: 0;
+    font-weight: 600;
+    transition: .2s ease all;
+}
+
+.top-10 a {
+    display: flex;
+    text-decoration: none;
+}
+
+.top-10 a:hover .top-10-item p {
+    color: #036ebf;
+}
+
 .destaque {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 95vh;
+    height: 95dvh;
     background-color: black;
     box-shadow: 0px 95px 174px 107px rgba(0, 0, 0, 1);
     -webkit-box-shadow: 0px 95px 174px 107px rgba(0, 0, 0, 1);
     -moz-box-shadow: 0px 95px 174px 107px rgba(0, 0, 0, 1);
     position: relative;
+}
+
+.btn-destaque {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: .5em;
+}
+
+.fav button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    color: #1f73aca4;
+    text-decoration: none;
+    cursor: pointer;
+    border: 3px solid #1f73aca4;
+    border-radius: .5em;
+    padding: .3em;
+    transition: .2s ease all;
+}
+
+.fav button:hover {
+    color: #036ebf;
 }
 
 .destaque .info-destaque {
@@ -230,7 +283,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10em;
+    width: 60%;
+    gap: .5em;
     background-color: #1f73aca4;
     border: none;
     border-radius: .5em;
@@ -239,6 +293,10 @@ body {
     color: #fff;
     text-decoration: none;
     transition: .2s ease all;
+}
+
+.destaque .info-destaque p {
+    margin: 0;
 }
 
 .destaque a:hover {
@@ -271,17 +329,20 @@ body {
         justify-content: center;
         flex-direction: column;
         padding: .5em;
-        bottom: 0;
+        bottom: 2%;
         left: 50%;
+        width: 90%;
         transform: translateX(-50%);
     }
 
     .destaque video {
         width: 110%;
+        height: 60vh;
     }
 
     .destaque .info-destaque a {
         padding: .5em;
+        width: 100%;
     }
 
     .destaque h1 {
@@ -289,6 +350,10 @@ body {
         margin-bottom: .2em;
         text-align: center;
         font-size: 1.5em;
+    }
+
+    .fav button {
+        font-size: 1.2em;
     }
 
     .filmes {
@@ -323,6 +388,20 @@ body {
         width: 100%;
     }
 
+    .top-10-container {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .top-10 {
+        gap: .5em;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
     .filmes-por-genero .filme {
         flex: 0 0 150px;
     }
@@ -344,11 +423,6 @@ body {
     #editar,
     #deletar {
         padding: .5em;
-    }
-
-    .fav button {
-        width: 50%;
-        transform: rotate(45deg) translate(15px, -16px);
     }
 
     .filme img {
