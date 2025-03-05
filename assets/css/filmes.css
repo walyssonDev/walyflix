@@ -213,7 +213,7 @@ body {
     font-size: 10em;
     width: 80%;
     letter-spacing: -15px;
-    color: transparent;
+    color: black;
     -webkit-text-stroke: 2px #036ebf;
     text-shadow:
         -2px -2px 0 #036ebf,
