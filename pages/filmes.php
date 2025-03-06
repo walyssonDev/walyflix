@@ -73,6 +73,7 @@ include("../handler/utils/valida.php");
                     <source src="<?= htmlspecialchars($row['filme']) ?>" type="video/mp4">
                     Seu navegador não suporta o elemento de vídeo.
                 </video>
+                <div id="overlay"></div>
             </div>
             <div class="filmes">
                 <?php
