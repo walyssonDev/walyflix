@@ -24,11 +24,10 @@
             </a>
         </div>
     </header>
-    <div id="loader" style="display: none;">Loading...</div>
     <script>
-        document.querySelector('.user a').addEventListener('click', function() {
-            document.getElementById('loader').style.display = 'flex';
-        });
+    document.querySelector('.user a').addEventListener('click', function() {
+        document.getElementById('loader').style.display = 'flex';
+    });
     </script>
 </body>
 
