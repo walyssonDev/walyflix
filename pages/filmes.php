@@ -11,9 +11,8 @@ include("../handler/utils/valida.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WalyFlix</title>
     <link rel="preload" href="../assets/css/filmes.css?v=<?php echo time(); ?>" as="style">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-        as="style">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" as="style">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/filmes.css?v=<?php echo time(); ?>">
     <!-- Google tag (gtag.js) -->
@@ -28,11 +27,10 @@ include("../handler/utils/valida.php");
 
         gtag('config', 'G-VX1YBC3426');
     </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
+    <script async src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
 </head>
 
 <body>
-    <?php include("../includes/load.php") ?>
     <?php include("../includes/header.php") ?>
     <div class="conteudo">
         <?php include("../includes/nav.php") ?>
@@ -44,9 +42,9 @@ include("../handler/utils/valida.php");
                 $row = $resultadoDestaque->fetch_assoc();
                 ?>
                 <div class="info-destaque">
-                    <h1><?= $row['nome'] ?></h1>
+                    <h1><?= htmlspecialchars($row['nome']) ?></h1>
                     <div class="btn-destaque">
-                        <a href='assistir_filme.php?id=<?= $row['id'] ?>'>
+                        <a href='assistir_filme.php?id=<?= htmlspecialchars($row['id']) ?>'>
                             <i class="bi bi-play-fill"></i>
                             <p>Assistir</p>
                         </a>
@@ -58,14 +56,16 @@ include("../handler/utils/valida.php");
                                 $resultadoFav = $conn->query($sqlFav);
                                 $isFav = $resultadoFav->num_rows > 0;
                                 ?>
-                                <input type='hidden' name='id' value='<?= $row['id'] ?>'>
+                                <input type='hidden' name='id' value='<?= htmlspecialchars($row['id']) ?>'>
                                 <button type='submit' class='btn-favoritar'>
-                                    <i class='<?= $isFav ? "bi bi-bookmark-fill" : "bi bi-plus-lg" ?>'></i>
+                                    <i class='<?= $isFav ? "bi bi-check2" : "bi bi-plus-lg" ?>'></i>
                                     <p>Salvar</p>
                                 </button>
                             </form>
                         </div>
                     </div>
+                </div>
+                <div id="loading-gif">
                 </div>
                 <video id="video-destaque" autoplay>
                     <source data-src="<?= htmlspecialchars($row['filme']) ?>" type="video/mp4">
@@ -95,26 +95,26 @@ include("../handler/utils/valida.php");
                     echo "<button class='scroll-btn left' onclick='scrollParaEsquerda(this)'><i class='bi bi-chevron-left'></i></button>";
                     echo "<div class='filmes-por-genero'>";
                     foreach ($filmes as $row) {
-                        $id = $row['id'];
+                        $id = htmlspecialchars($row['id']);
                         $isFav = $row['isFav'] > 0;
 
                         echo "<a href='assistir_filme.php?id=" . $id . "'>";
                         echo "
                         <article class='filme'>
-                            <img src='https://wallpapers.com/images/hd/gray-gradient-background-yvgci5qspmivl7z0.jpg' data-src='" . $row['img'] . "' class='lazy'>
+                            <img src='https://cdn.dribbble.com/users/546766/screenshots/4044977/bluecircle.gif' data-src='" . htmlspecialchars($row['img']) . "' class='lazy'>
                             <div class='txt-filme'>
-                                <p>" . $row['nome'] . "</p>
+                                <p>" . htmlspecialchars($row['nome']) . "</p>
                             </div>
                         </article>";
                         if ($_SESSION['tipo'] == "adm") {
                             echo "
                             <div class='options'>
                                 <form action='../admin/edita_filme.php' method='POST'>
-                                    <input type='hidden' name='id' value='" . $row["id"] . "'>
+                                    <input type='hidden' name='id' value='" . $id . "'>
                                     <input type='submit' value='Editar' id='editar'>
                                 </form>
                                 <form action='../handler/filme/deletar_filme.php' method='POST'>
-                                    <input type='hidden' name='id' value='" . $row["id"] . "'>
+                                    <input type='hidden' name='id' value='" . $id . "'>
                                     <input type='submit' value='Deletar' id='deletar'>
                                 </form>
                             </div>";
@@ -143,15 +143,15 @@ include("../handler/utils/valida.php");
                                 $resultadoTop10 = $conn->query($sqlTop10);
                                 $ordem = 1;
                                 while ($row = $resultadoTop10->fetch_assoc()) {
-                                    echo "<a href='assistir_filme.php?id=" . $row['id'] . "'>";
+                                    echo "<a href='assistir_filme.php?id=" . htmlspecialchars($row['id']) . "'>";
                                     echo "<div class='top-10-item'>
                                             <p>$ordem</p>
                                         </div>";
                                     echo "
                                     <article class='filme'>
-                                        <img src='https://wallpapers.com/images/hd/gray-gradient-background-yvgci5qspmivl7z0.jpg' data-src='" . $row['img'] . "' class='lazy'>
+                                        <img src='https://cdn.dribbble.com/users/546766/screenshots/4044977/bluecircle.gif' data-src='" . htmlspecialchars($row['img']) . "' class='lazy'>
                                         <div class='txt-filme'>
-                                            <p>" . $row['nome'] . "</p>
+                                            <p>" . htmlspecialchars($row['nome']) . "</p>
                                         </div>
                                     </article>";
                                     echo "</a>";
@@ -196,7 +196,7 @@ include("../handler/utils/valida.php");
                         if (resposta.success) {
                             const button = form.querySelector('.btn-favoritar i');
                             if (resposta.favoritado) {
-                                button.className = 'bi bi-bookmark-fill';
+                                button.className = 'bi bi-check2';
                             } else {
                                 button.className = 'bi bi-plus-lg';
                             }
@@ -341,6 +341,16 @@ include("../handler/utils/valida.php");
                 window.addEventListener("resize", lazyLoad);
                 window.addEventListener("orientationchange", lazyLoad);
             }
+        });
+        const loadingGif = document.getElementById("loading-gif");
+
+        video.addEventListener("loadeddata", () => {
+            loadingGif.style.display = "none";
+            video.style.display = "block";
+        });
+
+        video.addEventListener("loadedmetadata", () => {
+            video.currentTime = video.duration / 2;
         });
     </script>
 </body>

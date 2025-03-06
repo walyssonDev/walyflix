@@ -310,9 +310,9 @@ body {
 }
 
 .destaque .info-destaque a i {
-    font-size: 3em;
-    padding: 0;
-    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 2em;
 }
 
 .destaque .info-destaque {
@@ -326,6 +326,8 @@ body {
 }
 
 .destaque .info-destaque p {
+    transform: translateY(-10%);
+    padding: 0;
     margin: 0;
 }
 
@@ -344,12 +346,25 @@ body {
     object-fit: cover;
 }
 
+#loading-gif {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3em;
+    height: 3em;
+    background: url('https://cdn.pixabay.com/animation/2022/07/29/03/42/03-42-05-37_512.gif') center center no-repeat;
+    background-size: cover;
+    z-index: 10;
+}
+
 @media screen and (max-width: 768px) {
     .interface {
         padding: 0 .5em;
         align-items: center;
         gap: 0;
         overflow-y: auto;
+        overflow-x: hidden;
         height: calc(100dvh - 6em);
     }
 
