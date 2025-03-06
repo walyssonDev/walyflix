@@ -65,7 +65,7 @@ body {
 
 .filme {
     display: flex;
-    width: 12em;
+    width: 15em;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -231,7 +231,7 @@ body {
     }
 
     .filme {
-        width: 8em;
+        width: 10em;
     }
 
     .filme img {
