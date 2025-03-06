@@ -133,11 +133,11 @@ include("../handler/utils/valida.php");
                             <div class="top-10">
                                 <?php
                                 $sqlTop10 = "SELECT filmes.*, COUNT(lista.filme_id) AS count 
-                                             FROM filmes 
-                                             INNER JOIN lista ON filmes.id = lista.filme_id 
-                                             GROUP BY lista.filme_id 
-                                             ORDER BY count DESC 
-                                             LIMIT 10";
+                                            FROM filmes 
+                                            INNER JOIN lista ON filmes.id = lista.filme_id 
+                                            GROUP BY lista.filme_id 
+                                            ORDER BY count DESC, filmes.nome ASC 
+                                            LIMIT 10";
                                 $resultadoTop10 = $conn->query($sqlTop10);
                                 $ordem = 1;
                                 while ($row = $resultadoTop10->fetch_assoc()) {
