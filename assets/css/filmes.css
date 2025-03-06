@@ -315,12 +315,6 @@ body {
     margin: 0;
 }
 
-.bi::before,
-[class*=" bi-"]::before,
-[class^=bi-]::before {
-    vertical-align: -4px !important;
-}
-
 .destaque .info-destaque {
     background-color: rgba(0, 0, 0, 0.8);
     padding: 1em;
