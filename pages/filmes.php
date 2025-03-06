@@ -54,17 +54,12 @@ include("../handler/utils/valida.php");
                                 $sqlFav = "SELECT * FROM lista WHERE cpf = '" . $_SESSION['cpf'] . "' AND filme_id = '" . $row['id'] . "'";
                                 $resultadoFav = $conn->query($sqlFav);
                                 $isFav = $resultadoFav->num_rows > 0;
-                                echo "
-                                <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                ?>
+                                <input type='hidden' name='id' value='<?= $row['id'] ?>'>
                                 <button type='submit' class='btn-favoritar'>
-                                ";
-                                if ($isFav) {
-                                    echo "<i class='bi bi-bookmark-fill'></i>";
-                                } else {
-                                    echo "<i class='bi bi-plus-lg'></i>";
-                                }
-                                echo "</button>
-                            " ?>
+                                    <i class='<?= $isFav ? "bi bi-bookmark-fill" : "bi bi-plus-lg" ?>'></i>
+                                    <p>Salvar</p>
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -79,10 +74,10 @@ include("../handler/utils/valida.php");
                 <?php
                 $cpf = $_SESSION['cpf'];
 
-                $sql = "SELECT filmes.*, generos.genero AS nome_genero 
+                $sql = "SELECT filmes.*, generos.genero AS nome_genero, 
+                        (SELECT COUNT(*) FROM lista WHERE cpf = '$cpf' AND filme_id = filmes.id) AS isFav 
                         FROM filmes 
-                        INNER JOIN generos
-                        ON filmes.genero = generos.id";
+                        INNER JOIN generos ON filmes.genero = generos.id";
 
                 $resultado = $conn->query($sql);
 
@@ -98,9 +93,7 @@ include("../handler/utils/valida.php");
                     echo "<div class='filmes-por-genero'>";
                     foreach ($filmes as $row) {
                         $id = $row['id'];
-                        $sqlFav = "SELECT * FROM lista WHERE cpf = '$cpf' AND filme_id = '$id'";
-                        $resultadoFav = $conn->query($sqlFav);
-                        $isFav = $resultadoFav->fetch_assoc();
+                        $isFav = $row['isFav'] > 0;
 
                         echo "<a href='assistir_filme.php?id=" . $id . "'>";
                         echo "
@@ -198,11 +191,11 @@ include("../handler/utils/valida.php");
                     if (xhr.status === 200) {
                         const resposta = JSON.parse(xhr.responseText);
                         if (resposta.success) {
-                            const button = form.querySelector('.btn-favoritar');
+                            const button = form.querySelector('.btn-favoritar i');
                             if (resposta.favoritado) {
-                                button.innerHTML = "<i class='bi bi-bookmark-fill'></i>";
+                                button.className = 'bi bi-bookmark-fill';
                             } else {
-                                button.innerHTML = "<i class='bi bi-plus-lg'></i>";
+                                button.className = 'bi bi-plus-lg';
                             }
                         } else {
                             alert(resposta.message);
