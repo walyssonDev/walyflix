@@ -322,6 +322,7 @@ body {
     position: absolute;
     bottom: 5em;
     left: 5em;
+    width: 30%;
     z-index: 10;
 }
 
