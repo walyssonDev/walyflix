@@ -1,7 +1,6 @@
 <?php
 include("../handler/utils/conexao.php");
 include("../handler/utils/valida.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +10,9 @@ include("../handler/utils/valida.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WalyFlix</title>
+    <link rel="preload" href="../assets/css/filmes.css?v=<?php echo time(); ?>" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        as="style">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/filmes.css?v=<?php echo time(); ?>">
@@ -26,6 +28,7 @@ include("../handler/utils/valida.php");
 
         gtag('config', 'G-VX1YBC3426');
     </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
 </head>
 
 <body>
@@ -65,7 +68,7 @@ include("../handler/utils/valida.php");
                     </div>
                 </div>
                 <video id="video-destaque" autoplay>
-                    <source src="<?= htmlspecialchars($row['filme']) ?>" type="video/mp4">
+                    <source data-src="<?= htmlspecialchars($row['filme']) ?>" type="video/mp4">
                     Seu navegador não suporta o elemento de vídeo.
                 </video>
                 <div id="overlay"></div>
@@ -98,7 +101,7 @@ include("../handler/utils/valida.php");
                         echo "<a href='assistir_filme.php?id=" . $id . "'>";
                         echo "
                         <article class='filme'>
-                            <img src='" . $row['img'] . "'>
+                            <img src='https://wallpapers.com/images/hd/gray-gradient-background-yvgci5qspmivl7z0.jpg' data-src='" . $row['img'] . "' class='lazy'>
                             <div class='txt-filme'>
                                 <p>" . $row['nome'] . "</p>
                             </div>
@@ -146,7 +149,7 @@ include("../handler/utils/valida.php");
                                         </div>";
                                     echo "
                                     <article class='filme'>
-                                        <img src='" . $row['img'] . "'>
+                                        <img src='https://wallpapers.com/images/hd/gray-gradient-background-yvgci5qspmivl7z0.jpg' data-src='" . $row['img'] . "' class='lazy'>
                                         <div class='txt-filme'>
                                             <p>" . $row['nome'] . "</p>
                                         </div>
@@ -272,6 +275,72 @@ include("../handler/utils/valida.php");
 
         video.addEventListener("loadedmetadata", () => {
             video.currentTime = video.duration / 2;
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = document.querySelectorAll('img.lazy');
+            const video = document.getElementById("video-destaque");
+            const videoSource = video.querySelector('source');
+
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+
+                let lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            videoSource.src = videoSource.dataset.src;
+                            video.load();
+                            lazyVideoObserver.unobserve(video);
+                        }
+                    });
+                });
+
+                lazyVideoObserver.observe(video);
+            } else {
+                // Fallback for browsers that don't support IntersectionObserver
+                let lazyLoad = function() {
+                    lazyImages.forEach(function(lazyImage) {
+                        if (lazyImage.getBoundingClientRect().top < window.innerHeight && lazyImage
+                            .getBoundingClientRect().bottom > 0 && getComputedStyle(lazyImage)
+                            .display !== "none") {
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove("lazy");
+                        }
+                    });
+
+                    if (lazyImages.length == 0) {
+                        document.removeEventListener("scroll", lazyLoad);
+                        window.removeEventListener("resize", lazyLoad);
+                        window.removeEventListener("orientationchange", lazyLoad);
+                    }
+
+                    if (video.getBoundingClientRect().top < window.innerHeight && video.getBoundingClientRect()
+                        .bottom > 0 && getComputedStyle(video).display !== "none") {
+                        videoSource.src = videoSource.dataset.src;
+                        video.load();
+                        document.removeEventListener("scroll", lazyLoad);
+                        window.removeEventListener("resize", lazyLoad);
+                        window.removeEventListener("orientationchange", lazyLoad);
+                    }
+                };
+
+                document.addEventListener("scroll", lazyLoad);
+                window.addEventListener("resize", lazyLoad);
+                window.addEventListener("orientationchange", lazyLoad);
+            }
         });
     </script>
 </body>

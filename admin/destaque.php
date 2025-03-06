@@ -24,7 +24,7 @@ verificarPermissao(['adm']);
         <?php include("../includes/nav.php") ?>
         <div class="container">
             <div class="top">
-                <h2>Generos</h2>
+                <h2>Filmes</h2>
             </div>
             <table>
                 <tr>

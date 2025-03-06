@@ -9,7 +9,7 @@ include("../handler/utils/valida.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sua lista</title>
+    <title>Minha Lista</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/lista.css?v=<?php echo time(); ?>">
@@ -34,7 +34,7 @@ include("../handler/utils/valida.php");
         <?php include("../includes/nav.php") ?>
         <div class="interface">
             <div class="titulo">
-                <h1><i class="bi bi-bookmark-fill"></i> Sua Lista</h1>
+                <h1><i class="bi bi-bookmark-fill"></i> Minha Lista</h1>
             </div>
             <div class="filmes">
                 <?php
