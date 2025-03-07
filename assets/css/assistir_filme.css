@@ -92,11 +92,19 @@ iframe {
     width: 50%;
 }
 
+.container h2 {
+    color: #ffffff;
+    background-color: #023047;
+    padding: .5em;
+    border-bottom: 2px solid #000814;
+    border-radius: 1em 1em 0 0;
+    margin: 0;
+}
+
 .comentarios {
     background-color: #023047;
     color: white;
     padding: 0 .5em;
-    border-radius: 1em 1em 0 0;
     overflow-y: auto;
     scrollbar-width: thin;
     max-height: 50vh;
@@ -209,6 +217,13 @@ form button[type="submit"] {
 
 form button[type="submit"]:hover {
     background-color: #1d4ed8;
+}
+
+form button[type="submit"] img {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 1.2em;
 }
 
 @media screen and (max-width: 1020px) {

@@ -307,6 +307,18 @@ include("../handler/utils/valida.php");
                 });
 
                 lazyVideoObserver.observe(video);
+
+                let videoMuteObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            video.muted = false;
+                        } else {
+                            video.muted = true;
+                        }
+                    });
+                });
+
+                videoMuteObserver.observe(video);
             } else {
                 // Fallback for browsers that don't support IntersectionObserver
                 let lazyLoad = function() {
@@ -339,6 +351,8 @@ include("../handler/utils/valida.php");
                 window.addEventListener("resize", lazyLoad);
                 window.addEventListener("orientationchange", lazyLoad);
             }
+
+
         });
         const loadingGif = document.getElementById("loading-gif");
 

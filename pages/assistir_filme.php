@@ -97,6 +97,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
             </div>
 
             <div class="container">
+                <h2>Comentarios - <span id="num-comentarios"></span></h2>
                 <div id="comentarios" class="comentarios">
                     <?php
                     $sql = "SELECT * FROM comentarios WHERE filme_id = $id ORDER BY id";
@@ -156,6 +157,8 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         required>
                     <button type="submit">
                         <i class="bi bi-arrow-right"></i>
+                        <img src="https://discuss.wxpython.org/uploads/default/original/2X/6/6d0ec30d8b8f77ab999f765edd8866e8a97d59a3.gif"
+                            alt="Animação de Carregamento">
                     </button>
                 </form>
             </div>
@@ -175,6 +178,23 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
 
         document.getElementById('comentarioForm').addEventListener('submit', function(event) {
             event.preventDefault();
+            const btn_enviar = document.querySelector('#comentarioForm button');
+            const img = document.querySelector('#comentarioForm img');
+            const icone = document.querySelector('#comentarioForm i');
+
+            function carregando() {
+                btn_enviar.disabled = true;
+                img.style.display = 'flex';
+                icone.style.display = 'none';
+            }
+
+            function pararCarregamento() {
+                btn_enviar.disabled = false;
+                img.style.display = 'none';
+                icone.style.display = 'flex';
+            }
+
+            carregando();
 
             const form = event.target;
             const formData = new FormData(form);
@@ -206,6 +226,10 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         document.getElementById('comentarios').appendChild(div);
                         form.reset();
                         addDeleteEvent(div.querySelector('.deletarForm'));
+
+                        pararCarregamento();
+
+                        document.getElementById('num-comentarios').innerText = num_comentarios + 1;
                     } else {
                         alert(resposta.message);
                     }
@@ -229,6 +253,7 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                         const resposta = JSON.parse(xhr.responseText);
                         if (resposta.success) {
                             form.parentElement.remove();
+                            document.getElementById('num-comentarios').innerText = num_comentarios - 1;
                         } else {
                             alert(resposta.message);
                         }
@@ -270,6 +295,11 @@ $extensao = pathinfo($link_limpo, PATHINFO_EXTENSION);
                 xhr.send(formData);
             });
         });
+
+        let num_comentarios = 0;
+        document.querySelectorAll('.comment').forEach(() => num_comentarios++);
+        document.querySelectorAll('.commentADM').forEach(() => num_comentarios++);
+        document.getElementById('num-comentarios').innerText = num_comentarios;
 
         setInterval(() => {
             fetch("../handler/usuario/atualiza_status.php");
