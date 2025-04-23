@@ -74,20 +74,20 @@ if ($resultado->num_rows > 0) {
 
         if ($mail->send()) {
             $resposta = "Email enviado com sucesso!";
-            header("Location: ../../index.php?resposta=$resposta");
+            header("Location: ../../pages/login.php?resposta=$resposta");
             exit;
         } else {
             $resposta = "Falha ao enviar o email!";
-            header("Location: ../../index.php?resposta=$resposta");
+            header("Location: ../../pages/rec_senha.php?resposta=$resposta");
             exit;
         }
     } catch (Exception $e) {
         $resposta = "Erro ao recuperar senha! {$mail->ErrorInfo}";
-        header("Location: ../../index.php?resposta=$resposta");
+        header("Location: ../../pages/rec_senha.php?resposta=$resposta");
         exit;
     }
 } else {
     $resposta = "E-mail ou CPF não cadastrados!";
-    header("Location: ../../index.php?resposta=$resposta");
+    header("Location: ../../pages/rec_senha.php?resposta=$resposta");
     exit;
 }

@@ -41,16 +41,16 @@ if ($resultadoCpf === true && $resultadoSenha === true) {
             exit;
         } else {
             $resultado = "CPF ou Senha incorretos";
-            header("Location: ../../index.php?resposta=$resultado");
+            header("Location: ../../pages/login.php?resposta=$resultado");
             exit;
         }
     } else {
         $resultado = "Erro ao realizar a consulta no banco de dados.";
-        header("Location: ../../index.php?resposta=$resultado");
+        header("Location: ../../pages/login.php?resposta=$resultado");
         exit;
     }
 } else {
     $resultado = "CPF ou Senha incorretos";
-    header("Location: ../../index.php?resposta=$resultado");
+    header("Location: ../../pages/login.php?resposta=$resultado");
     exit;
 }

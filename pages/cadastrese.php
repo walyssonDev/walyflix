@@ -50,7 +50,9 @@ include("../handler/utils/conexao.php");
             <label for="email">E-mail: </label>
             <div class="email">
                 <i class="bi bi-envelope"></i>
-                <input type="email" name="email" id="email" placeholder="Seu E-mail: " required>
+                <input type="email" name="email" id="email"
+                    value="<?php echo ((isset($_POST['email'])) ? $_POST['email'] : "") ?>" placeholder="Seu E-mail: "
+                    required>
             </div>
             <label for="senha">Senha: </label>
             <div class="senha">
@@ -59,7 +61,7 @@ include("../handler/utils/conexao.php");
             </div>
             <input type="submit" value="Enviar">
             <input type="hidden" name="cadastro" value="cadastro">
-            <a href="../index.php">Login</a>
+            <a href="login.php">Login</a>
         </form>
     </div>
     <script>

@@ -35,9 +35,16 @@ include("../handler/utils/conexao.php");
                 <input type="email" name="email" id="email" placeholder="Seu email: " required>
             </div>
             <input type="submit" value="Enviar">
-            <a href="../index.php">Voltar</a>
+            <a href="login.php">Voltar</a>
         </form>
     </div>
+    <script>
+    <?php
+        if (isset($_GET['resposta'])) {
+            echo "alert('" . $_GET['resposta'] . "')";
+        }
+        ?>
+    </script>
     <script src="../assets/js/validaForm.js"></script>
 </body>
 

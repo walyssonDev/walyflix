@@ -1,0 +1,377 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000b4;
+    padding: 1em 5em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+header h1 {
+    color: #fff;
+    font-family: "Rochester", serif;
+    font-size: 2.5em;
+    font-weight: 600;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+    filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+    text-shadow:
+        -1px -1px 0 #004aad,
+        1px -1px 0 #004aad,
+        -1px 1px 0 #004aad,
+        1px 1px 0 #004aad;
+}
+
+header .btn-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+header .btn-header a {
+    padding: .5em;
+    background-color: #fff;
+    color: #000;
+    border-radius: .5em;
+    text-decoration: none;
+    transition: .2s ease all;
+}
+
+header .btn-header #cadastro {
+    background-color: #004aad;
+    color: #fff;
+}
+
+header .btn-header a:hover {
+    background-color: #d6d6d6;
+}
+
+header .btn-header #cadastro:hover {
+    background-color: #01387f;
+}
+
+#hero {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5em;
+    overflow: hidden;
+    position: relative;
+    background: url(../img/fundo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+
+#hero>* {
+    color: #fff;
+    z-index: 10;
+}
+
+#hero h2 {
+    width: 60%;
+    text-align: center;
+    font-size: 5em;
+}
+
+#hero p {
+    font-size: 1.5em;
+    text-align: center;
+    width: 50%;
+}
+
+#hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000c2;
+    z-index: 0;
+}
+
+#hero form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    gap: .5em;
+    width: 100%;
+    flex-direction: column;
+}
+
+#hero form p {
+    font-size: 1.2em;
+}
+
+#hero form .input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    width: 100%;
+}
+
+#hero form input {
+    background-color: #000000bc;
+    padding: .8em 1em;
+    border-radius: .5em;
+    border: 2px solid #4a4a4a;
+    color: #fff;
+    font-size: 1.2em;
+    width: 25%;
+}
+
+#hero form button {
+    background-color: #004aad;
+    color: #fff;
+    padding: .8em 1em;
+    border-radius: .5em;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    transition: .2s ease all;
+}
+
+#hero form button:hover {
+    background-color: #01387f;
+}
+
+#motivos {
+    padding: 1em 5em;
+    background-color: #000;
+}
+
+#motivos h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 2.5em;
+    margin: 1em 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#motivos .card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#motivos .card {
+    background-color: #01387f;
+    color: #fff;
+    padding: 1em;
+    border-radius: 1em;
+    width: 20em;
+    height: 15em;
+    padding-bottom: 4em;
+    flex-shrink: 0;
+    position: relative;
+}
+
+#motivos .card h3 {
+    font-size: 1.5em;
+    margin-bottom: .3em;
+}
+
+#motivos .card p {
+    color: #ffffffc2;
+    font-size: 1.1em;
+}
+
+#motivos .card i {
+    position: absolute;
+    bottom: .5em;
+    right: 1em;
+    font-size: 3em;
+}
+
+#diferenciais {
+    background-color: #000;
+    color: #fff;
+    padding: 2em 5em;
+    text-align: center;
+}
+
+#diferenciais h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.diferenciais-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+}
+
+.diferencial {
+    background-color: #01387f;
+    border-radius: 1em;
+    padding: 1.5em;
+    width: 18em;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.diferencial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.diferencial i {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    color: #004aad;
+}
+
+.diferencial h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.diferencial p {
+    font-size: 1em;
+    color: #ffffffc2;
+}
+
+.diferenciais-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: left;
+}
+
+.diferenciais-lista li {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    color: #ffffffc2;
+}
+
+.diferenciais-lista li i {
+    font-size: 2em;
+    color: #004aad;
+}
+
+.diferenciais-lista li span {
+    line-height: 1.5;
+}
+
+.diferenciais-lista li strong {
+    color: #fff;
+}
+
+footer {
+    background-color: #141414;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-container p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links li {
+    display: inline;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #004aad;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: .5em 1em;
+    }
+
+    #hero {
+        height: auto;
+        padding: 5em 0;
+        padding-top: 10em;
+    }
+
+    #hero h2 {
+        font-size: 4em;
+        width: 100%;
+    }
+
+    #hero p {
+        width: 100%;
+    }
+
+    #hero form input {
+        width: 60%;
+    }
+
+    #motivos {
+        padding: .5em;
+    }
+
+    #motivos .card-container {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+
+    #diferenciais {
+        padding: 1em;
+    }
+}
