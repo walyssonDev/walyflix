@@ -77,7 +77,7 @@ if (!isset($_SESSION['cpf']) && isset($_COOKIE['cpf_usuario'])) {
         <form action="pages/cadastrese.php" method="post">
             <p>Quer assistir? Informe seu email para criar uma conta!</p>
             <div class="input-container">
-                <input type="email" name="email" id="email" placeholder="Seu email">
+                <input type="email" name="email" id="email" placeholder="Seu email" required>
                 <button type="submit">Vamos lá <i class="bi bi-chevron-right"></i></button>
             </div>
         </form>
